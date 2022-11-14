@@ -1,0 +1,60 @@
+{
+    "name":"stephaneass/payplus",
+    "description":"Payplus is the easier plateform to perform onlign paiement with assurance",
+    "keywords": [
+        "payplus", "pay", "onlign paiement", "paiement", "plus"
+    ],
+    "homepage": "https://payplus.africa/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stephane ASSOCLE",
+            "email": "mensste30@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.3",
+        "spatie/laravel-ray": "^1.9",
+        "vimeo/psalm": "^4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "StephaneAss\\Payplus\\": "src",
+            "StephaneAss\\Payplus\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "StephaneAss\\Payplus\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "StephaneAss\\Payplus\\PayplusServiceProvider"
+            ],
+            "aliases": {
+                "Payplus": "StephaneAss\\Payplus\\PayplusFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

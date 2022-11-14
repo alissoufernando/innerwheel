@@ -1,0 +1,134 @@
+[
+    {
+        "name": "ALIBORI",
+        "towns": [
+            { "name": "BANIKOARA" },
+            { "name": "GOGOUNOU" },
+            { "name": "KANDI" },
+            { "name": "KARIMAMA" },
+            { "name": "MALANVILLE" },
+            { "name": "SEGBANA" }
+        ]
+    },
+    {
+        "name": "ATACORA",
+        "towns": [
+            { "name": "BOUKOUMBE" },
+            { "name": "COBLY" },
+            { "name": "KEROU" },
+            { "name": "KOUANDE" },
+            { "name": "MATERI" },
+            { "name": "NATITINGOU" },
+            { "name": "OUASSA-PEHUNCO" },
+            { "name": "TANGUIETA" },
+            { "name": "TOUKOUNTOUNA" }
+        ]
+    },
+    {
+        "name": "ATLANTIQUE",
+        "towns": [
+            { "name": "ABOMEY-CALAVI" },
+            { "name": "ALLADA" },
+            { "name": "KPOMASSE" },
+            { "name": "OUIDAH" },
+            { "name": "SO-AVA" },
+            { "name": "TOFFO" },
+            { "name": "TORI-BOSSITO" },
+            { "name": "ZE" }
+        ]
+    },
+    {
+        "name": "BORGOU",
+        "towns": [
+            { "name": "BEMBEREKE" },
+            { "name": "KALALE" },
+            { "name": "N'DALI" },
+            { "name": "NIKKI" },
+            { "name": "PARAKOU" },
+            { "name": "PERERE" },
+            { "name": "SINENDE" },
+            { "name": "TCHAOUROU" }
+        ]
+    },
+    {
+        "name": "COLLINES",
+        "towns": [
+            { "name": "BANTE" },
+            { "name": "DASSA-ZOUME" },
+            { "name": "GLAZOUE" },
+            { "name": "OUESSE" },
+            { "name": "SAVALOU" },
+            { "name": "SAVE" }
+        ]
+    },
+    {
+        "name": "COUFFO",
+        "towns": [
+            { "name": "APLAHOUE" },
+            { "name": "DJAKOTOMEY" },
+            { "name": "DOGBO" },
+            { "name": "KLOUEKANMEY" },
+            { "name": "LALO" },
+            { "name": "TOVIKLIN" }
+        ]
+    },
+    {
+        "name": "DONGA",
+        "towns": [
+            { "name": "BASSILA" },
+            { "name": "COPARGO" },
+            { "name": "DJOUGOU" },
+            { "name": "OUAKE" }
+        ]
+    },
+    { "name": "LITTORAL", "towns": [{ "name": "COTONOU" }] },
+    {
+        "name": "MONO",
+        "towns": [
+            { "name": "ATHIEME" },
+            { "name": "BOPA" },
+            { "name": "COME" },
+            { "name": "GRAND-POPO" },
+            { "name": "HOUEYOGBE" },
+            { "name": "LOKOSSA" }
+        ]
+    },
+    {
+        "name": "OUEME",
+        "towns": [
+            { "name": "ADJARRA" },
+            { "name": "ADJOHOUN" },
+            { "name": "AGUEGUES" },
+            { "name": "AKPRO-MISSERETE" },
+            { "name": "AVRANKOU" },
+            { "name": "BONOU" },
+            { "name": "DANGBO" },
+            { "name": "PORTO-NOVO" },
+            { "name": "SEME-PODJI" }
+        ]
+    },
+    {
+        "name": "PLATEAU",
+        "towns": [
+            { "name": "ADJA-OUERE" },
+            { "name": "IFANGNI" },
+            { "name": "KETOU" },
+            { "name": "POBE" },
+            { "name": "SAKETE" }
+        ]
+    },
+    {
+        "name": "ZOU",
+        "towns": [
+            { "name": "ABOMEY" },
+            { "name": "AGBANGNIZOUN" },
+            { "name": "BOHICON" },
+            { "name": "COVE" },
+            { "name": "DJIDJA" },
+            { "name": "OUINHI" },
+            { "name": "ZAGNANADO" },
+            { "name": "ZA-KPOTA" },
+            { "name": "ZOGBODOMEY" }
+        ]
+    }
+]
