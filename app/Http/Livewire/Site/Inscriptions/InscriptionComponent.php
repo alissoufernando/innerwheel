@@ -12,6 +12,7 @@ use App\Models\Inscription;
 use App\Models\ModeArrivee;
 use App\Models\ModePaiement;
 use App\Models\Paiement;
+use App\Models\Pays;
 use Illuminate\Support\Facades\Http;
 use StephaneAss\Payplus\Pay\PayPlus;
 
@@ -24,15 +25,15 @@ class InscriptionComponent extends Component
     public $adresse;
     public $tel;
     public $email;
-    public $tarif_id;
+    public $tarif_id, $pay_id;
     public $date_arrivee;
     public $date_depart;
-    public $mode_arrivee_id;
+    public $mode_arrivee_id,$mode_arrivee;
     public $hebergement_id;
-    public $Mode_paiement_id;
+    public $Mode_paiement_id, $Mode_paiement;
     public $activite_id;
     public $montant_total = 0;
-    public $inscription_id_1, $Dactivites, $myInscription, $Dclub, $Dtarifs;
+    public $inscription_id_1, $Dactivites, $Dclub, $Dtarifs;
 
     public $totalSteps = 3;
     public $currentStep = 1;
@@ -55,6 +56,8 @@ class InscriptionComponent extends Component
                 $this->montant_total = 50000;
                 $this->Dactivites = Activite::where('id',$this->activite_id)->first();
                 $this->Dclub = Club::where('id',$this->club_id)->first();
+                $this->Mode_paiement = ModePaiement::where('id',$this->Mode_paiement_id)->first();
+                $this->mode_arrivee = ModeArrivee::where('id',$this->mode_arrivee_id)->first();
 
                 // dd($this->Dactivites);
 
@@ -107,6 +110,7 @@ class InscriptionComponent extends Component
         {
             $this->validate([
                 'nom'=>'required',
+                'pay_id'=>'required',
                 'prenoms'=>'required',
                 'club_id'=>'required',
                 'fonction'=>'required',
@@ -261,6 +265,7 @@ class InscriptionComponent extends Component
             'nom',
             'prenoms',
             'club_id',
+            'pay_id',
             'fonction',
             'adresse',
             'tel',
@@ -306,10 +311,11 @@ class InscriptionComponent extends Component
 
         $myPaiement = new Paiement();
         $myInscription = Inscription::latest()->first();
-        $this->inscription_id_1 = $this->myInscription->id;
+        $this->inscription_id_1 = $myInscription->id;
         $myPaiement->inscription_id = $myInscription->id;
         $myPaiement->mode_paiement_id = $this->Mode_paiement_id;
         $myPaiement->statut_id = 2;
+        $myPaiement->save();
 
         $this->sendRequest();
         // dd($URL_pay);
@@ -318,28 +324,32 @@ class InscriptionComponent extends Component
        $this->resetInputFields();
     }
 
-    public function changeTarif()
+
+    public function changeClub()
     {
-        $this->tarif_id = 0;
+        $this->club_id = 0;
     }
+
+    
     public function render()
     {
+        $pays = Pays::where('isDelete', 0)->get();
         $activites = Activite::where('isDelete', 0)->get();
         $tarifs = Tarif::where('isDelete', 0)->where('hebergement_id', $this->hebergement_id)->get();
-        $mode_arrivee = ModeArrivee::where('isDelete', 0)->get();
+        $mode_arriveess = ModeArrivee::where('isDelete', 0)->get();
         $hebergements = Hebergement::where('isDelete', 0)->get();
-        $clubs = Club::where('isDelete', 0)->get();
+        $clubs = Club::where('isDelete', 0)->where('pay_id', $this->pay_id)->get();
         $modepaiments = ModePaiement::where('isDelete', 0)->get();
 
-
-
         return view('livewire.site.inscriptions.inscription-component',[
-            'mode_arrivee' => $mode_arrivee,
+            'mode_arriveess' => $mode_arriveess,
             'tarifs' => $tarifs,
             'clubs' => $clubs,
             'hebergements' => $hebergements,
             'activites' => $activites,
             'modepaiments' => $modepaiments,
+            'pays' => $pays,
+
         ])->layout('layouts.site');
     }
 }

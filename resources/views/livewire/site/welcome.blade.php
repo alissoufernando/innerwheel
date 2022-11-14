@@ -1,3 +1,18 @@
+@section('styles')
+<style>
+.divimage img{
+    width: 100%;
+    height: 100%;
+}
+
+/* .divtext{
+    width: 100%;
+    height: 100%;
+} */
+</style>
+
+
+@endsection
 <div>
     <header id="header" class="d-flex align-items-center ">
         <div class="container-fluid container-xxl d-flex align-items-center">
@@ -85,16 +100,22 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
-                    <img src="{{ asset('assets/site/assets/img/des.jpg') }}" alt="" width="600" height="700">
+                <div class="col-md-6 divimage">
+                    <img src="{{ asset('assets/site/assets/img/des.jpg') }}" alt="" >
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 text-justify divtext">
                     <h3> <strong>C'est quoi INNER WHEEL</strong> </h3>
-                    <p>
+                    <p class="text-justify">
                         INNER WHEEL est une ONG internationale composée de clubs services féminins le plus important au monde. Active dans plus de 103 pays, elle compte près de 105 000 membres répartis dans 3917 clubs. International INNER WHEEL est l’organe administratif qui chapeaute l’organisation pyramidale des membres, réunis en Clubs, lesquels forment des districts réunis en organes directeur national.
                      </p>
-                     <p>
-                        Fondée par les épouses des Rotariens, l’organisation INNER WHEEL compte désormais au sein du District 909, une Béninoise qui porte les voix de tous les pays de l’organisation. Servir les plus démunis et leur venir en aide à travers l’amitié et le service. C’est ce à quoi s’attelle cette organisation de femmes présente dans plusieurs pays à travers le monde. C’est grâce à la Past Président international (PPI) Mrs Oluyemisi Alatise, de nationalité nigériane et Première Africaine Présidente internationale de INNER WHEEL que le Bénin a été honoré. Sa représentante nationale en la personne de Fahimatou Paraïso Salifou a été installée samedi 21 septembre dernier à la Maison des bâtisseurs à Cotonou. Présidente du comité d’organisation Ruffine Agossou, dira « Merci pour toutes les amies qui n’ont ménagé aucun effort pour que tienne cette cérémonie. Nous sommes ensemble pour passer un bon moment et oublier les soucis quotidiens », a-t-elle souligné. Fahimatou Paraïso Salifou rappelle que « INNER WHEEL est né à la fin de la première guerre mondiale en Angleterre. Au début quand les hommes vont à la guerre, les femmes se réunissaient pour prendre la relève de leur mari parce qu’ils s’occupaient des veuves et des orphelins ».
+                     <p class="text-justify">
+                        Fondée par les épouses des Rotariens, l’organisation INNER WHEEL compte désormais au sein du District 909, une Béninoise qui porte les voix de tous les pays de l’organisation. Servir les plus démunis et leur venir en aide à travers l’amitié et le service. C’est ce à quoi s’attelle cette organisation de femmes présente dans plusieurs pays à travers le monde. C’est grâce à la Past Président international (PPI) Mrs Oluyemisi Alatise, de nationalité nigériane et Première Africaine Présidente internationale de INNER WHEEL que le Bénin a été honoré.
+                     </p>
+                     <p class="text-justify">
+                        Sa représentante nationale en la personne de Fahimatou Paraïso Salifou a été installée samedi 21 septembre dernier à la Maison des bâtisseurs à Cotonou. Présidente du comité d’organisation Ruffine Agossou, dira « Merci pour toutes les amies qui n’ont ménagé aucun effort pour que tienne cette cérémonie. Nous sommes ensemble pour passer un bon moment et oublier les soucis quotidiens », a-t-elle souligné. Fahimatou Paraïso Salifou rappelle que « INNER WHEEL est né à la fin de la première guerre mondiale en Angleterre. Au début quand les hommes vont à la guerre, les femmes se réunissaient pour prendre la relève de leur mari parce qu’ils s’occupaient des veuves et des orphelins ».
+
+                     </p>
+                     <p class="text-justify">
                         C’est ainsi qu’elles ont décidé « Après la guerre, de former des clubs. Le premier club est né le 10 janvier 1924 en Angleterre à Manchester ».
                      </p>
 
@@ -849,7 +870,7 @@
               <div class="col-md-4">
                 <div class="contact-phone">
                   <i class="bi bi-phone"></i>
-                  <h3>Phone</h3>
+                  <h3>Contact</h3>
                   <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
                 </div>
               </div>
@@ -871,7 +892,7 @@
                     <input type="text" name="name" class="form-control" id="name" placeholder="Votre nom" required>
                   </div>
                   <div class="form-group col-md-6 mt-3 mt-md-0">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Votre prénoms" required>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Vos prénoms" required>
                   </div>
                 </div>
                 <div class="form-group mt-3">

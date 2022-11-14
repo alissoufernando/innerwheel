@@ -18,25 +18,16 @@ class ModePaiementTableSeeder extends Seeder
         DB::table('mode_paiements')->insert([
 
             [
-                'libelle' => 'Carte Bancaire',
-                'piece_jointe' => 0,
-
-            ],
-            [
-                'libelle' => 'Virement',
+                'libelle' => 'Virement Bancaire',
                 'piece_jointe' => 1,
 
             ],
             [
-                'libelle' => 'MOOV',
+                'libelle' => 'Paiement en ligne',
                 'piece_jointe' => 0,
 
             ],
-            [
-                'libelle' => 'MTN',
-                'piece_jointe' => 0,
 
-            ],
 
 
         ]);
