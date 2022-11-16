@@ -60,10 +60,10 @@
     </header><!-- End Header -->
     <section id="hero">
         <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
-          <h1 class="mb-4 pb-0"> Innerwheel International<br><span> District 909</span> AGA Cotonou</h1>
-          <p class="mb-4 pb-0">Du 01 au 04 Mars 2023</p>
+          <h1 class="mb-4 pb-0"> Innerwheel International<br><span> District 909</span> </h1>
+          <p class="mb-4 pb-0">AGA de COTONOU <br>Du 01 au 04 Mars 2023</p>
           <a href="https://www.youtube.com/watch?v=-9AHvO-MfIk" class="glightbox play-btn mb-4"></a>
-          <a href="#about" class="about-btn scrollto">Description en video</a>
+          <a href="{{ route('inscription') }}" class="about-btn scrollto">S'inscrire</a>
         </div>
       </section><!-- End Hero Section -->
 
@@ -74,18 +74,18 @@
           <div class="container" data-aos="fade-up">
             <div class="row">
               <div class="col-lg-6">
-                <h2>Description de l'évenement</h2>
+                {{-- <h2>Description de l'évenement</h2>
                 <p>Sed nam ut dolor qui repellendus iusto odit. Possimus inventore eveniet accusamus error amet eius aut
                   accusantium et. Non odit consequatur repudiandae sequi ea odio molestiae. Enim possimus sunt inventore in
-                  est ut optio sequi unde.</p>
+                  est ut optio sequi unde.</p> --}}
               </div>
               <div class="col-lg-3">
-                <h3>Lieu</h3>
-                <p>Bénin, cotonou</p>
+                {{-- <h3>Lieu</h3>
+                <p>Bénin, cotonou</p> --}}
               </div>
               <div class="col-lg-3">
-                <h3>Periode</h3>
-                <p>04 jours d'activité<br>Du 01 au 04 Mars 2023</p>
+                {{-- <h3>Periode</h3> --}}
+                {{-- <p>04 jours d'activité<br>Du 01 au 04 Mars 2023</p> --}}
               </div>
             </div>
           </div>
@@ -105,20 +105,17 @@
                 </div>
                 <div class="col-md-6 text-justify divtext">
                     <h3> <strong>QUI SOMMES NOUS</strong> </h3>
-                    <p class="text-justify">
+                    <p class="text-justify" style="text-align: justify">
                         Nous sommes des femmes de cœur appartenant à une organisation féminine, apolitique, non confessionnelle appelée International Inner Wheel.
                         Cette organisation, la plus grande au monde compte environ 115 000 membres regroupés dans 4000 clubs répartis dans 177 districts.
                         Elle siège à l’ONU avec deux (02) représentantes et un statut de consultant depuis 1988. Ainsi, l’Inner Wheel est consulté sur les sujets relatifs aux droits de l’homme et des enfants, aux droits de la femme, aux droits de la famille et des personnes âgées ainsi que sur les problèmes liés à la drogue.
                         Fondée par les épouses des rotariens depuis le 10 janvier 1924, elle s’est ouverte à partir de 2012 à toutes les femmes capables d’offrir un peu de leur temps et de leurs ressources à travers l’amitié et le service aux femmes et aux enfants en situation difficile, nos cibles privilégiées.
                     </p>
-                     <p class="text-justify">
-
+                     <p class="text-justify" style="text-align: justify">
                         Ses valeurs sont le Service, l’Amitié et l’Entente Internationale.<br>
-
                         L’Inner Wheel s’investit dans les actions à caractère social. Il soutient des orphelinats, les malades mentaux, prend en charge des enfants en situation difficile pour leur scolarisation (construction de salles de classes ; dons de fournitures scolaires de bourses d’excellence ; etc.), les femmes vivant dans la précarité, etc.
-
                      </p>
-                     <p class="text-justify">
+                     <p class="text-justify" style="text-align: justify">
                         Le District 909 fait partie des 177 districts du monde et couvre 7 pays que sont :
                         <ul>
                             <li>Bénin</li>
@@ -135,7 +132,7 @@
                         Durant chaque mandat, il se tient une Assemblée Générale Annuelle qui regroupe les membres de tous les pays du District, environ 200 personnes et se déroule dans le pays du Gouverneur. Ainsi donc, cette année, elle aura <strong>lieu à Cotonou au Bénin, du 1er au 04 Mars 2023.</strong>
 
                      </p>
-                     <p class="text-justify">
+                     <p class="text-justify" style="text-align: justify">
 
                         Les amies des autres districts sont également conviées. Ainsi, le District 915 est représenté par les amies du Cameroun et de la République Démocratique du Congo.
                         Certaines amies d’autres pays et d’autres districts sont également représentées à nos assemblées générales annuelles.
