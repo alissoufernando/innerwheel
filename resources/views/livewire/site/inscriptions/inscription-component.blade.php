@@ -129,7 +129,7 @@
                         @enderror
                     </div>
                     <div class="col-md-12 mb-4">
-                        <label class="form-label">Veillez choisir votre Poste <sup class="text-danger">*</sup></label>
+                        <label class="form-label">Votre Poste au sein du club<sup class="text-danger">*</sup></label>
                         <select class="form-control" name="" id="" wire:model="poste_id">
                             <option value="">Veillez choisir le poste</option>
                             @foreach ($postes as $poste)

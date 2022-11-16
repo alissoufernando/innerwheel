@@ -878,13 +878,27 @@
 
             <div class="row contact-info">
 
+                <div class="col-md-4">
+                    <div class="contact-phone">
+                      <i class="bi bi-phone"></i>
+                      <h3>Contact N°1</h3>
+                      <p>Rufine AGOSSOU</p>
+                      <p>Sécretaire du District</p>
+                      <p><a href="tel:+22995053691">(+229) 95 05 36 91</a></p>
+                      <p><a href="mailto:rufineagossou@gmail.com">rufineagossou@gmail.com</a></p>
+
+
+                    </div>
+                  </div>
+
               <div class="col-md-4">
-                <div class="contact-address">
-                  <i class="bi bi-geo-alt"></i>
-                  <h3>Adresse</h3>
-                  <address>Dossou Fernando</address>
-                  <address>Dossou Fernando</address>
-                  <address>Dossou Fernando</address>
+                <div class="contact-phone">
+                  <i class="bi bi-phone"></i>
+                  <h3>Contact N°2</h3>
+                  <p>Rufine AGOSSOU</p>
+                      <p>Sécretaire du District</p>
+                      <p><a href="tel:+22995053691">(+229) 95 05 36 91</a></p>
+                      <p><a href="mailto:rufineagossou@gmail.com">rufineagossou@gmail.com</a></p>
 
                 </div>
               </div>
@@ -892,21 +906,11 @@
               <div class="col-md-4">
                 <div class="contact-phone">
                   <i class="bi bi-phone"></i>
-                  <h3>Contact</h3>
-                  <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
-                  <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
-                  <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
-
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="contact-email">
-                  <i class="bi bi-envelope"></i>
-                  <h3>Email</h3>
-                  <p><a href="mailto:info@example.com">info@example.com</a></p>
-                  <p><a href="mailto:info@example.com">info@example.com</a></p>
-                  <p><a href="mailto:info@example.com">info@example.com</a></p>
+                  <h3>Contact N°3</h3>
+                  <p>Rufine AGOSSOU</p>
+                      <p>Sécretaire du District</p>
+                      <p><a href="tel:+22995053691">(+229) 95 05 36 91</a></p>
+                      <p><a href="mailto:rufineagossou@gmail.com">rufineagossou@gmail.com</a></p>
 
                 </div>
               </div>
