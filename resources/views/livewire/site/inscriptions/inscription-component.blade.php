@@ -63,7 +63,9 @@
 
           <form wire:submit.prevent='storeinscription'>
             <div class="row justify-content-center ">
-
+                @if (Session::has('message'))
+                <div class="alert alert-success">{{Session::get('message')}}</div>
+                @endif
                 @if ($this->currentStep == 1)
 
                 <div class="col-md-6 shadow">
