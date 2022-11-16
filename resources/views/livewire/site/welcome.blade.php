@@ -60,8 +60,8 @@
     </header><!-- End Header -->
     <section id="hero">
         <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
-          <h1 class="mb-4 pb-0"> Innerwheel International<br><span> District 909</span> </h1>
-          <p class="mb-4 pb-0">AGA de COTONOU <br>Du 01 au 04 Mars 2023</p>
+          <h1 class="mb-4 pb-0">International Inner wheel <br><span> District 909</span> </h1>
+          <p class="mb-4 pb-0">Assembée Génerale Annuelle de COTONOU <br>Du 01 au 04 Mars 2023</p>
           <a href="https://www.youtube.com/watch?v=-9AHvO-MfIk" class="glightbox play-btn mb-4"></a>
           <a href="{{ route('inscription') }}" class="about-btn scrollto">S'inscrire</a>
         </div>
@@ -570,19 +570,19 @@
           <div class="container" data-aos="fade-up">
             <div class="section-header">
               <h2>Les pays Membres</h2>
-              <p>Les differentes pays membre de la INNER WHEEL</p>
+              <p>Les differents pays membres du INTERNATIONAL INNER WHEEL DISTRICT 909</p>
             </div>
           </div>
 
           <div class="gallery-slider swiper">
             <div class="swiper-wrapper align-items-center">
-              <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/1.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Burkina-Faso</h6></div>
+                <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/3.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Bénin</h6></div>
+                <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/1.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Burkina-Faso</h6></div>
+                <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/7.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Côte d'Ivoire</h6></div>
+                <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/5.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Guinée Conakry</h6></div>
               <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/2.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Mali</h6></div>
-              <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/3.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Bénin</h6></div>
-              <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/4.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Togo</h6></div>
-              <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/5.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Guinée Conakry</h6></div>
               <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/6.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Sénégal</h6></div>
-              <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/7.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Côte d'Ivoire</h6></div>
+              <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/4.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Togo</h6></div>
             </div>
             <div class="swiper-pagination"></div>
           </div>
@@ -882,10 +882,10 @@
                     <div class="contact-phone">
                       <i class="bi bi-phone"></i>
                       <h3>Contact N°1</h3>
-                      <p>Rufine AGOSSOU</p>
-                      <p>Sécretaire du District</p>
-                      <p><a href="tel:+22995053691">(+229) 95 05 36 91</a></p>
-                      <p><a href="mailto:rufineagossou@gmail.com">rufineagossou@gmail.com</a></p>
+                      <p>Gisèle ENIALOKO MARTIN</p>
+                      <p>Gouverneur du District</p>
+                      <p><a href="tel:+22997974054">(+229) 97 97 40 54</a></p>
+                      <p><a href="mailto:virgoefr@yahoo.fr">virgoefr@yahoo.fr</a></p>
 
 
                     </div>
@@ -907,10 +907,10 @@
                 <div class="contact-phone">
                   <i class="bi bi-phone"></i>
                   <h3>Contact N°3</h3>
-                  <p>Rufine AGOSSOU</p>
-                      <p>Sécretaire du District</p>
-                      <p><a href="tel:+22995053691">(+229) 95 05 36 91</a></p>
-                      <p><a href="mailto:rufineagossou@gmail.com">rufineagossou@gmail.com</a></p>
+                  <p>Aurore PATHINVO</p>
+                      <p>Présidente Comité d'organisation</p>
+                      <p><a href="tel:+22966090273">(+229) 66 09 02 73</a></p>
+                      <p><a href="mailto:auropathinvo@yahoo.fr">auropathinvo@yahoo.fr</a></p>
 
                 </div>
               </div>

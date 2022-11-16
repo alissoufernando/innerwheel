@@ -11,7 +11,7 @@
                         <div class="card-body">
                             <div class="border p-4 rounded">
                                 <div class="text-center">
-                                    <h3 class="">Connéxion</h3>
+                                    <h3 class="">Connexion</h3>
                                     <p>Vous n'avez pas de compte ? <a href="{{route('register')}}">Inscription</a>
                                     </p>
                                 </div>
@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Connéxion</button>
+                                                <button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Connexion</button>
                                             </div>
                                         </div>
                                     </form>

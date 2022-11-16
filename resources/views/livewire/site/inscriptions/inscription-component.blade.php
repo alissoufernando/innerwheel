@@ -74,13 +74,13 @@
                     </div>
                     <div class="col-md-12 mb-4">
                         @if ($this->pay_id == 12)
-                            <label class="form-label">Nom de votre pays <sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control"  placeholder="Entrer le nom de votre pays" wire:model="pays" autocomplete="off">
+                            <label class="form-label">Pays <sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control"  placeholder="Saisir le nom de votre pays" wire:model="pays" autocomplete="off">
                             @error('pays')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         @else
-                            <label class="form-label">Veillez choisir votre pays <sup class="text-danger">*</sup></label>
+                            <label class="form-label">Pays <sup class="text-danger">*</sup></label>
                             <select class="form-control " name="" id="pay_id" wire:model="pay_id">
                                 <option value="">Veillez choisir le pays</option>
                                 @foreach ($payss as $paysss)
@@ -94,13 +94,13 @@
                     </div>
                     <div class="col-md-12 mb-4">
                         @if ($this->pay_id == 12)
-                            <label class="form-label">Nom de votre club <sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control"  placeholder="Entrer le nom de votre club" wire:model="club" autocomplete="off">
+                            <label class="form-label">Club <sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control"  placeholder="Saisir le nom de votre club" wire:model="club" autocomplete="off">
                             @error('club')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         @else
-                            <label class="form-label">Veillez choisir votre club <sup class="text-danger">*</sup></label>
+                            <label class="form-label">Club <sup class="text-danger">*</sup></label>
                             <select class="form-control" name="" id="" wire:model="club_id">
                                 <option value="">Veillez choisir le club</option>
                                 @foreach ($clubs as $club)
@@ -113,7 +113,7 @@
                         @endif
                     </div>
                     <div class="col-md-12 mb-4">
-                        <label class="form-label">Votre nom <sup class="text-danger">*</sup></label>
+                        <label class="form-label">Nom <sup class="text-danger">*</sup></label>
 
                         <input type="text" class="form-control" name="lastName" placeholder="Entrer votre nom" wire:model="nom">
                         @error('nom')
@@ -121,7 +121,7 @@
                         @enderror
                     </div>
                     <div class="col-md-12 mb-4">
-                        <label class="form-label">Vos prénoms <sup class="text-danger">*</sup></label>
+                        <label class="form-label">Prénoms <sup class="text-danger">*</sup></label>
 
                         <input type="text" class="form-control" name="fisrtName" placeholder="Entrer vos prenoms" wire:model="prenoms">
                         @error('prenoms')
@@ -129,7 +129,7 @@
                         @enderror
                     </div>
                     <div class="col-md-12 mb-4">
-                        <label class="form-label">Votre Poste au sein du club<sup class="text-danger">*</sup></label>
+                        <label class="form-label">Poste au sein du club<sup class="text-danger">*</sup></label>
                         <select class="form-control" name="" id="" wire:model="poste_id">
                             <option value="">Veillez choisir le poste</option>
                             @foreach ($postes as $poste)
@@ -176,7 +176,7 @@
                     <div class="col-md-12 mb-4">
                             <label class="form-label">Mode d'arrivée <sup class="text-danger">*</sup></label>
                             <select class="form-control " name="" id="mode_arrivee_id" wire:model="mode_arrivee_id">
-                                <option value="">Veillez choisir le mode d'arrivé</option>
+                                <option value="">Veillez choisir le mode d'arrivée</option>
                                 @foreach ($mode_arriveess as $mode_arrives)
                                 <option value="{{ $mode_arrives->id }}">{{ $mode_arrives->libelle }}</option>
                                 @endforeach

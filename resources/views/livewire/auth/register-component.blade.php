@@ -13,7 +13,7 @@
                             <div class="border p-4 rounded">
                                 <div class="text-center">
                                     <h3 class="">Inscription</h3>
-                                    <p>Vous avez déjà un compte? <a href="{{route('login')}}">Connéxion</a>
+                                    <p>Vous avez déjà un compte? <a href="{{route('login')}}">Connexion</a>
                                     </p>
                                 </div>
                                 <div class="form-body">
