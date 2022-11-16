@@ -4,8 +4,8 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-info">
-            <img src="{ asset('assets/site/assets/img/logo1.jpg') }}" alt="TheEvenet">
-            <p>In alias aperiam. Placeat tempore facere. Officiis voluptate ipsam vel eveniet est dolor et totam porro. Perspiciatis ad omnis fugit molestiae recusandae possimus. Aut consectetur id quis. In inventore consequatur ad voluptate cupiditate debitis accusamus repellat cumque.</p>
+            <img src="{{ asset('assets/site/assets/img/logo1.jpg') }}" alt="TheEvenet">
+            <p>Nous sommes des femmes de cœur appartenant à une organisation féminine, apolitique, non confessionnelle appelée International Inner Wheel. Cette organisation, la plus grande au monde compte environ 115 000 membres regroupés dans 4000 clubs répartis dans 177 districts.</p>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
@@ -61,7 +61,7 @@
         Licensing information: https://bootstrapmade.com/license/
         Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=TheEvent
       -->
-        Conception par <a href="https://bootstrapmade.com/">Payplus</a>
+        Conception par <a href="info@payplus.africa">Payplus</a>
       </div>
     </div>
   </footer><!-- End  Footer -->

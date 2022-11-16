@@ -319,7 +319,7 @@
                 </div>
                 @endif
             </div>
-            <div class="row justify-content-center pt-4">
+            <div class="row justify-content-center pt-4 ">
                 <div class="col-md-6 action-buttons d-flex justify-content-between pt-2 pb-2">
                     @if ($currentStep == 1)
                     <div></div>

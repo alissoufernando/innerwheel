@@ -579,13 +579,13 @@
 
           <div class="gallery-slider swiper">
             <div class="swiper-wrapper align-items-center">
-              <div class="swiper-slide"><img src="{{ asset('assets/site/assets/img/gallery/1.png') }}" class="img-fluid" alt="" width="100" height="100"></a></div>
-              <div class="swiper-slide"><img src="{{ asset('assets/site/assets/img/gallery/2.png') }}" class="img-fluid" alt="" width="100" height="100"></a></div>
-              <div class="swiper-slide"><img src="{{ asset('assets/site/assets/img/gallery/3.png') }}" class="img-fluid" alt="" width="100" height="100"></a></div>
-              <div class="swiper-slide"><img src="{{ asset('assets/site/assets/img/gallery/4.png') }}" class="img-fluid" alt="" width="100" height="100"></a></div>
-              <div class="swiper-slide"><img src="{{ asset('assets/site/assets/img/gallery/5.png') }}" class="img-fluid" alt="" width="100" height="100"></a></div>
-              <div class="swiper-slide"><img src="{{ asset('assets/site/assets/img/gallery/6.png') }}" class="img-fluid" alt="" width="100" height="100"></a></div>
-              <div class="swiper-slide"><img src="{{ asset('assets/site/assets/img/gallery/7.png') }}" class="img-fluid" alt="" width="100" height="100"></a></div>
+              <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/1.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Burkina-Faso</h6></div>
+              <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/2.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Mali</h6></div>
+              <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/3.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Bénin</h6></div>
+              <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/4.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Togo</h6></div>
+              <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/5.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Guinée Conakry</h6></div>
+              <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/6.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Sénégal</h6></div>
+              <div class="swiper-slide text-center"><img src="{{ asset('assets/site/assets/img/gallery/7.png') }}" class="" alt="" width="100" height="100"> <h6 class="mt-3">Côte d'Ivoire</h6></div>
             </div>
             <div class="swiper-pagination"></div>
           </div>
@@ -884,10 +884,10 @@
               <div class="col-md-4">
                 <div class="contact-address">
                   <i class="bi bi-geo-alt"></i>
-                  <h3>Nom</h3>
-                  <address>Doussou Fernando</address>
-                  <address>Doussou Fernando</address>
-                  <address>Doussou Fernando</address>
+                  <h3>Adresse</h3>
+                  <address>Dossou Fernando</address>
+                  <address>Dossou Fernando</address>
+                  <address>Dossou Fernando</address>
 
                 </div>
               </div>
