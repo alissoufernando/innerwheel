@@ -17,11 +17,13 @@ class CreateIndividusTable extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenoms');
-            $table->string('fonction');
+            $table->foreignId('poste_id')->nullable()->constrained('postes')->onUpdate('cascade')->onDelete('cascade');
             $table->string('adresse');
             $table->string('email');
             $table->string('tel');
-            $table->foreignId('club_id')->constrained('clubs')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('pays')->nullable();
+            $table->string('club')->nullable();
+            $table->foreignId('club_id')->nullable()->constrained('clubs')->onUpdate('cascade')->onDelete('cascade');
             $table->boolean('isDelete')->default(0);
             $table->timestamps();
         });

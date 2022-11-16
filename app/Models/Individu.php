@@ -14,4 +14,8 @@ class Individu extends Model
     {
         return $this->belongsTo(Club::class, 'club_id');
     }
+    public function poste ()
+    {
+        return $this->belongsTo(Poste::class, 'poste_id');
+    }
 }

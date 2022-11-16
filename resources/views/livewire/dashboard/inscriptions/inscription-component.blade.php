@@ -32,7 +32,7 @@
 									<tr>
 										<th>ID</th>
 										<th>Nom</th>
-										<th>Prénons</th>
+										<th>Prénoms</th>
 										<th>Statut</th>
 										<th>Actions</th>
 									</tr>
@@ -48,8 +48,8 @@
                                         <td>{{ $inscription->individus->prenoms }}</td>
                                         <td>{{ $inscription->statut->libelle }}</td>
 										<td>
-                                            <a style="margin-right: 12px; margin-left:15px" data-bs-toggle="tooltip" data-bs-placement="top" title="Détails"> <i class="lni lni-pencil-alt text-warning"></i></a>
-                                            <a style="margin-right: 12px; margin-left:15px" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal" wire:click.prevent='getElementById({{ $inscription->id }})' data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier Statut"> <i class="lni lni-pencil-alt text-warning"></i></a>
+                                            <a style="margin-right: 12px; margin-left:15px" data-bs-toggle="tooltip" data-bs-placement="top" title="Détails"> <i class="lni lni-pencil-alt text-primary"></i></a>
+                                            <a style="margin-right: 12px; margin-left:15px" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal" wire:click.prevent='getElementById({{ $inscription->id }})' data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier Statut"> <i class="lni lni-pencil-alt text-success"></i></a>
                                             <a data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer" wire:click.prevent="deleteInscription({{ $inscription->id }})"> <i class="lni lni-trash text-danger"></i> </a>
                                         </td>
 									</tr>

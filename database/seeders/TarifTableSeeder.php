@@ -19,168 +19,231 @@ class TarifTableSeeder extends Seeder
 
             [
                 'libelle' => 'J ai une residence personnelle',
-                'hebergement_id' => 3,
+                'lieu_id' => 1,
                 'prix' => "0",
+                'place' => "1",
 
 
             ],
             [
-                'libelle' => 'Villa',
-                'hebergement_id' => 1,
-                'prix' => "0",
+                'libelle' => 'Chambre double climatisée standard - Simple',
+                'lieu_id' => 2,
+                'prix' => "41500",
+                'place' => "8",
 
             ],
             [
-                'libelle' => 'HOTEL CASA CIELO FIDJROSSE - Chambre double climatisée standard - Simple',
-                'hebergement_id' => 2,
-                'prix' => "40000",
+                'libelle' => 'Chambre double climatisée standard - Double',
+                'lieu_id' => 2,
+                'prix' => "53000",
+                'place' => "8",
+
             ],
             [
-                'libelle' => 'HOTEL CASA CIELO FIDJROSSE - Chambre double climatisée standard - Double',
-                'hebergement_id' => 2,
-                'prix' => "50000",
+                'libelle' => 'Chambre double climatisée privilège - Simple',
+                'lieu_id' => 2,
+                'prix' => "46500",
+                'place' => "13",
+
             ],
             [
-                'libelle' => 'HOTEL CASA CIELO FIDJROSSE - Chambre double climatisée privilège - Simple',
-                'hebergement_id' => 2,
-                'prix' => "45000",
-            ],
-            [
-                'libelle' => 'HOTEL CASA CIELO FIDJROSSE - Chambre double climatisée privilège - Double',
-                'hebergement_id' => 2,
-                'prix' => "55000",
+                'libelle' => 'Chambre double climatisée privilège - Double',
+                'lieu_id' => 2,
+                'prix' => "58000",
+                'place' => "13",
+
             ],
 
             [
-                'libelle' => 'HOTEL CASA CIELO FIDJROSSE - Chambre double climatisée prestige - Simple',
-                'hebergement_id' => 2,
-                'prix' => "60000",
+                'libelle' => 'Chambre double climatisée prestige - Simple',
+                'lieu_id' => 2,
+                'prix' => "61500",
+                'place' => "10",
+
             ],
             [
-                'libelle' => 'HOTEL CASA CIELO FIDJROSSE - Chambre double climatisée prestige - Double',
-                'hebergement_id' => 2,
-                'prix' => "70000",
+                'libelle' => 'Chambre double climatisée prestige - Double',
+                'lieu_id' => 2,
+                'prix' => "73000",
+                'place' => "10",
+
             ],
             [
-                'libelle' => 'HOTEL CASA CIELO FIDJROSSE - Suite royale - Simple',
-                'hebergement_id' => 2,
-                'prix' => "105000",
+                'libelle' => 'Suite royale - Simple',
+                'lieu_id' => 2,
+                'prix' => "106500",
+                'place' => "2",
+
             ],
             [
-                'libelle' => 'HOTEL CASA CIELO FIDJROSSE - Suite royale - Double',
-                'hebergement_id' => 2,
-                'prix' => "115000",
+                'libelle' => 'Suite royale - Double',
+                'lieu_id' => 2,
+                'prix' => "118000",
+                'place' => "2",
+
             ],
             [
-                'libelle' => 'HOTEL RESIDENCES CELINE FIDJROSSE  - Chambre double climatisée standard - Simple',
-                'hebergement_id' => 2,
+                'libelle' => 'Chambre double climatisée standard - Simple',
+                'lieu_id' => 3,
                 'prix' => "25000",
+                'place' => "26",
+
             ],
             [
-                'libelle' => 'HOTEL RESIDENCES CELINE FIDJROSSE  - Chambre double climatisée standard - Double',
-                'hebergement_id' => 2,
+                'libelle' => 'Chambre double climatisée standard - Double',
+                'lieu_id' => 3,
                 'prix' => "25000",
+                'place' => "26",
+
             ],
             [
-                'libelle' => 'HOTEL RESIDENCES CELINE FIDJROSSE  - Chambre double climatisée prestige - Simple',
-                'hebergement_id' => 2,
+                'libelle' => 'Chambre double climatisée prestige - Simple',
+                'lieu_id' => 3,
                 'prix' => "40000",
+                'place' => "4",
+
             ],
             [
-                'libelle' => 'HOTEL RESIDENCES CELINE FIDJROSSE  - Chambre double climatisée prestige - Double',
-                'hebergement_id' => 2,
+                'libelle' => 'Chambre double climatisée prestige - Double',
+                'lieu_id' => 3,
                 'prix' => "40000",
+                'place' => "4",
+
             ],
             [
-                'libelle' => 'HOTEL RESIDENCES CELINE FIDJROSSE  - Appartement 1  - Nuitée',
-                'hebergement_id' => 2,
+                'libelle' => 'Appartement 1  - Nuitée',
+                'lieu_id' => 3,
                 'prix' => "66500",
+                'place' => "3",
+
             ],
             [
-                'libelle' => 'HOTEL RESIDENCES CELINE FIDJROSSE  - Appartement 1  - Mois',
-                'hebergement_id' => 2,
+                'libelle' => 'Appartement 1  - Mois',
+                'lieu_id' => 3,
                 'prix' => "500000",
+                'place' => "3",
+
             ],
             [
-                'libelle' => 'HOTEL RESIDENCES CELINE FIDJROSSE  - Appartement 2  - Nuitée',
-                'hebergement_id' => 2,
+                'libelle' => 'Appartement 2  - Nuitée',
+                'lieu_id' => 3,
                 'prix' => "86500",
+                'place' => "3",
+
             ],
             [
-                'libelle' => 'HOTEL RESIDENCES CELINE FIDJROSSE  - Appartement 2  - Mois',
-                'hebergement_id' => 2,
+                'libelle' => 'Appartement 2  - Mois',
+                'lieu_id' => 3,
                 'prix' => "700000",
+                'place' => "3",
+
             ],
             [
-                'libelle' => 'LA MAISON DE CANELYA - Chambre double climatisée standard 1 - Simple ou Double',
-                'hebergement_id' => 4,
+                'libelle' => 'Chambre double climatisée standard 1 - Simple ou Double',
+                'lieu_id' => 4,
                 'prix' => "24000",
+                'place' => "2",
+
             ],
 
             [
-                'libelle' => 'LA MAISON DE CANELYA - Chambre double climatisée standard 2 - Simple ou Double',
-                'hebergement_id' => 4,
+                'libelle' => 'Chambre double climatisée standard 2 - Simple ou Double',
+                'lieu_id' => 4,
                 'prix' => "28000",
+                'place' => "2",
+
             ],
 
             [
-                'libelle' => 'LA MAISON DE CANELYA - Chambre double climatisée atchovi - Simple ou Double',
-                'hebergement_id' => 4,
+                'libelle' => 'Chambre double climatisée atchovi - Simple ou Double',
+                'lieu_id' => 4,
                 'prix' => "33500",
+                'place' => "1",
+
             ],
 
             [
-                'libelle' => 'LA MAISON DE CANELYA - Chambre double climatisée atcho - Simple ou Double',
-                'hebergement_id' => 4,
+                'libelle' => 'Chambre double climatisée atcho - Simple ou Double',
+                'lieu_id' => 4,
                 'prix' => "40500",
+                'place' => "1",
+
             ],
 
             [
-                'libelle' => 'RESIDENCES EASY HOTEL FIDJROSSE - Chambre SINGLE ',
-                'hebergement_id' => 2,
+                'libelle' => 'Chambre SINGLE ',
+                'lieu_id' => 5,
                 'prix' => "15000",
+                'place' => "6",
+
             ],
             [
-                'libelle' => 'RESIDENCES EASY HOTEL FIDJROSSE - Chambre double climatisée 1 - Simple ou Double',
-                'hebergement_id' => 2,
+                'libelle' => 'Chambre double climatisée 1 - Simple ou Double',
+                'lieu_id' => 5,
                 'prix' => "20500",
+                'place' => "8",
+
             ],
             [
-                'libelle' => 'RESIDENCES EASY HOTEL FIDJROSSE - Chambre double climatisée 2 - Simple ou Double',
-                'hebergement_id' => 2,
+                'libelle' => 'Chambre double climatisée 2 - Simple ou Double',
+                'lieu_id' => 5,
+                'prix' => "25000",
+                'place' => "6",
+
+            ],
+            [
+                'libelle' => 'Chambre double climatisée 3 - Simple ou Double',
+                'lieu_id' => 5,
                 'prix' => "33000",
+                'place' => "10",
+
             ],
             [
-                'libelle' => 'RESIDENCES EASY HOTEL FIDJROSSE - Chambre double climatisée 3 - Simple ou Double',
-                'hebergement_id' => 2,
-                'prix' => "33000",
-            ],
-            [
-                'libelle' => 'RESIDENCE KOUASSI - Résidence R+2 - 6 chambres',
-                'hebergement_id' => 3,
+                'libelle' => 'Résidence R+2 - 6 chambres',
+                'lieu_id' => 6,
                 'prix' => "150000",
+                'place' => "6",
+
             ],
 
             [
-                'libelle' => 'HOTEL NOVOTEL/IBIS  - Chambre standard NOVOTEL - Simple ou Double',
-                'hebergement_id' => 2,
-                'prix' => "131000",
+                'libelle' => 'Chambre standard NOVOTEL - Simple',
+                'lieu_id' => 7,
+                'prix' => "133500",
+                'place' => "110",
+
             ],
 
             [
-                'libelle' => 'HOTEL NOVOTEL/IBIS  - Suite NOVOTEL Un salon + une chambre - Double',
-                'hebergement_id' => 2,
-                'prix' => "225000",
+                'libelle' => 'Chambre standard NOVOTEL - Double',
+                'lieu_id' => 7,
+                'prix' => "135000",
+                'place' => "110",
+
             ],
 
             [
-                'libelle' => 'HOTEL NOVOTEL/IBIS  - Chambre double climatisée standard IBIS - Simple ou Double',
-                'hebergement_id' => 2,
-                'prix' => "61750",
+                'libelle' => 'Suite NOVOTEL Un salon + une chambre - Double',
+                'lieu_id' => 7,
+                'prix' => "230000",
+                'place' => "0",
+
             ],
 
+            [
+                'libelle' => 'Chambre double climatisée standard IBIS - Simple',
+                'lieu_id' => 7,
+                'prix' => "63250",
+                'place' => "101",
 
+            ],
+            [
+                'libelle' => 'Chambre double climatisée standard IBIS - Double',
+                'lieu_id' => 7,
+                'prix' => "64750",
+                'place' => "101",
 
+            ],
         ]);
     }
 }

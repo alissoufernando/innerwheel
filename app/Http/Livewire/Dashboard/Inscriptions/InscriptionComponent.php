@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Dashboard\Inscriptions;
 
 use App\Models\Inscription;
+use App\Models\Statut;
 use Livewire\Component;
 
 class InscriptionComponent extends Component
@@ -40,7 +41,7 @@ class InscriptionComponent extends Component
             ]);
         }
     }
-    public function storeUser()
+    public function storeStatut()
     {
         // verification des variables lors de la l'enregistrement
 
@@ -106,8 +107,10 @@ class InscriptionComponent extends Component
     public function render()
     {
         $inscriptions = Inscription::where('isDelete', 0)->get();
+        $statuts = Statut::where('isDelete', 0)->get();
         return view('livewire.dashboard.inscriptions.inscription-component',[
             'inscriptions' => $inscriptions,
+            'statuts' => $statuts,
         ]);
     }
 }

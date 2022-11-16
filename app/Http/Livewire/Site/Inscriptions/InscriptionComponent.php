@@ -9,10 +9,12 @@ use App\Models\Activite;
 use App\Models\Individu;
 use App\Models\Hebergement;
 use App\Models\Inscription;
+use App\Models\Lieu;
 use App\Models\ModeArrivee;
 use App\Models\ModePaiement;
 use App\Models\Paiement;
 use App\Models\Pays;
+use App\Models\Poste;
 use Illuminate\Support\Facades\Http;
 use StephaneAss\Payplus\Pay\PayPlus;
 
@@ -21,14 +23,14 @@ class InscriptionComponent extends Component
     public $nom;
     public $prenoms;
     public $club_id;
-    public $fonction;
+    public $poste_id, $posteInner;
     public $adresse;
     public $tel;
     public $email;
-    public $tarif_id, $pay_id;
+    public $tarif_id, $pay_id, $pays, $club;
     public $date_arrivee;
     public $date_depart;
-    public $mode_arrivee_id,$mode_arrivee;
+    public $mode_arrivee_id,$mode_arrivee,$placeFini, $place,$lieu_id;
     public $hebergement_id;
     public $Mode_paiement_id, $Mode_paiement;
     public $activite_id;
@@ -58,10 +60,11 @@ class InscriptionComponent extends Component
                 $this->Dclub = Club::where('id',$this->club_id)->first();
                 $this->Mode_paiement = ModePaiement::where('id',$this->Mode_paiement_id)->first();
                 $this->mode_arrivee = ModeArrivee::where('id',$this->mode_arrivee_id)->first();
-
+                $this->lieux = Lieu::where('id',$this->lieu_id)->first();
+                $this->posteInner = Poste::where('id',$this->poste_id)->first();
                 // dd($this->Dactivites);
 
-                $this->montant_total += $this->Dactivites->prix;
+                // $this->montant_total += $this->Dactivites->prix;
 
                 $this->Dtarifs = Tarif::where('id',$this->tarif_id)->first();
                 // dd($Dtarifs);
@@ -108,20 +111,36 @@ class InscriptionComponent extends Component
     {
         if($this->currentStep == 1)
         {
-            $this->validate([
-                'nom'=>'required',
-                'pay_id'=>'required',
-                'prenoms'=>'required',
-                'club_id'=>'required',
-                'fonction'=>'required',
-                'adresse'=>'required',
-                'tel'=>'required',
-                'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
-            ]);
+
+            if($this->pay_id == 12)
+            {
+                $this->validate([
+                    'pays'=>'required',
+                    'club'=>'required',
+                    'nom'=>'required',
+                    'prenoms'=>'required',
+                    'adresse'=>'required',
+                    'poste_id'=>'required',
+                    'tel'=>'required',
+                    'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
+                ]);
+            }else{
+                $this->validate([
+                    'nom'=>'required',
+                    'pay_id'=>'required',
+                    'prenoms'=>'required',
+                    'club_id'=>'required',
+                    'poste_id'=>'required',
+                    'adresse'=>'required',
+                    'tel'=>'required',
+                    'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
+                ]);
+            }
         }elseif($this->currentStep == 2)
         {
             $this->validate([
                 'tarif_id'=>'required',
+                'lieu_id'=>'required',
                 'mode_arrivee_id'=>'required',
                 'date_arrivee'=>'required',
                 'date_depart'=>'required',
@@ -129,6 +148,12 @@ class InscriptionComponent extends Component
                 'activite_id'=>'required',
                 'hebergement_id'=>'required',
             ]);
+            $tarifs = Tarif::where('isDelete', 0)->where('id', $this->tarif_id)->first();
+
+            if($tarifs->place == 0)
+            {
+                $this->placeFini = 1;
+            }
         }elseif($this->currentStep == 3)
         {
 
@@ -266,7 +291,7 @@ class InscriptionComponent extends Component
             'prenoms',
             'club_id',
             'pay_id',
-            'fonction',
+            'poste_id',
             'adresse',
             'tel',
             'email',
@@ -288,8 +313,15 @@ class InscriptionComponent extends Component
 
         $myIndividu->nom = $this->nom;
         $myIndividu->prenoms = $this->prenoms;
-        $myIndividu->club_id = $this->club_id;
-        $myIndividu->fonction = $this->fonction;
+        if($this->pay_id == 12)
+        {
+            $myIndividu->club = $this->club;
+        }else{
+
+            $myIndividu->club_id = $this->club_id;
+        }
+
+        $myIndividu->poste_id = $this->poste_id;
         $myIndividu->adresse = $this->adresse;
         $myIndividu->tel = $this->tel;
         $myIndividu->email = $this->email;
@@ -301,6 +333,10 @@ class InscriptionComponent extends Component
 
 
         $myInscription->individu_id = $myIndividu->id;
+        $tarifs = Tarif::where('isDelete', 0)->where('id', $this->tarif_id)->first();
+        $tarifs->place -=1;
+        $tarifs->save();
+
         $myInscription->tarif_id = $this->tarif_id;
         $myInscription->statut_id = 2;
         $myInscription->mode_arrivee_id = $this->mode_arrivee_id;
@@ -316,12 +352,15 @@ class InscriptionComponent extends Component
         $myPaiement->mode_paiement_id = $this->Mode_paiement_id;
         $myPaiement->statut_id = 2;
         $myPaiement->save();
-
-        $this->sendRequest();
-        // dd($URL_pay);
-        session()->flash('message', 'Enregistrement effectué avec succès.');
-        // return redirect()->to($URL_pay);
-       $this->resetInputFields();
+        if($this->Mode_paiement_id == 1)
+        {
+            $this->currentStep = 1;
+            session()->flash('message', 'Votre inscription à été effectué avec succès.');
+            // return redirect()->to($URL_pay);
+            $this->resetInputFields();
+        }else{
+            $this->sendRequest();
+        }
     }
 
 
@@ -330,12 +369,16 @@ class InscriptionComponent extends Component
         $this->club_id = 0;
     }
 
-    
+
     public function render()
     {
-        $pays = Pays::where('isDelete', 0)->get();
+        $payss = Pays::where('isDelete', 0)->get();
+        $postes = Poste::where('isDelete', 0)->get();
+
         $activites = Activite::where('isDelete', 0)->get();
-        $tarifs = Tarif::where('isDelete', 0)->where('hebergement_id', $this->hebergement_id)->get();
+        $lieus = Lieu::where('isDelete', 0)->where('hebergement_id', $this->hebergement_id)->get();
+        $tarifs = Tarif::where('isDelete', 0)->where('lieu_id', $this->lieu_id)->get();
+
         $mode_arriveess = ModeArrivee::where('isDelete', 0)->get();
         $hebergements = Hebergement::where('isDelete', 0)->get();
         $clubs = Club::where('isDelete', 0)->where('pay_id', $this->pay_id)->get();
@@ -344,12 +387,13 @@ class InscriptionComponent extends Component
         return view('livewire.site.inscriptions.inscription-component',[
             'mode_arriveess' => $mode_arriveess,
             'tarifs' => $tarifs,
+            'lieus' => $lieus,
+            'postes' => $postes,
             'clubs' => $clubs,
             'hebergements' => $hebergements,
             'activites' => $activites,
             'modepaiments' => $modepaiments,
-            'pays' => $pays,
-
+            'payss' => $payss,
         ])->layout('layouts.site');
     }
 }

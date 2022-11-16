@@ -60,7 +60,7 @@
     </header><!-- End Header -->
     <section id="hero">
         <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
-          <h1 class="mb-4 pb-0">International<br><span>Innerwheel</span> Cotonou</h1>
+          <h1 class="mb-4 pb-0"> Innerwheel International<br><span> District 909</span> AGA Cotonou</h1>
           <p class="mb-4 pb-0">Du 01 au 04 Mars 2023</p>
           <a href="https://www.youtube.com/watch?v=-9AHvO-MfIk" class="glightbox play-btn mb-4"></a>
           <a href="#about" class="about-btn scrollto">Description en video</a>
@@ -85,7 +85,7 @@
               </div>
               <div class="col-lg-3">
                 <h3>Periode</h3>
-                <p>Monday to Wednesday<br>Du 01 au 04 Mars 2023</p>
+                <p>04 jours d'activité<br>Du 01 au 04 Mars 2023</p>
               </div>
             </div>
           </div>
@@ -104,19 +104,41 @@
                     <img src="{{ asset('assets/site/assets/img/des.jpg') }}" alt="" >
                 </div>
                 <div class="col-md-6 text-justify divtext">
-                    <h3> <strong>C'est quoi INNER WHEEL</strong> </h3>
+                    <h3> <strong>QUI SOMMES NOUS</strong> </h3>
                     <p class="text-justify">
-                        INNER WHEEL est une ONG internationale composée de clubs services féminins le plus important au monde. Active dans plus de 103 pays, elle compte près de 105 000 membres répartis dans 3917 clubs. International INNER WHEEL est l’organe administratif qui chapeaute l’organisation pyramidale des membres, réunis en Clubs, lesquels forment des districts réunis en organes directeur national.
-                     </p>
+                        Nous sommes des femmes de cœur appartenant à une organisation féminine, apolitique, non confessionnelle appelée International Inner Wheel.
+                        Cette organisation, la plus grande au monde compte environ 115 000 membres regroupés dans 4000 clubs répartis dans 177 districts.
+                        Elle siège à l’ONU avec deux (02) représentantes et un statut de consultant depuis 1988. Ainsi, l’Inner Wheel est consulté sur les sujets relatifs aux droits de l’homme et des enfants, aux droits de la femme, aux droits de la famille et des personnes âgées ainsi que sur les problèmes liés à la drogue.
+                        Fondée par les épouses des rotariens depuis le 10 janvier 1924, elle s’est ouverte à partir de 2012 à toutes les femmes capables d’offrir un peu de leur temps et de leurs ressources à travers l’amitié et le service aux femmes et aux enfants en situation difficile, nos cibles privilégiées.
+                    </p>
                      <p class="text-justify">
-                        Fondée par les épouses des Rotariens, l’organisation INNER WHEEL compte désormais au sein du District 909, une Béninoise qui porte les voix de tous les pays de l’organisation. Servir les plus démunis et leur venir en aide à travers l’amitié et le service. C’est ce à quoi s’attelle cette organisation de femmes présente dans plusieurs pays à travers le monde. C’est grâce à la Past Président international (PPI) Mrs Oluyemisi Alatise, de nationalité nigériane et Première Africaine Présidente internationale de INNER WHEEL que le Bénin a été honoré.
-                     </p>
-                     <p class="text-justify">
-                        Sa représentante nationale en la personne de Fahimatou Paraïso Salifou a été installée samedi 21 septembre dernier à la Maison des bâtisseurs à Cotonou. Présidente du comité d’organisation Ruffine Agossou, dira « Merci pour toutes les amies qui n’ont ménagé aucun effort pour que tienne cette cérémonie. Nous sommes ensemble pour passer un bon moment et oublier les soucis quotidiens », a-t-elle souligné. Fahimatou Paraïso Salifou rappelle que « INNER WHEEL est né à la fin de la première guerre mondiale en Angleterre. Au début quand les hommes vont à la guerre, les femmes se réunissaient pour prendre la relève de leur mari parce qu’ils s’occupaient des veuves et des orphelins ».
+
+                        Ses valeurs sont le Service, l’Amitié et l’Entente Internationale.<br>
+
+                        L’Inner Wheel s’investit dans les actions à caractère social. Il soutient des orphelinats, les malades mentaux, prend en charge des enfants en situation difficile pour leur scolarisation (construction de salles de classes ; dons de fournitures scolaires de bourses d’excellence ; etc.), les femmes vivant dans la précarité, etc.
 
                      </p>
                      <p class="text-justify">
-                        C’est ainsi qu’elles ont décidé « Après la guerre, de former des clubs. Le premier club est né le 10 janvier 1924 en Angleterre à Manchester ».
+                        Le District 909 fait partie des 177 districts du monde et couvre 7 pays que sont :
+                        <ul>
+                            <li>Bénin</li>
+                            <li>Burkina-Faso</li>
+                            <li>Côte d’Ivoire</li>
+                            <li>Guinée Conakry</li>
+                            <li>Mali</li>
+                            <li>Sénégal</li>
+                            <li>Togo</li>
+
+                        </ul>
+                        Le Gouverneur du District 909 pour l’année 2022-2023 est l’amie Gisèle ENIANLOKO MARTIN, de nationalité béninoise. L’année INNER WHEEL va du 1er juillet d’une année au 30 juin de l’année suivante.
+
+                        Durant chaque mandat, il se tient une Assemblée Générale Annuelle qui regroupe les membres de tous les pays du District, environ 200 personnes et se déroule dans le pays du Gouverneur. Ainsi donc, cette année, elle aura <strong>lieu à Cotonou au Bénin, du 1er au 04 Mars 2023.</strong>
+
+                     </p>
+                     <p class="text-justify">
+
+                        Les amies des autres districts sont également conviées. Ainsi, le District 915 est représenté par les amies du Cameroun et de la République Démocratique du Congo.
+                        Certaines amies d’autres pays et d’autres districts sont également représentées à nos assemblées générales annuelles.
                      </p>
 
                 </div>
@@ -862,8 +884,11 @@
               <div class="col-md-4">
                 <div class="contact-address">
                   <i class="bi bi-geo-alt"></i>
-                  <h3>Adresse</h3>
-                  <address>A108 Adam Street, NY 535022, USA</address>
+                  <h3>Nom</h3>
+                  <address>Doussou Fernando</address>
+                  <address>Doussou Fernando</address>
+                  <address>Doussou Fernando</address>
+
                 </div>
               </div>
 
@@ -872,6 +897,9 @@
                   <i class="bi bi-phone"></i>
                   <h3>Contact</h3>
                   <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+                  <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+                  <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+
                 </div>
               </div>
 
@@ -880,6 +908,9 @@
                   <i class="bi bi-envelope"></i>
                   <h3>Email</h3>
                   <p><a href="mailto:info@example.com">info@example.com</a></p>
+                  <p><a href="mailto:info@example.com">info@example.com</a></p>
+                  <p><a href="mailto:info@example.com">info@example.com</a></p>
+
                 </div>
               </div>
 

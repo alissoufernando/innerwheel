@@ -5,7 +5,7 @@
             <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
                 <div class="col mx-auto">
                     <div class="mb-4 text-center">
-                        <img src="{{ asset('assets/site/assets/img/logo1.jpg') }}" width="180" alt="" />
+                        <img src="{{ asset('assets/site/assets/img/logo1.jpg') }}" width="100" height="100" alt="" />
                     </div>
                     <div class="card">
                         <div class="card-body">

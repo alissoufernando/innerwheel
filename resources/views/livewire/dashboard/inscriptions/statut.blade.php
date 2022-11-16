@@ -7,12 +7,17 @@
                 <h5 class="modal-title">Modifier le Statut</h5>
                 <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form wire:submit.prevent='storeUser'>
+            <form wire:submit.prevent='storeStatut'>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
 						<label for="validationCustom02" class="form-label">Nom d'utilisateur</label>
-					    <input class="form-control mb-3" type="name" placeholder="le nom de l'utilisateur" wire:model.lazy='name'>
+                        <select class="form-control" wire:model.lazy='statut_id'>
+                            <option value="">Choisir un statut</option>
+                            @foreach ($statuts as $statut)
+                            <option value="{{ $statut->id }}">{{ $statut->libelle }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>

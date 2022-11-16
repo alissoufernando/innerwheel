@@ -39,7 +39,7 @@ class ActiviteTableSeeder extends Seeder
             ],
             [
                 'libelle' => 'Marché Dantokpa',
-                'prix' => "10000",
+                'prix' => "0",
                 'edition_id' => 1,
                 'obligatoire' => 0,
 

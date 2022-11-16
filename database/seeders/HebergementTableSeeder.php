@@ -18,19 +18,11 @@ class HebergementTableSeeder extends Seeder
         DB::table('hebergements')->insert([
 
             [
-                'libelle' => 'Villa',
-                'edition_id' => 1,
-            ],
-            [
                 'libelle' => 'Hôtel',
                 'edition_id' => 1,
             ],
             [
                 'libelle' => 'Résidence',
-                'edition_id' => 1,
-            ],
-            [
-                'libelle' => 'Maison',
                 'edition_id' => 1,
             ],
 

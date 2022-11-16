@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Lieu;
 use App\Models\Hebergement;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,9 +11,9 @@ class Tarif extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function hebergement ()
+    public function lieu()
     {
-        return $this->belongsTo(Hebergement::class,);
+        return $this->belongsTo(Lieu::class,);
     }
 
 }

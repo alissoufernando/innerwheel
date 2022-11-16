@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTarifsTable extends Migration
+class CreatePostesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateTarifsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tarifs', function (Blueprint $table) {
+        Schema::create('postes', function (Blueprint $table) {
             $table->id();
             $table->string('libelle');
-            $table->string('prix');
-            $table->string('place');
-            $table->foreignId('lieu_id')->constrained('lieus')->onUpdate('cascade')->onDelete('cascade');
             $table->boolean('isDelete')->default(0);
             $table->timestamps();
         });
@@ -31,6 +28,6 @@ class CreateTarifsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tarifs');
+        Schema::dropIfExists('postes');
     }
 }

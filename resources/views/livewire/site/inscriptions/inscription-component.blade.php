@@ -71,18 +71,33 @@
                         <h5 class="text-center" >Etape 1 : Informations personnelles</h5>
                     </div>
                     <div class="col-md-12 mb-4">
+                        @if ($this->pay_id == 12)
+                            <label class="form-label">Nom de votre pays <sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control"  placeholder="Entrer le nom de votre pays" wire:model="pays" autocomplete="off">
+                            @error('pays')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        @else
                             <label class="form-label">Veillez choisir votre pays <sup class="text-danger">*</sup></label>
                             <select class="form-control " name="" id="pay_id" wire:model="pay_id">
                                 <option value="">Veillez choisir le pays</option>
-                                @foreach ($pays as $pay)
-                                <option value="{{ $pay->id }}">{{ $pay->libelle }}</option>
+                                @foreach ($payss as $paysss)
+                                <option value="{{ $paysss->id }}">{{ $paysss->libelle }}</option>
                                 @endforeach
                             </select>
-                        @error('pay_id')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                            @error('pay_id')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        @endif
                     </div>
                     <div class="col-md-12 mb-4">
+                        @if ($this->pay_id == 12)
+                            <label class="form-label">Nom de votre club <sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control"  placeholder="Entrer le nom de votre club" wire:model="club" autocomplete="off">
+                            @error('club')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        @else
                             <label class="form-label">Veillez choisir votre club <sup class="text-danger">*</sup></label>
                             <select class="form-control" name="" id="" wire:model="club_id">
                                 <option value="">Veillez choisir le club</option>
@@ -90,9 +105,10 @@
                                 <option value="{{ $club->id }}">{{ $club->libelle }}</option>
                                 @endforeach
                             </select>
-                        @error('club_id')
+                            @error('club_id')
                             <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                            @enderror
+                        @endif
                     </div>
                     <div class="col-md-12 mb-4">
                         <label class="form-label">Votre nom <sup class="text-danger">*</sup></label>
@@ -111,11 +127,15 @@
                         @enderror
                     </div>
                     <div class="col-md-12 mb-4">
-                        <label class="form-label">Votre Profession <sup class="text-danger">*</sup></label>
-
-                        <input type="text" class="form-control" placeholder="Entrer votre fonction" wire:model="fonction">
-                        @error('fonction')
-                            <span class="text-danger">{{ $message }}</span>
+                        <label class="form-label">Veillez choisir votre Poste <sup class="text-danger">*</sup></label>
+                        <select class="form-control" name="" id="" wire:model="poste_id">
+                            <option value="">Veillez choisir le poste</option>
+                            @foreach ($postes as $poste)
+                            <option value="{{ $poste->id }}">{{ $poste->libelle }}</option>
+                            @endforeach
+                        </select>
+                        @error('poste_id')
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-12 mb-4">
@@ -190,11 +210,23 @@
                         @enderror
                     </div>
                     <div class="col-md-12 mb-4">
+                        <label class="form-label">Choisir l'hôtel <sup class="text-danger">*</sup></label>
+                        <select class="form-control" name="" id="lieu_id" wire:model="lieu_id">
+                            <option value="">Veillez choisir un hôtel</option>
+                            @foreach ($lieus as $lieu)
+                            <option value="{{ $lieu->id }}">{{ $lieu->libelle }}</option>
+                            @endforeach
+                        </select>
+                        @error('lieu_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                </div>
+                    <div class="col-md-12 mb-4">
                             <label class="form-label">Hebergement <sup class="text-danger">*</sup></label>
                             <select class="form-control" name="" id="tarif_id" wire:model="tarif_id">
                                 <option value="">Veillez choisir l'hebergement</option>
                                 @foreach ($tarifs as $tarif)
-                                <option value="{{ $tarif->id }}">{{ $tarif->libelle }} => {{ $tarif->prix }} FCFA</option>
+                                <option value="{{ $tarif->id }}">{{ $tarif->libelle }} => {{ $tarif->prix }} FCFA => Place disponible: {{ $tarif->place }}</option>
                                 @endforeach
                             </select>
                         @error('tarif_id')
@@ -207,7 +239,11 @@
                                 <option value="">Veillez choisir une activité</option>
                                 @foreach ($activites as $activite)
                                 @if ($activite->obligatoire == 0)
-                                <option value="{{ $activite->id }}">{{ $activite->libelle}} => {{ $activite->prix}} FCFA</option>
+                                @if ($activite->prix == 0)
+                                <option value="{{ $activite->id }}">{{ $activite->libelle}} => Graduite</option>
+                                @else
+                                <option value="{{ $activite->id }}">{{ $activite->libelle}} => Payante</option>
+                                @endif
                                 @endif
                                 @endforeach
                             </select>
@@ -247,10 +283,14 @@
                         <h6 class="text-center"> <strong>Informations personnelles</strong> </h6>
                         <p> <strong>Nom</strong>: {{ $this->nom }} </p>
                         <p> <strong>Prenoms</strong>: {{ $this->prenoms }} </p>
-                        <p> <strong>Fonction</strong>: {{ $this->fonction }} </p>
+                        <p> <strong>Poste</strong>: {{ $this->posteInner->libelle }} </p>
+                        @if ($this->pay_id == 12)
+                        <p> <strong>Pays</strong>: {{ $this->pays}}</p>
+                        <p> <strong>Club</strong>: {{ $this->club}}</p>
+                        @else
                         <p> <strong>Pays</strong>: {{ $this->Dclub->pay->libelle}}</p>
                         <p> <strong>Club</strong>: {{ $this->Dclub->libelle}}</p>
-
+                        @endif
                         <p> <strong>E-mail</strong>: {{ $this->email }} </p>
                         <p> <strong>Adresse</strong>: {{ $this->adresse }} </p>
                         <p> <strong>Télephone</strong>: {{ $this->tel }} </p>
@@ -260,8 +300,13 @@
                         <p> <strong>Mode d'arrivée</strong>: {{ $this->mode_arrivee->libelle }} </p>
                         <p> <strong>Date d'arrivée</strong>: {{ $this->date_arrivee }} </p>
                         <p> <strong>Date dapart</strong>: {{ $this->date_depart }} </p>
+                        <p> <strong>Hôtel</strong>: {{ $this->lieux->libelle }}</p>
                         <p> <strong>Herbegement</strong>: {{ $this->Dtarifs->libelle }} => {{ $this->Dtarifs->prix }} FCFA</p>
-                        <p> <strong>Activité</strong>: {{ $this->Dactivites->libelle}} => {{ $this->Dactivites->prix }} FCFA</p>
+                        @if ($this->Dactivites->prix == 0)
+                        <p> <strong>Activité</strong>: {{ $this->Dactivites->libelle}} => Graduite</p>
+                        @else
+                        <p> <strong>Activité</strong>: {{ $this->Dactivites->libelle}} => Payante</p>
+                        @endif
                         <p> <strong>Mode de paiement</strong>: {{ $this->Mode_paiement->libelle }} </p>
                     </div>
 

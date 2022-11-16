@@ -22,11 +22,14 @@ class DatabaseSeeder extends Seeder
         $this->call(ActiviteTableSeeder::class);
         $this->call(PaysDepartementsVilleSeeder::class);
         $this->call(HebergementTableSeeder::class);
+        $this->call(LieuTableSeeder::class);
+        $this->call(PosteTableSeeder::class);
         $this->call(TarifTableSeeder::class);
         $this->call(ModeArriveeTableSeeder::class);
         $this->call(ClubTableSeeder::class);
         $this->call(StatutTableSeeder::class);
         $this->call(ModePaiementTableSeeder::class);
+
 
 
 

@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Pays;
-use App\Models\Ville;
-use App\Models\Departement;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PaysDepartementsVilleSeeder extends Seeder
 {
@@ -16,80 +15,47 @@ class PaysDepartementsVilleSeeder extends Seeder
      */
     public function run()
     {
-        /* DB::table('pays')->insert([
+        DB::table('pays')->insert([
 
         [
-        'Libelle' => 'AFGHANISTAN',
+        'Libelle' => 'Bénin',
         ],
 
         [
-        'Libelle' => 'ALBANIA',
+        'Libelle' => 'Burkina-Faso',
         ],
         [
-        'Libelle' => 'ALGERIA',
+        'Libelle' => 'Côte d’Ivoire',
         ],
         [
-        'Libelle' => 'AMERICAN SAMOA',
+        'Libelle' => 'Guinée Conakry',
         ],
         [
-        'Libelle' => 'ANDORRA',
+        'Libelle' => 'Mali ',
         ],
         [
-        'Libelle' => 'ANGOLA',
+        'Libelle' => 'Sénégal',
         ],
         [
-        'Libelle' => 'ANGUILLA',
+        'Libelle' => 'Togo ',
         ],
         [
-        'Libelle' => 'ANTARCTICA',
+        'Libelle' => 'Cameroun',
         ],
         [
-        'Libelle' => 'ANTIGUA AND BARBUDA',
+        'Libelle' => 'RDC',
         ],
         [
-        'Libelle' => 'ARGENTINA',
+        'Libelle' => 'Nigéria',
         ],
         [
-        'Libelle' => 'ARMENIA',
+        'Libelle' => 'France ',
         ],
         [
-        'Libelle' => 'ARUBA',
-        ],
-        [
-        'Libelle' => 'AUSTRALIA',
-        ],
-        [
-        'Libelle' => 'AUSTRIA',
-        ],
-        [
-        'Libelle' => 'AZERBAIJAN',
-        ],
-        [
-        'Libelle' => 'BAHAMAS',
-        ],
-        [
-        'Libelle' => 'BAHRAIN',
-        ],
-        [
-        'Libelle' => 'BANGLADESH',
-        ],
-        [
-        'Libelle' => 'BARBADOS',
-        ],
-        [
-        'Libelle' => 'BELARUS',
-        ],
-        [
-        'Libelle' => 'BELGIUM',
-        ],
-        [
-        'Libelle' => 'BELIZE',
-        ],
-        [
-        'Libelle' => 'BENIN',
+        'Libelle' => 'A préciser',
         ],
 
-        ]); */
+        ]);
 
         $pays = array(
             array('id' => '1', 'code' => '4', 'alpha2' => 'AF', 'alpha3' => 'AFG', 'nom_en_gb' => 'Afghanistan', 'nom_fr_fr' => 'Afghanistan', 'source_centre_id' => null, 'last_sync_date' => '2020-02-10 12:43:32'),
@@ -335,12 +301,12 @@ class PaysDepartementsVilleSeeder extends Seeder
             array('id' => '241', 'code' => '894', 'alpha2' => 'ZM', 'alpha3' => 'ZMB', 'nom_en_gb' => 'Zambia', 'nom_fr_fr' => 'Zambie', 'source_centre_id' => null, 'last_sync_date' => '2020-02-10 12:43:32'),
         );
 
-        foreach ($pays as $item) {
-            $pays = Pays::create([
-                'Libelle' => $item['nom_fr_fr'],
-            ]);
+        // foreach ($pays as $item) {
+        //     $pays = Pays::create([
+        //         'Libelle' => $item['nom_fr_fr'],
+        //     ]);
 
-        }
+        // }
 
     }
 }
