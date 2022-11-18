@@ -8,9 +8,14 @@ use App\Http\Livewire\Auth\ResetPasswordComponent;
 use App\Http\Livewire\Auth\ForgotPasswordComponent;
 use App\Http\Livewire\Dashboard\DashboardComponent;
 use App\Http\Livewire\Auth\ConfirmPasswordComponent;
+use App\Http\Livewire\Dashboard\Activites\ActiviteComponent as ActivitesActiviteComponent;
+use App\Http\Livewire\Dashboard\Activites\AddComponent;
+use App\Http\Livewire\Dashboard\Activites\EditComponent;
 use App\Http\Livewire\Dashboard\Administration\User\UserComponent;
 use App\Http\Livewire\Dashboard\Administration\Roles\RoleComponent;
 use App\Http\Livewire\Dashboard\Inscriptions\InscriptionComponent as InscriptionsInscriptionComponent;
+use App\Http\Livewire\Site\Activites\ActiviteComponent;
+use App\Http\Livewire\Site\Activites\DetailsActiviteComponent;
 use App\Http\Livewire\Site\Inscriptions\InscriptionComponent;
 use App\Http\Livewire\Site\Inscriptions\ThankYouComponent;
 use App\Http\Livewire\Site\Welcome;
@@ -29,6 +34,8 @@ use App\Http\Livewire\Site\Welcome;
 Route::get('/', Welcome::class)->name('welcome');
 Route::get('/inscription', InscriptionComponent::class)->name('inscription');
 Route::get('/thank-you', ThankYouComponent::class)->name('thank.you');
+Route::get('/activites', ActiviteComponent::class)->name('activite');
+Route::get('/details-activite', DetailsActiviteComponent::class)->name('activite-details');
 
 
 
@@ -50,6 +57,12 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),  'verified']
 
     Route::prefix('admin')->group(function () {
             Route::get('/liste-inscriptions', InscriptionsInscriptionComponent::class)->name('admininscription');
+
+
+            Route::get('/liste-activites', ActivitesActiviteComponent::class)->name('admin.activite-index');
+            Route::get('/ajouter-activite', AddComponent::class)->name('admin.activite-add');
+            Route::get('/modifier-activite/{id}', EditComponent::class)->name('admin.activite-edit');
+
             // Route::get('/listes-slides-accueil', SlideAccueilComponent::class)->name('admin.slideaccueil-index');
             // Route::get('/modification-slides-accueil/{id}', SlideAccueilEditeComponent::class)->name('admin.slideaccueil-edit');
             // Route::get('/ajouter-slides-accueil', SlideAccueilCreateComponent::class)->name('admin.slideaccueil-create');

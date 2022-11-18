@@ -37,19 +37,21 @@
     <header id="header" class="d-flex align-items-center ">
         <div class="container-fluid container-xxl d-flex align-items-center">
 
-            <div id="logo" class="me-auto">
-                <a href="index.html" class="scrollto"><img src="{{ asset('assets/site/assets/img/logo1.jpg') }}" alt="" title=""></a>
-            </div>
+          <div id="logo" class="me-auto">
+            <!-- Uncomment below if you prefer to use a text logo -->
+            <!-- <h1><a href="index.html">The<span>Event</span></a></h1>-->
+            <a href="index.html" class="scrollto"><img src="{{ asset('assets/site/assets/img/logo1.jpg') }}" alt="" title=""></a>
+          </div>
 
-            <nav id="navbar" class="navbar order-last order-lg-0">
-                <ul>
-                <li><a class="nav-link scrollto active" href="{{ route('welcome') }}">Accueil</a></li>
-                {{-- <li><a class="nav-link scrollto" href="#speakers">A propos</a></li> --}}
-                {{-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> --}}
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
-            <a class="buy-tickets scrollto" href="{{ route('inscription') }}">Inscription</a>
+          <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <li><a class="nav-link scrollto {{ Route::currentRouteName()== 'welcome' ? 'active' : '' }}" href="{{ route('welcome') }}">Accueil</a></li>
+
+              <li><a class="nav-link scrollto {{ Route::currentRouteName()== 'activite' ? 'active' : '' }}" href="{{ route('activite') }}">Activites et Actions</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+          <a class="buy-tickets scrollto {{ Route::currentRouteName()== 'inscription' ? 'active' : '' }}" href="{{ route('inscription') }}">Inscription</a>
 
         </div>
     </header><!-- End Header -->
@@ -115,7 +117,7 @@
                     <div class="col-md-12 mb-4">
                         <label class="form-label">Nom <sup class="text-danger">*</sup></label>
 
-                        <input type="text" class="form-control" name="lastName" placeholder="Entrer votre nom" wire:model="nom">
+                        <input type="text" class="form-control" name="lastName" placeholder="Saisir votre nom" wire:model="nom">
                         @error('nom')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -123,7 +125,7 @@
                     <div class="col-md-12 mb-4">
                         <label class="form-label">Prénoms <sup class="text-danger">*</sup></label>
 
-                        <input type="text" class="form-control" name="fisrtName" placeholder="Entrer vos prenoms" wire:model="prenoms">
+                        <input type="text" class="form-control" name="fisrtName" placeholder="Saisir vos prénoms" wire:model="prenoms">
                         @error('prenoms')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -144,7 +146,7 @@
 
                         <label class="form-label">Adresse <sup class="text-danger">*</sup></label>
 
-                        <input type="text" class="form-control" placeholder="Entrer votre Adresse" wire:model="adresse">
+                        <input type="text" class="form-control" placeholder="Saisir votre Adresse" wire:model="adresse">
                         @error('adresse')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -152,7 +154,7 @@
                     <div class="col-md-12 mb-4">
                         <label class="form-label">Téléphone <sup class="text-danger">*</sup></label>
 
-                        <input type="tel" class="form-control" placeholder="Entrer votre numero" wire:model="tel">
+                        <input type="tel" class="form-control" placeholder="Saisir votre numero" wire:model="tel">
                         @error('tel')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -160,7 +162,7 @@
                     <div class="col-md-12 mb-4">
                         <label class="form-label">E-mail <sup class="text-danger">*</sup></label>
 
-                        <input type="text" class="form-control" placeholder="Entrer votre mail" wire:model="email">
+                        <input type="text" class="form-control" placeholder="Saisir votre mail" wire:model="email">
                         @error('email')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -192,7 +194,7 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     <div class="col-md-12 mb-4">
-                            <label class="form-label">Date de depart <sup class="text-danger">*</sup></label>
+                            <label class="form-label">Date de retour <sup class="text-danger">*</sup></label>
 
                             <input type="date" id="date_depart" class="form-control" wire:model="date_depart">
                         @error('date_depart')
@@ -200,9 +202,9 @@
                         @enderror
                     </div>
                     <div class="col-md-12 mb-4">
-                            <label class="form-label">Mode d'hebergement <sup class="text-danger">*</sup></label>
+                            <label class="form-label">Mode d'hébergement <sup class="text-danger">*</sup></label>
                             <select class="form-control" name="" id="hebergement_id" wire:model="hebergement_id">
-                                <option value="">Veillez choisir le mode hebergement</option>
+                                <option value="">Veillez choisir le mode hébergement</option>
                                 @foreach ($hebergements as $hebergement)
                                 <option value="{{ $hebergement->id }}">{{ $hebergement->libelle }}</option>
                                 @endforeach
@@ -211,6 +213,9 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    @if ($this->hebergement_id == 2)
+
+                    @else
                     <div class="col-md-12 mb-4">
                         <label class="form-label">Choisir l'hôtel <sup class="text-danger">*</sup></label>
                         <select class="form-control" name="" id="lieu_id" wire:model="lieu_id">
@@ -222,11 +227,11 @@
                         @error('lieu_id')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
-                </div>
+                    </div>
                     <div class="col-md-12 mb-4">
-                            <label class="form-label">Hebergement <sup class="text-danger">*</sup></label>
+                            <label class="form-label">Hébergement <sup class="text-danger">*</sup></label>
                             <select class="form-control" name="" id="tarif_id" wire:model="tarif_id">
-                                <option value="">Veillez choisir l'hebergement</option>
+                                <option value="">Veillez choisir l'hébergement</option>
                                 @foreach ($tarifs as $tarif)
                                 <option value="{{ $tarif->id }}">{{ $tarif->libelle }} => {{ $tarif->prix }} FCFA => Place disponible: {{ $tarif->place }}</option>
                                 @endforeach
@@ -235,18 +240,33 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    @if ($this->compagnon == 1)
                     <div class="col-md-12 mb-4">
-                            <label class="form-label">Activité <sup class="text-danger">*</sup></label>
+                        <label class="form-label">Avec qui? <sup class="text-danger">*</sup></label>
+
+                        <input type="text" id="" class="form-control" wire:model="compagnons">
+                        @error('compagnons')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    @endif
+                    @endif
+                    <div class="col-md-12 mb-4">
+                            <label class="form-label">Activités du samedi <sup class="text-danger">*</sup></label>
                             <select class="form-control" name="" id="activite_id" wire:model="activite_id">
                                 <option value="">Veillez choisir une activité</option>
                                 @foreach ($activites as $activite)
-                                @if ($activite->obligatoire == 0)
-                                @if ($activite->prix == 0)
-                                <option value="{{ $activite->id }}">{{ $activite->libelle}} => Graduite</option>
-                                @else
-                                <option value="{{ $activite->id }}">{{ $activite->libelle}} => Payante</option>
-                                @endif
-                                @endif
+                                    @if ($activite->obligatoire == 0)
+                                        @if ($activite->prix == 0)
+                                            @if ($activite->libelle =="Aucune")
+                                            <option value="{{ $activite->id }}">{{ $activite->libelle}}</option>
+                                            @else
+                                            <option value="{{ $activite->id }}">{{ $activite->libelle}} => Gratuitement </option>
+                                            @endif
+                                        @else
+                                        <option value="{{ $activite->id }}">{{ $activite->libelle}} => Payante</option>
+                                        @endif
+                                    @endif
                                 @endforeach
                             </select>
                         @error('activite_id')
@@ -265,6 +285,16 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    @if ($this->Mode_paiement_id == 1)
+                    <div class="col-md-12 mb-4">
+                        <label class="form-label">La Facture de votre Virement <sup class="text-danger">*</sup></label>
+
+                        <input type="file" id="date_depart" class="form-control" wire:model="piece">
+                    @error('piece')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    </div>
+                    @endif
                 </div>
                 @endif
 
@@ -298,22 +328,69 @@
                         <p> <strong>Télephone</strong>: {{ $this->tel }} </p>
                     </div>
                     <div class="col-md-12 mb-4">
-                        <h6 class="text-center"> <strong>Informations personnelles</strong> </h6>
+                        <h6 class="text-center"> <strong>Informations relatives au séjour</strong> </h6>
                         <p> <strong>Mode d'arrivée</strong>: {{ $this->mode_arrivee->libelle }} </p>
                         <p> <strong>Date d'arrivée</strong>: {{ $this->date_arrivee }} </p>
                         <p> <strong>Date dapart</strong>: {{ $this->date_depart }} </p>
+                        @if ($this->hebergement_id == 2)
+                        <p> <strong>Herbegement</strong>: {{ $this->lieux->libelle }}</p>
+                        @else
                         <p> <strong>Hôtel</strong>: {{ $this->lieux->libelle }}</p>
                         <p> <strong>Herbegement</strong>: {{ $this->Dtarifs->libelle }} => {{ $this->Dtarifs->prix }} FCFA</p>
+                        @endif
+
                         @if ($this->Dactivites->prix == 0)
-                        <p> <strong>Activité</strong>: {{ $this->Dactivites->libelle}} => Graduite</p>
+                        @if ($this->Dactivites->libelle == "Aucune")
+                        <p> <strong>Activité</strong>: {{ $this->Dactivites->libelle}}</p>
+                        @else
+                        <p> <strong>Activité</strong>: {{ $this->Dactivites->libelle}} => Gratuitement</p>
+                        @endif
                         @else
                         <p> <strong>Activité</strong>: {{ $this->Dactivites->libelle}} => Payante</p>
                         @endif
                         <p> <strong>Mode de paiement</strong>: {{ $this->Mode_paiement->libelle }} </p>
                     </div>
+                    <div class="col-md-12 mb-4">
+                        <h6 class="text-center"> <strong>Paiement</strong> </h6>
+                        <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>N°</th>
+                                <th>Libellé</th>
+                                <th>Prix</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                            @foreach ($activites as $activite)
+                            @if ($activite->obligatoire == 1)
+                                <tr>
+
+                                <td>1</td>
+                                <td>{{ $activite->libelle}}</td>
+                                <td>{{ $activite->prix}} FCFA</td>
+                                </tr>
+                            @endif
+                            @endforeach
+                              <tr>
+                                @if ($this->hebergement_id !== 2)
+                                <td>3</td>
+                                <td>{{ $this->lieux->libelle }} : {{ $this->Dtarifs->libelle }}</td>
+                                <td>{{ $this->Dtarifs->prix }} FCFA</td>
+                                @endif
+                              </tr>
+
+                              <tr>
+                                <td colspan="3">
+                                <strong><h6 class="text-center">Total: {{ $this->montant_total }}</h6> </strong>
+                                </td>
+                              </tr>
+
+                            </tbody>
+                          </table>
+                    </div>
 
                     <div class="col-md-12 mb-4">
-                      <strong><h6 class="text-center">Total: {{ $this->montant_total }}</h6> </strong>
 
                     </div>
                 </div>

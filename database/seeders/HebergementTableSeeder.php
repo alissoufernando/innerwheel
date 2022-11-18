@@ -22,7 +22,7 @@ class HebergementTableSeeder extends Seeder
                 'edition_id' => 1,
             ],
             [
-                'libelle' => 'Résidence',
+                'libelle' => 'Hébergement libre',
                 'edition_id' => 1,
             ],
 

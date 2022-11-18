@@ -18,8 +18,9 @@ class CreateInscriptionsTable extends Migration
             $table->date('date_arrivee');
             $table->date('date_depart');
             $table->string('montant_total');
+            $table->string('compagnons')->nullable();
             $table->foreignId('individu_id')->constrained('individus')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('tarif_id')->constrained('tarifs')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('tarif_id')->nullable()->constrained('tarifs')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('statut_id')->constrained('statuts')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('mode_arrivee_id')->constrained('tarifs')->onUpdate('cascade')->onDelete('cascade');
             $table->boolean('isDelete')->default(0);

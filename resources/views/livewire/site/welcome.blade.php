@@ -25,9 +25,12 @@
 
           <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
-              <li><a class="nav-link scrollto active" href="{{ route('welcome') }}">Accueil</a></li>
+                <li><a class="nav-link scrollto {{ Route::currentRouteName()== 'welcome' ? 'active' : '' }}" href="{{ route('welcome') }}">Accueil</a></li>
+
               {{-- <li><a class="nav-link scrollto" href="#about">Evenement</a></li> --}}
               <li><a class="nav-link scrollto" href="#speakers">A propos</a></li>
+              <li><a class="nav-link scrollto" href="{{ route('activite') }}">Activites et Actions</a></li>
+
               {{-- <li><a class="nav-link scrollto" href="#schedule">Nos programmes</a></li> --}}
               {{-- <li><a class="nav-link scrollto" href="#venue">Venue</a></li> --}}
               {{-- <li><a class="nav-link scrollto" href="#hotels">Hotels</a></li> --}}
@@ -54,14 +57,14 @@
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
           </nav><!-- .navbar -->
-          <a class="buy-tickets scrollto" href="{{ route('inscription') }}">Inscription</a>
+          <a class="buy-tickets scrollto {{ Route::currentRouteName()== 'inscription' ? 'active' : '' }}" href="{{ route('inscription') }}">Inscription</a>
 
         </div>
     </header><!-- End Header -->
     <section id="hero">
         <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
           <h1 class="mb-4 pb-0">International Inner wheel <br><span> District 909</span> </h1>
-          <p class="mb-4 pb-0">Assembée Génerale Annuelle de COTONOU <br>Du 01 au 04 Mars 2023</p>
+          <p class="mb-4 pb-0">Assemblée Générale Annuelle <br> <h4 style="color: white">COTONOU Du 01 au 04 Mars 2023</h4> </p>
           <a href="https://www.youtube.com/watch?v=-9AHvO-MfIk" class="glightbox play-btn mb-4"></a>
           <a href="{{ route('inscription') }}" class="about-btn scrollto">S'inscrire</a>
         </div>
@@ -95,7 +98,7 @@
         <section id="speakers">
           <div class="container" data-aos="fade-up">
             <div class="section-header">
-              <h2>Découvrez Innerwheel</h2>
+              <h2>Découvrez Inner wheel</h2>
               <p>A propos de nous</p>
             </div>
 
@@ -918,20 +921,23 @@
             </div>
 
             <div class="form">
-              <form>
+                @if (Session::has('message'))
+                    <div class="alert alert-success">{{Session::get('message')}}</div>
+                @endif
+              <form wire:submit.prevent='sendMessage'>
                 <div class="row">
                   <div class="form-group col-md-6">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Votre nom" required>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Votre nom" required wire:model="name">
                   </div>
                   <div class="form-group col-md-6 mt-3 mt-md-0">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Vos prénoms" required>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Votre email" required required wire:model="email">
                   </div>
                 </div>
                 <div class="form-group mt-3">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subjet" required>
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Objet" required wire:model="subject">
                 </div>
                 <div class="form-group mt-3">
-                  <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                  <textarea class="form-control" name="message" rows="5" placeholder="Message" required wire:model="comment"></textarea>
                 </div>
 
                 <div class="text-center"><button type="submit" class="btn btn-success mt-5">Envoyer</button></div>

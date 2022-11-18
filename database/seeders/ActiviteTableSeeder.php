@@ -44,6 +44,13 @@ class ActiviteTableSeeder extends Seeder
                 'obligatoire' => 0,
 
             ],
+            [
+                'libelle' => 'Aucune',
+                'prix' => "0",
+                'edition_id' => 1,
+                'obligatoire' => 0,
+
+            ],
         ]);
     }
 }

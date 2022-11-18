@@ -18,14 +18,6 @@ class TarifTableSeeder extends Seeder
         DB::table('tarifs')->insert([
 
             [
-                'libelle' => 'J ai une residence personnelle',
-                'lieu_id' => 1,
-                'prix' => "0",
-                'place' => "1",
-
-
-            ],
-            [
                 'libelle' => 'Chambre double climatisée standard - Simple',
                 'lieu_id' => 2,
                 'prix' => "41500",

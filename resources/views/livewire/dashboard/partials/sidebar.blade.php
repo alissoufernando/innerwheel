@@ -26,6 +26,13 @@
                 <div class="menu-title">Inscriptions</div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('admin.activite-index') }}" class="{{ Route::currentRouteName()== 'admin.activite-index' ? 'active' : '' }}">
+                <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                </div>
+                <div class="menu-title">Activités</div>
+            </a>
+        </li>
         <li class="{{request()->route()->getPrefix() == '/administration' ? 'active' : '' }}">
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-folder'></i>

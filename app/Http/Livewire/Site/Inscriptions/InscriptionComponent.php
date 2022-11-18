@@ -3,39 +3,56 @@
 namespace App\Http\Livewire\Site\Inscriptions;
 
 use App\Models\Club;
+use App\Models\Lieu;
+use App\Models\Pays;
+use App\Models\Poste;
 use App\Models\Tarif;
 use Livewire\Component;
 use App\Models\Activite;
 use App\Models\Individu;
+use App\Models\Paiement;
 use App\Models\Hebergement;
 use App\Models\Inscription;
-use App\Models\Lieu;
 use App\Models\ModeArrivee;
 use App\Models\ModePaiement;
-use App\Models\Paiement;
-use App\Models\Pays;
-use App\Models\Poste;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Http;
 use StephaneAss\Payplus\Pay\PayPlus;
 
 class InscriptionComponent extends Component
 {
+    use WithFileUploads;
     public $nom;
     public $prenoms;
     public $club_id;
-    public $poste_id, $posteInner;
+    public $poste_id;
+    public $posteInner;
     public $adresse;
     public $tel;
     public $email;
-    public $tarif_id, $pay_id, $pays, $club;
+    public $tarif_id;
+    public $pay_id;
+    public $pays;
+    public $club;
     public $date_arrivee;
     public $date_depart;
-    public $mode_arrivee_id,$mode_arrivee,$placeFini, $place,$lieu_id;
+    public $mode_arrivee_id;
+    public $mode_arrivee;
+    public $placeFini;
+    public $place;
+    public $lieu_id;
     public $hebergement_id;
-    public $Mode_paiement_id, $Mode_paiement;
+    public $Mode_paiement_id;
+    public $Mode_paiement;
     public $activite_id;
     public $montant_total = 0;
-    public $inscription_id_1, $Dactivites, $Dclub, $Dtarifs;
+    public $inscription_id_1;
+    public $Dactivites;
+    public $Dclub;
+    public $Dtarifs;
+    public $piece;
+
+    public $compagnon, $compagnons;
 
     public $totalSteps = 3;
     public $currentStep = 1;
@@ -60,39 +77,18 @@ class InscriptionComponent extends Component
                 $this->Dclub = Club::where('id',$this->club_id)->first();
                 $this->Mode_paiement = ModePaiement::where('id',$this->Mode_paiement_id)->first();
                 $this->mode_arrivee = ModeArrivee::where('id',$this->mode_arrivee_id)->first();
-                $this->lieux = Lieu::where('id',$this->lieu_id)->first();
                 $this->posteInner = Poste::where('id',$this->poste_id)->first();
-                // dd($this->Dactivites);
-
-                // $this->montant_total += $this->Dactivites->prix;
-
-                $this->Dtarifs = Tarif::where('id',$this->tarif_id)->first();
-                // dd($Dtarifs);
-                $this->montant_total += $this->Dtarifs->prix;
-                // }
-                // dd($this->Dclub,$this->Dactivites,$this->Dtarifs);
-                // $this->currentStep = $this->totalSteps;
+                if($this->tarif_id)
+                {
+                    $this->lieux = Lieu::where('id',$this->lieu_id)->first();
+                    $this->Dtarifs = Tarif::where('id',$this->tarif_id)->first();
+                    $this->montant_total += $this->Dtarifs->prix;
+                }
         }
 
         if($this->currentStep > $this->totalSteps)
         {
-            // // dd('ok');
-            // // if($this->activite_id)
-            // // {
-            //     $this->montant_total = 50000;
-            //     $this->Dactivites = Activite::where('id',$this->activite_id)->first();
-            //     $this->Dclub = Club::where('id',$this->club_id)->first();
-
-            //     // dd($this->Dactivites);
-
-            //     $this->montant_total += $this->Dactivites->prix;
-
-            //     $this->Dtarifs = Tarif::where('id',$this->tarif_id)->first();
-            //     // dd($Dtarifs);
-            //     $this->montant_total += $this->Dtarifs->prix;
-            //     // }
-            //     dd($this->Dclub,$this->Dactivites,$this->Dtarifs);
-                $this->currentStep = $this->totalSteps;
+            $this->currentStep = $this->totalSteps;
         }
     }
 
@@ -138,38 +134,42 @@ class InscriptionComponent extends Component
             }
         }elseif($this->currentStep == 2)
         {
-            $this->validate([
-                'tarif_id'=>'required',
-                'lieu_id'=>'required',
-                'mode_arrivee_id'=>'required',
-                'date_arrivee'=>'required',
-                'date_depart'=>'required',
-                'Mode_paiement_id'=>'required',
-                'activite_id'=>'required',
-                'hebergement_id'=>'required',
-            ]);
-            $tarifs = Tarif::where('isDelete', 0)->where('id', $this->tarif_id)->first();
-
-            if($tarifs->place == 0)
+            if($this->hebergement_id == 2)
             {
-                $this->placeFini = 1;
+                $this->validate([
+                    'mode_arrivee_id'=>'required',
+                    'date_arrivee'=>'required',
+                    'date_depart'=>'required',
+                    'Mode_paiement_id'=>'required',
+                    'activite_id'=>'required',
+                    'hebergement_id'=>'required',
+                ]);
+            }else
+            {
+                $this->validate([
+                    'tarif_id'=>'required',
+                    'lieu_id'=>'required',
+                    'mode_arrivee_id'=>'required',
+                    'date_arrivee'=>'required',
+                    'date_depart'=>'required',
+                    'Mode_paiement_id'=>'required',
+                    'activite_id'=>'required',
+                    'hebergement_id'=>'required',
+                ]);
             }
+
+            // $tarifs = Tarif::where('isDelete', 0)->where('id', $this->tarif_id)->first();
+
+            // if($tarifs->place == 0)
+            // {
+            //     $this->placeFini = 1;
+            // }
         }elseif($this->currentStep == 3)
         {
 
         }
 
     }
-
-    //  all variables for payment
-    // public $siteName = "INNERWHEEL";
-    // public $siteURL = "http://127.0.0.1:8000";
-    // public $description  = "Description du contenu de la facture";
-    // public $URL= "https://app.payplus.africa/pay/v01/redirect/checkout-invoice/create";
-    // public $URL_callback = "http://127.0.0.1:8000/inscription";
-    // public $key = "9WTO1AST69CTB11BM";
-    // public $token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9hcHAiOiI5MiIsImlkX2Fib25uZSI6IjMiLCJkYXRlY3JlYXRpb25fYXBwIjoiMjAxOS0xMi0yMCAxMTo0OTowNyJ9.blg6LB50P0UKSOBf_dSoaoQYNTjNQCd6Isty36UBskM";
-
 
     public function sendRequest()
     {
@@ -183,14 +183,17 @@ class InscriptionComponent extends Component
                 $co->addItem($activite->libelle, 1, 25000, 25000, "Les frais obligatoires");
             }
         }
+        if($this->tarif_id)
+        {
 
-        $Dtarifs = Tarif::where('id',$this->tarif_id)->first();
-        $this->montant_total += $Dtarifs->prix;
+            $Dtarifs = Tarif::where('id',$this->tarif_id)->first();
+            $this->montant_total += $Dtarifs->prix;
+        }
 
-        $co->addItem($Dtarifs->libelle, 1, $Dtarifs->prix, $Dtarifs->prix, "Les frai d'hebergements");
+        $co->addItem($Dtarifs->libelle, 1, $Dtarifs->prix, $Dtarifs->prix, "Les frais d'hébergements");
         $total_amount=100;
         $co->setTotalAmount($total_amount);
-        $co->setDescription("Inscription de la innerWheel 2023");
+        $co->setDescription("Inscription de la inner Wheel 2023");
         $co->addCustomData('first_key',$this->inscription_id_1);
 
         // démarrage du processus de paiement
@@ -206,76 +209,6 @@ class InscriptionComponent extends Component
                 "message" => "$co->response_text"
             ];
         }
-        // $siteName = "INNERWHEEL";
-        // $siteURL = "http://127.0.0.1:8000";
-        // $description  = "Description du contenu de la facture";
-        // $URL= "https://app.payplus.africa/pay/v01/redirect/checkout-invoice/create";
-        // $URL_callback = "http://127.0.0.1:8000/inscription";
-        // $data = [
-        //     "commande" => [
-        //       "invoice" => [
-        //         "items" => [
-        //           [
-        //             "name" => "Inscription",
-        //             "description"=> "Inscription",
-        //             "quantity"=> 1,
-        //             "unit_price"=> 25000,
-        //             "total_price"=> 25000
-        //           ],
-        //           [
-        //             "name" => "Gala",
-        //             "description"=> "gala",
-        //             "quantity"=> 1,
-        //             "unit_price"=> 25000,
-        //             "total_price"=> 25000
-        //           ]
-        //         ],
-        //         // "total_amount"=> $this->montant_total,
-        //         "total_amount"=> 100,
-        //         "description"=> "Paiement",
-        //         "devise"=> "XOF",
-        //         // "customer"=> "22995185044",
-        //         // "customer_firstname"=> "Arnaud",
-        //         // "customer_lastname"=> "LOKONON",
-        //         // "customer_email"=> "fiflokonon@gmail.com",
-        //         // "external_id "=> "",
-        //         // "otp"=> "",
-        //         // "network" => ""
-        //       ],
-        //       "store" => [
-        //         "name" => $siteName,
-        //         "website_url" => $siteURL,
-        //       ],
-        //       "actions" => [
-        //         "cancel_url" => "",
-        //         "return_url" => $URL_callback,
-        //         "callback_url" => $URL_callback
-        //       ],
-        //       "custom_data" => [
-        //         "transction_id"=> "4520"
-        //       ]
-        //     ]
-        //   ];
-        // $key = "9WTO1AST69CTB11BM";
-        // $token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9hcHAiOiI5MiIsImlkX2Fib25uZSI6IjMiLCJkYXRlY3JlYXRpb25fYXBwIjoiMjAxOS0xMi0yMCAxMTo0OTowNyJ9.blg6LB50P0UKSOBf_dSoaoQYNTjNQCd6Isty36UBskM";
-        // $headers = [
-        //     "Authorization" => "Bearer".$token,
-        //     "ApiKey" => $key,
-        //     'content-Type' => "application/json"
-        // ];
-
-        // // $response = Http::withHeaders([
-        // //     'Authorization' => 'Bearer'.$token,
-        // //     'ApiKey' => $key,
-        // //     'content-Type' => 'application/json'
-        // // ])->post($URL, $data);
-
-        // $response = Http::withToken($token)->withHeaders([
-        //     'Apikey' => $key
-        // ])->post("https://app.payplus.africa/pay/v01/redirect/checkout-invoice/create", $data);
-
-        // #return json_encode($response);
-        // return $response['response_text'];
     }
 
     public function resetInputFields()
@@ -316,6 +249,7 @@ class InscriptionComponent extends Component
         if($this->pay_id == 12)
         {
             $myIndividu->club = $this->club;
+            $myIndividu->pays = $this->pays;
         }else{
 
             $myIndividu->club_id = $this->club_id;
@@ -336,8 +270,25 @@ class InscriptionComponent extends Component
         $tarifs = Tarif::where('isDelete', 0)->where('id', $this->tarif_id)->first();
         $tarifs->place -=1;
         $tarifs->save();
+        if($this->Mode_paiement_id == 2)
+        {
+            $filename = time() . '.' . $this->piece->extension();
+            $path = $this->piece->storeAs(
+                'Pieces',
+                $filename,
+                'public'
+            );
+        }
 
-        $myInscription->tarif_id = $this->tarif_id;
+        if($this->hebergement_id == 1)
+        {
+            $myInscription->tarif_id = $this->tarif_id;
+        }
+        if($this->compagnons)
+        {
+            $myInscription->compagnons = $this->compagnons;
+        }
+
         $myInscription->statut_id = 2;
         $myInscription->mode_arrivee_id = $this->mode_arrivee_id;
         $myInscription->date_arrivee = $this->date_arrivee;
@@ -350,12 +301,17 @@ class InscriptionComponent extends Component
         $this->inscription_id_1 = $myInscription->id;
         $myPaiement->inscription_id = $myInscription->id;
         $myPaiement->mode_paiement_id = $this->Mode_paiement_id;
+        if($this->Mode_paiement_id == 2)
+        {
+
+            $myPaiement->piece = $path;
+        }
         $myPaiement->statut_id = 2;
         $myPaiement->save();
         if($this->Mode_paiement_id == 1)
         {
             $this->currentStep = 1;
-            session()->flash('message', 'Votre inscription à été effectué avec succès.');
+            session()->flash('message', 'Inscription effectuée avec succès.');
             // return redirect()->to($URL_pay);
             $this->resetInputFields();
         }else{
@@ -372,6 +328,20 @@ class InscriptionComponent extends Component
 
     public function render()
     {
+        if($this->tarif_id)
+        {
+            $tarif = Tarif::where('id',$this->tarif_id)->first();
+            $libelleHebergement = explode(' ',$tarif->libelle);
+            $recherche = array_search("Double",$libelleHebergement);
+            if($recherche == false)
+            {
+                $this->compagnon = 0;
+            }else{
+                $this->compagnon = 1;
+
+            }
+            // dd($recherche);
+        }
         $payss = Pays::where('isDelete', 0)->get();
         $postes = Poste::where('isDelete', 0)->get();
 

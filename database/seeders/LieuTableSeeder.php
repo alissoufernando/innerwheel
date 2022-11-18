@@ -16,12 +16,10 @@ class LieuTableSeeder extends Seeder
     {
         DB::table('lieus')->delete();
         DB::table('lieus')->insert([
-
             [
-                'libelle' => 'Résidence',
+                'libelle' => 'Personnel ',
                 'hebergement_id' => 2,
             ],
-
             [
                 'libelle' => 'HOTEL CASA CIELO FIDJROSSE ',
                 'hebergement_id' => 1,
@@ -36,15 +34,15 @@ class LieuTableSeeder extends Seeder
             ],
             [
                 'libelle' => 'RESIDENCES EASY HOTEL FIDJROSSE',
-                'hebergement_id' => 2,
+                'hebergement_id' => 1,
             ],
             [
                 'libelle' => 'RESIDENCE KOUASSI',
-                'hebergement_id' => 2,
+                'hebergement_id' => 1,
             ],
             [
                 'libelle' => 'HOTEL NOVOTEL/IBIS',
-                'hebergement_id' => 2,
+                'hebergement_id' => 1,
             ],
 
         ]);

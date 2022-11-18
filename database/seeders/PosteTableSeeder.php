@@ -64,10 +64,13 @@ class PosteTableSeeder extends Seeder
                 'libelle' => 'Membre',
             ],
             [
-                'libelle' => 'Représentante Nationale',
+                'libelle' => 'Représentante Nationale (RN)',
             ],
             [
-                'libelle' => 'Past Représentante Nationale',
+                'libelle' => 'Représentante Nationale Suppléante (RNS)',
+            ],
+            [
+                'libelle' => 'Past Représentante Nationale (PRN)',
             ],
             [
                 'libelle' => 'Editrice du district',
@@ -83,6 +86,9 @@ class PosteTableSeeder extends Seeder
             ],
             [
                 'libelle' => 'Responsable Internet du District',
+            ],
+            [
+                'libelle' => 'et autres',
             ]
 
         ]);
