@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ActiviteAction extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'contenu',
+        'image',
+        'description',
+    ];
 
 }

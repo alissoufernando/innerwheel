@@ -2,9 +2,10 @@
 
 namespace App\Http\Livewire\Dashboard\Activites;
 
-use App\Models\ActiviteAction;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Models\ActiviteAction;
+use Illuminate\Support\Facades\Storage;
 
 class AddComponent extends Component
 {
@@ -13,6 +14,7 @@ class AddComponent extends Component
     public $name;
     public $contenu;
     public $description;
+    public $array_full=[];
 
     public function resetInputFields()
     {
@@ -36,25 +38,48 @@ class AddComponent extends Component
 
             ]);
 
-        $myActiviteAction = new ActiviteAction();
+            $myActiviteAction = new ActiviteAction();
+            $this->uploadOne();
+            $myActiviteAction->image = collect($this->array_full)->implode(',');
+            $myActiviteAction->contenu = $this->contenu;
+            $myActiviteAction->name = $this->name;
+            $myActiviteAction->description = $this->description;
+            $myActiviteAction->save();
+
+            Storage::deleteDirectory('livewire-tmp');
+            $this->resetInputFields();
+
+            session()->flash('message', 'Enregistrement effectué avec succès.');
+
+            back();
+
+
         // Modification et Stockage de l'image dans le dossier storage de public
 
-        $filenameImage = time() . '.' . $this->image->extension();
-        $pathImage = $this->image->storeAs(
-            'Activites',
-            $filenameImage,
-            'public'
-        );
+    }
+    public function uploadOne()
+    {
+        if (!empty($this->image)) {
+            $array_full = array();
+            foreach ($this->image as $full){
+                $images = $full;
+                $filename_full =  'activites-' .uniqid() . '.' . $images->getClientOriginalExtension();
+                $pathImage = $images->storeAs(
+                    'activites',
+                    $filename_full,
+                    'public'
+                );
 
-        $myActiviteAction->image = $pathImage;
-        $myActiviteAction->contenu = $this->contenu;
-        $myActiviteAction->name = $this->name;
-        $myActiviteAction->description = $this->description;
-        $myActiviteAction->save();
+                array_push($array_full, $filename_full);
 
-       session()->flash('message', 'Enregistrement effectué avec succès.');
-       $this->resetInputFields();
+            }
+            $this->array_full=$array_full;
 
+        }
+    }
+    public function deleteOne()
+    {
+        Storage::disk('public')->delete("/Activites/$this->image");
     }
     public function render()
     {

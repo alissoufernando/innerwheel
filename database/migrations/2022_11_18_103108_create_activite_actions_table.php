@@ -18,7 +18,7 @@ class CreateActiviteActionsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->text('contenu');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->boolean('isDelete')->default(0);
             $table->timestamps();
         });

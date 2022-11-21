@@ -49,9 +49,11 @@
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label" for="image">Image</label>:</label>
-                                        <input class="form-control mb-3" id="image" type="file" accept=".jpg, .png, image/jpeg, image/png" wire:model="image">
+                                        <input class="form-control mb-3" id="image" type="file" accept=".jpg, .png, image/jpeg, image/png" wire:model="image" multiple>
                                         @if ($image)
-                                        <img src="{{$image->temporaryUrl()}}" class="px-2" width="100">
+                                        @foreach ($image as $images)
+                                        <img src="{{$images->temporaryUrl()}}" class="px-2" width="100">
+                                        @endforeach
                                         @endif
                                     </div>
                                 </div>

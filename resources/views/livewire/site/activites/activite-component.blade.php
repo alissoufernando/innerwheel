@@ -12,7 +12,7 @@
           <div id="logo" class="me-auto">
             <!-- Uncomment below if you prefer to use a text logo -->
             <!-- <h1><a href="index.html">The<span>Event</span></a></h1>-->
-            <a href="index.html" class="scrollto"><img src="{{ asset('assets/site/assets/img/logo1.jpg') }}" alt="" title=""></a>
+            <a href="{{ route('welcome') }}" class="scrollto"><img src="{{ asset('assets/site/assets/img/logo1.jpg') }}" alt="" title=""></a>
           </div>
 
           <nav id="navbar" class="navbar order-last order-lg-0">
@@ -36,12 +36,16 @@
       </div>
 
       <div class="row">
+      @foreach ($activiteActions as $activiteAction)
+      @php
+        $images = explode(",",$activiteAction->image);
+      @endphp
         <div class="col-lg-4 col-md-6">
           <div class="speaker" data-aos="fade-up" data-aos-delay="100">
-            <img src="{{ asset('assets/site/assets/img/speakers/1.jpg') }}" alt="Speaker 1" class="img-fluid">
+            <img src="{{ asset('storage/Activites')}}/{{$images[0]}}" alt="{{$activiteAction->name}}" alt="Speaker 1" class="img-fluid">
             <div class="details">
-              <h3><a href="speaker-details.html">Brenden Legros</a></h3>
-              <p>Quas alias incidunt</p>
+              <h3><a href="{{ route('activite-details', ['id' => $activiteAction->id])}}">Brenden Legros</a></h3>
+              <p>{{ $activiteAction->name }}</p>
               <div class="social">
                 <a href=""><i class="bi bi-twitter"></i></a>
                 <a href=""><i class="bi bi-facebook"></i></a>
@@ -51,81 +55,8 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="speaker" data-aos="fade-up" data-aos-delay="200">
-            <img src="{{ asset('assets/site/assets/img/speakers/2.jpg') }}" alt="Speaker 2" class="img-fluid">
-            <div class="details">
-              <h3><a href="speaker-details.html">Hubert Hirthe</a></h3>
-              <p>Consequuntur odio aut</p>
-              <div class="social">
-                {{-- <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a> --}}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="speaker" data-aos="fade-up" data-aos-delay="300">
-            <img src="{{ asset('assets/site/assets/img/speakers/3.jpg') }}" alt="Speaker 3" class="img-fluid">
-            <div class="details">
-              <h3><a href="speaker-details.html">Cole Emmerich</a></h3>
-              <p>Fugiat laborum et</p>
-              <div class="social">
-                {{-- <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a> --}}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="speaker" data-aos="fade-up" data-aos-delay="100">
-            <img src="{{ asset('assets/site/assets/img/speakers/4.jpg') }}" alt="Speaker 4" class="img-fluid">
-            <div class="details">
-              <h3><a href="speaker-details.html">Jack Christiansen</a></h3>
-              <p>Debitis iure vero</p>
-              <div class="social">
-                {{-- <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a> --}}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="speaker" data-aos="fade-up" data-aos-delay="200">
-            <img src="{{ asset('assets/site/assets/img/speakers/5.jpg') }}" alt="Speaker 5" class="img-fluid">
-            <div class="details">
-              <h3><a href="speaker-details.html">Alejandrin Littel</a></h3>
-              <p>Qui molestiae natus</p>
-              <div class="social">
-                {{-- <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a> --}}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="speaker" data-aos="fade-up" data-aos-delay="300">
-            <img src="{{ asset('assets/site/assets/img/speakers/6.jpg') }}" alt="Speaker 6" class="img-fluid">
-            <div class="details">
-              <h3><a href="speaker-details.html">Willow Trantow</a></h3>
-              <p>Non autem dicta</p>
-              <div class="social">
-                {{-- <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a> --}}
-              </div>
-            </div>
-          </div>
-        </div>
+
+      @endforeach
       </div>
     </div>
 

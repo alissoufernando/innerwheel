@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\ModeArrivee;
 use App\Models\User;
+use App\Models\ModeArrivee;
+use App\Models\ActiviteAction;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserTableSeeder;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -16,6 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(10)->create();
+        
         $this->call(RoleTableSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(EditionTableSeeder::class);
@@ -29,6 +32,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ClubTableSeeder::class);
         $this->call(StatutTableSeeder::class);
         $this->call(ModePaiementTableSeeder::class);
+        $this->call(ActiviteActionTableSeeder::class);
+
 
 
 
