@@ -104,7 +104,7 @@
 
             <div class="row">
                 <div class="col-md-6 divimage">
-                    <img src="{{ asset('assets/site/assets/img/des.jpg') }}" alt="" >
+                    <img src="{{ asset('assets/site/assets/img/des.jpeg') }}" alt="" >
                 </div>
                 <div class="col-md-6 text-justify divtext">
                     <h3> <strong>QUI SOMMES NOUS</strong> </h3>

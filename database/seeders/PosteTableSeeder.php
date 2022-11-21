@@ -61,6 +61,9 @@ class PosteTableSeeder extends Seeder
                 'libelle' => 'Immediat Past Présidente',
             ],
             [
+                'libelle' => 'Immediat Past Governor',
+            ],
+            [
                 'libelle' => 'Membre',
             ],
             [

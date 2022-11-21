@@ -32,7 +32,7 @@
     <div class="container" data-aos="fade-up">
       <div class="section-header">
         <h2>Activités et Actions</h2>
-        <p>Here are some of our speakers</p>
+        <p>Quelques-unes de nos activités</p>
       </div>
 
       <div class="row">

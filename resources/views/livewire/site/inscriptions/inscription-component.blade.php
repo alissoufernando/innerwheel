@@ -56,9 +56,15 @@
         </div>
     </header><!-- End Header -->
     <!-- ======= Subscribe Section ======= -->
-    <section id="" style="padding-top: 250px; padding-bottom: 100px">
+    <section id="" style="padding-top: 100px; padding-bottom: 100px">
+
         <div class="container">
+
           <div class="section-header">
+            <div class="text-center" style="padding-bottom: 50px">
+            <img  src="{{ asset('assets/site/assets/img/des.jpeg') }}" alt="" width="300" height="400" >
+            </div>
+
             <h2>Inscription</h2>
             <p>Tous les champs sont obligatoires.</p>
           </div>
@@ -84,7 +90,7 @@
                         @else
                             <label class="form-label">Pays <sup class="text-danger">*</sup></label>
                             <select class="form-control " name="" id="pay_id" wire:model="pay_id">
-                                <option value="">Veillez choisir le pays</option>
+                                <option value="">Veuillez choisir le pays</option>
                                 @foreach ($payss as $paysss)
                                 <option value="{{ $paysss->id }}">{{ $paysss->libelle }}</option>
                                 @endforeach
@@ -104,7 +110,7 @@
                         @else
                             <label class="form-label">Club <sup class="text-danger">*</sup></label>
                             <select class="form-control" name="" id="" wire:model="club_id">
-                                <option value="">Veillez choisir le club</option>
+                                <option value="">Veuillez choisir le club</option>
                                 @foreach ($clubs as $club)
                                 <option value="{{ $club->id }}">{{ $club->libelle }}</option>
                                 @endforeach
@@ -133,7 +139,7 @@
                     <div class="col-md-12 mb-4">
                         <label class="form-label">Poste au sein du club<sup class="text-danger">*</sup></label>
                         <select class="form-control" name="" id="" wire:model="poste_id">
-                            <option value="">Veillez choisir le poste</option>
+                            <option value="">Veuillez choisir le poste</option>
                             @foreach ($postes as $poste)
                             <option value="{{ $poste->id }}">{{ $poste->libelle }}</option>
                             @endforeach
@@ -178,7 +184,7 @@
                     <div class="col-md-12 mb-4">
                             <label class="form-label">Mode d'arrivée <sup class="text-danger">*</sup></label>
                             <select class="form-control " name="" id="mode_arrivee_id" wire:model="mode_arrivee_id">
-                                <option value="">Veillez choisir le mode d'arrivée</option>
+                                <option value="">Veuillez choisir le mode d'arrivée</option>
                                 @foreach ($mode_arriveess as $mode_arrives)
                                 <option value="{{ $mode_arrives->id }}">{{ $mode_arrives->libelle }}</option>
                                 @endforeach
@@ -204,7 +210,7 @@
                     <div class="col-md-12 mb-4">
                             <label class="form-label">Mode d'hébergement <sup class="text-danger">*</sup></label>
                             <select class="form-control" name="" id="hebergement_id" wire:model="hebergement_id">
-                                <option value="">Veillez choisir le mode hébergement</option>
+                                <option value="">Veuillez choisir le mode hébergement</option>
                                 @foreach ($hebergements as $hebergement)
                                 <option value="{{ $hebergement->id }}">{{ $hebergement->libelle }}</option>
                                 @endforeach
@@ -219,7 +225,7 @@
                     <div class="col-md-12 mb-4">
                         <label class="form-label">Choisir l'hôtel <sup class="text-danger">*</sup></label>
                         <select class="form-control" name="" id="lieu_id" wire:model="lieu_id">
-                            <option value="">Veillez choisir un hôtel</option>
+                            <option value="">Veuillez choisir un hôtel</option>
                             @foreach ($lieus as $lieu)
                             <option value="{{ $lieu->id }}">{{ $lieu->libelle }}</option>
                             @endforeach
@@ -231,7 +237,7 @@
                     <div class="col-md-12 mb-4">
                             <label class="form-label">Hébergement <sup class="text-danger">*</sup></label>
                             <select class="form-control" name="" id="tarif_id" wire:model="tarif_id">
-                                <option value="">Veillez choisir l'hébergement</option>
+                                <option value="">Veuillez choisir l'hébergement</option>
                                 @foreach ($tarifs as $tarif)
                                 <option value="{{ $tarif->id }}">{{ $tarif->libelle }} => {{ $tarif->prix }} FCFA => Place disponible: {{ $tarif->place }}</option>
                                 @endforeach
@@ -254,7 +260,7 @@
                     <div class="col-md-12 mb-4">
                             <label class="form-label">Activités du samedi <sup class="text-danger">*</sup></label>
                             <select class="form-control" name="" id="activite_id" wire:model="activite_id">
-                                <option value="">Veillez choisir une activité</option>
+                                <option value="">Veuillez choisir une activité</option>
                                 @foreach ($activites as $activite)
                                     @if ($activite->obligatoire == 0)
                                         @if ($activite->prix == 0)
@@ -276,7 +282,7 @@
                     <div class="col-md-12 mb-4">
                             <label class="form-label">Mode de paiement <sup class="text-danger">*</sup></label>
                             <select class="form-control " name="" id="Mode_paiement_id" wire:model="Mode_paiement_id">
-                                <option value="">Veillez choisir un mode de paiement</option>
+                                <option value="">Veuillez choisir un mode de paiement</option>
                                 @foreach ($modepaiments as $modepaiment)
                                 <option value="{{ $modepaiment->id }}">{{ $modepaiment->libelle }}</option>
                                 @endforeach
@@ -287,7 +293,7 @@
                     </div>
                     @if ($this->Mode_paiement_id == 1)
                     <div class="col-md-12 mb-4">
-                        <label class="form-label">La Facture de votre Virement <sup class="text-danger">*</sup></label>
+                        <label class="form-label">La Facture de votre Virement</label>
 
                         <input type="file" id="date_depart" class="form-control" wire:model="piece">
                     @error('piece')
@@ -331,7 +337,7 @@
                         <h6 class="text-center"> <strong>Informations relatives au séjour</strong> </h6>
                         <p> <strong>Mode d'arrivée</strong>: {{ $this->mode_arrivee->libelle }} </p>
                         <p> <strong>Date d'arrivée</strong>: {{ $this->date_arrivee }} </p>
-                        <p> <strong>Date dapart</strong>: {{ $this->date_depart }} </p>
+                        <p> <strong>Date départ</strong>: {{ $this->date_depart }} </p>
                         @if ($this->hebergement_id == 2)
                         <p> <strong>Herbegement</strong>: {{ $this->lieux->libelle }}</p>
                         @else
@@ -417,6 +423,9 @@
 
         </div>
       </section><!-- End Subscribe Section -->
+      @include('livewire.site.inscriptions.modal')
+
+
 </div>
 
 @section('scripts')

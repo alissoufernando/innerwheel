@@ -21,11 +21,11 @@
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #f82249;
+  border: 1px solid rgb(255,215,0);
 }
 
 #gallery .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #f82249;
+  background-color: rgb(255,215,0);
 }
 
 #gallery .swiper-slide-active {
@@ -39,9 +39,9 @@
   }
 
   #gallery .swiper-slide-active {
-    border: 5px solid #f82249;
+    border: 5px solid rgb(255,215,0);
     padding: 4px;
-    background: #fff;
+    background: rgb(255,215,0);
     z-index: 1;
     transform: scale(1.15);
     margin-top: 6px;
@@ -79,7 +79,7 @@
         <div class="container" data-aos="fade-up">
           <div class="section-header">
             <h2>Détails de l'activité</h2>
-            <p>Check our gallery from the recent events</p>
+            <p></p>
           </div>
         </div>
 

@@ -270,7 +270,7 @@ class InscriptionComponent extends Component
         $tarifs = Tarif::where('isDelete', 0)->where('id', $this->tarif_id)->first();
         $tarifs->place -=1;
         $tarifs->save();
-        if($this->Mode_paiement_id == 2)
+        if($this->piece)
         {
             $filename = time() . '.' . $this->piece->extension();
             $path = $this->piece->storeAs(
@@ -301,7 +301,7 @@ class InscriptionComponent extends Component
         $this->inscription_id_1 = $myInscription->id;
         $myPaiement->inscription_id = $myInscription->id;
         $myPaiement->mode_paiement_id = $this->Mode_paiement_id;
-        if($this->Mode_paiement_id == 2)
+        if($this->piece)
         {
 
             $myPaiement->piece = $path;
