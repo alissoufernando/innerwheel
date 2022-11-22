@@ -15,7 +15,7 @@ class Paiement extends Model
     protected $guarded = [];
     public function inscription ()
     {
-        return $this->belongsTo(Inscription::class,);
+        return $this->belongsTo(Inscription::class);
     }
     public function statut ()
     {

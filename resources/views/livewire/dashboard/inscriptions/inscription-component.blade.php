@@ -34,6 +34,8 @@
 										<th>Nom</th>
 										<th>Prénoms</th>
 										<th>Statut</th>
+										<th>Reçu</th>
+
 										<th>Actions</th>
 									</tr>
 								</thead>
@@ -46,10 +48,31 @@
 										<td>{{ $i++ }}</td>
 										<td>{{ $inscription->individus->nom }}</td>
                                         <td>{{ $inscription->individus->prenoms }}</td>
-                                        <td>{{ $inscription->statut->libelle }}</td>
+                                        <td>
+                                            @if ($inscription->statut_id == 1)
+                                            <span class="badge bg-danger">{{ $inscription->statut->libelle }}</span>
+                                            @endif
+                                            @if ($inscription->statut_id == 2)
+                                            <span class="badge bg-warning text-dark">{{ $inscription->statut->libelle }}</span>
+                                            @endif
+                                            @if ($inscription->statut_id == 3)
+                                            <span class="badge bg-success">{{ $inscription->statut->libelle }}</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($inscription->paiement->piece)
+                                            <p> Voir le reçu
+                                            <a href="{{ asset('storage')}}/{{$inscription->paiement->piece}}" target="_blank" rel="noopener noreferrer"> ici</a>
+                                            </p>
+
+                                            @else
+                                            <p> Pas de reçu</p>
+                                            @endif
+                                        </td>
+
 										<td>
                                             <a style="margin-right: 12px; margin-left:15px" data-bs-toggle="tooltip" data-bs-placement="top" title="Détails"> <i class="lni lni-pencil-alt text-primary"></i></a>
-                                            <a style="margin-right: 12px; margin-left:15px" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal" wire:click.prevent='getElementById({{ $inscription->id }})' data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier Statut"> <i class="lni lni-pencil-alt text-success"></i></a>
+                                            <a style="margin-right: 12px; margin-left:15px" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal" wire:click.prevent='getElementById({{ $inscription->id }})' data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier Statut"> <i class="lni lni-checkbox text-success"></i></a>
                                             <a data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer" wire:click.prevent="deleteInscription({{ $inscription->id }})"> <i class="lni lni-trash text-danger"></i> </a>
                                         </td>
 									</tr>

@@ -7,6 +7,7 @@ use App\Models\Tarif;
 use App\Models\Statut;
 use App\Models\Activite;
 use App\Models\Individu;
+use App\Models\Paiement;
 use App\Models\ModeArrivee;
 use App\Models\OptionHebergement;
 use Illuminate\Database\Eloquent\Model;
@@ -34,6 +35,11 @@ class Inscription extends Model
     public function individus ()
     {
         return $this->belongsTo(Individu::class, 'individu_id');
+    }
+
+    public function paiement ()
+    {
+        return $this->hasOne(Paiement::class);
     }
 
     public function activites()

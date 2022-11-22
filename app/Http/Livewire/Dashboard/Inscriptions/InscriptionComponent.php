@@ -2,13 +2,18 @@
 
 namespace App\Http\Livewire\Dashboard\Inscriptions;
 
-use App\Models\Inscription;
 use App\Models\Statut;
 use Livewire\Component;
+use App\Models\Paiement;
+use App\Models\Inscription;
+use Livewire\WithFileUploads;
 
 class InscriptionComponent extends Component
 {
+    use WithFileUploads;
+
     public $libelle;
+    public $piece;
     public $statut_id;
     public $inscription_id;
 
@@ -24,46 +29,39 @@ class InscriptionComponent extends Component
         $this->reset([
         'statut_id',
         'libelle',
+        'piece',
         'inscription_id',
 
         ]);
     }
     // fonction verification des variables lors de la modification
-    public function updated($fields)
-    {
-        if ($this->inscription_id) {
-            $this->validateOnly($fields, [
-                'statut_id' => 'required',
-            ]);
-        } else {
-            $this->validateOnly($fields, [
-                'statut_id' => 'required',
-            ]);
-        }
-    }
+
     public function storeStatut()
     {
         // verification des variables lors de la l'enregistrement
 
-        if ($this->inscription_id) {
-            $this->validate([
-                'statut_id' => 'required',
 
-            ]);
-        } else {
-            $this->validate([
-                'statut_id' => 'required',
-            ]);
-        }
 
-        $myInscription = new Inscription();
         // verification du variable user_id pour savoir si c'est un enregistrement ou  modification
 
-        if ($this->inscription_id) {
-            $myInscription = Inscription::findOrFail($this->inscription_id);
-        }
-        $myInscription->statut_id = $this->statut_id;
+        $myInscription = Inscription::findOrFail($this->inscription_id);
+        $myInscription->statut_id = 3;
         $myInscription->save();
+
+        if($this->piece)
+        {
+
+            $mypaiement = Paiement::findOrFail($this->inscription_id);
+
+            $filename = time() . '.' . $this->piece->extension();
+            $path = $this->piece->storeAs(
+                'Pieces',
+                $filename,
+                'public'
+            );
+            $mypaiement->piece = $path;
+            $mypaiement->save();
+        }
 
         // verification du variable user_id pour envoir message d'enregistrement ou  de modification
 
@@ -78,7 +76,7 @@ class InscriptionComponent extends Component
         // mettre ajout
         $this->emit('storeInscription');
 
-        // return redirect()->route('admin.user-index');
+        return redirect()->route('admininscription');
     }
 
     // recuperation de l'element a modifier
@@ -87,6 +85,10 @@ class InscriptionComponent extends Component
         $this->inscription_id = $id;
         $myInscription = Inscription::findOrFail($this->inscription_id);
         $this->statut_id = $myInscription->statut_id;
+        $this->piece = $myInscription->paiement->piece;
+
+
+
     }
     // recuperation de l'element a supprimer
     public function deleteInscription($id)
@@ -107,6 +109,7 @@ class InscriptionComponent extends Component
     public function render()
     {
         $inscriptions = Inscription::where('isDelete', 0)->get();
+
         $statuts = Statut::where('isDelete', 0)->get();
         return view('livewire.dashboard.inscriptions.inscription-component',[
             'inscriptions' => $inscriptions,

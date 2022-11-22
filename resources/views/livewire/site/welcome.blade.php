@@ -113,13 +113,15 @@
                     <h3> <strong>QUI SOMMES NOUS</strong> </h3>
                     <p class="text-justify" style="text-align: justify">
                         Nous sommes des femmes de cœur appartenant à une organisation féminine, apolitique, non confessionnelle appelée International Inner Wheel.
-                        Cette organisation, la plus grande au monde compte environ 115 000 membres regroupés dans 4000 clubs répartis dans 177 districts.
-                        Elle siège à l’ONU avec deux (02) représentantes et un statut de consultant depuis 1988. Ainsi, l’Inner Wheel est consulté sur les sujets relatifs aux droits de l’homme et des enfants, aux droits de la femme, aux droits de la famille et des personnes âgées ainsi que sur les problèmes liés à la drogue.
+                        Cette organisation, la plus grande au monde compte environ 120 000 membres regroupés dans 4200 clubs répartis dans 182 districts.
+                        Elle siège à l’ONU avec six (06) représentantes et un statut de consultant depuis 1988. Ainsi, l’Inner Wheel est consulté sur les sujets relatifs aux droits de l’homme et des enfants, aux droits de la femme, aux droits de la famille et des personnes âgées ainsi que sur les problèmes liés à la drogue.
                         Fondée par les épouses des rotariens depuis le 10 janvier 1924, elle s’est ouverte à partir de 2012 à toutes les femmes capables d’offrir un peu de leur temps et de leurs ressources à travers l’amitié et le service aux femmes et aux enfants en situation difficile, nos cibles privilégiées.
+
                     </p>
                      <p class="text-justify" style="text-align: justify">
                         Ses valeurs sont le Service, l’Amitié et l’Entente Internationale.<br>
                         L’Inner Wheel s’investit dans les actions à caractère social. Il soutient des orphelinats, les malades mentaux, prend en charge des enfants en situation difficile pour leur scolarisation (construction de salles de classes ; dons de fournitures scolaires de bourses d’excellence ; etc.), les femmes vivant dans la précarité, etc.
+
                      </p>
                      <p class="text-justify" style="text-align: justify">
                         Le District 909 fait partie des 177 districts du monde et couvre 7 pays que sont :
@@ -135,13 +137,13 @@
                         </ul>
                         Le Gouverneur du District 909 pour l’année 2022-2023 est l’amie Gisèle ENIANLOKO MARTIN, de nationalité béninoise. L’année INNER WHEEL va du 1er juillet d’une année au 30 juin de l’année suivante.
 
-                        Durant chaque mandat, il se tient une Assemblée Générale Annuelle qui regroupe les membres de tous les pays du District, environ 200 personnes et se déroule dans le pays du Gouverneur. Ainsi donc, cette année, elle aura <strong>lieu à Cotonou au Bénin, du 1er au 04 Mars 2023.</strong>
-
+                        Durant chaque mandat, il se tient une Assemblée Générale Annuelle qui regroupe les membres de tous les pays du District, environ 200 personnes et se déroule dans le pays du Gouverneur. Ainsi donc, cette année, elle aura lieu à Cotonou au Bénin, du 1er au 04 Mars 2023.
                      </p>
                      <p class="text-justify" style="text-align: justify">
 
                         Les amies des autres districts sont également conviées. Ainsi, le District 915 est représenté par les amies du Cameroun et de la République Démocratique du Congo.
                         Certaines amies d’autres pays et d’autres districts sont également représentées à nos assemblées générales annuelles.
+
                      </p>
 
                 </div>
@@ -879,7 +881,7 @@
 
             <div class="section-header">
               <h2>Contactez Nous</h2>
-              <p>Nihil officia ut sint molestiae tenetur.</p>
+              <p>Pour plus d'informations veuillez nous contacter.</p>
             </div>
 
             <div class="row contact-info">

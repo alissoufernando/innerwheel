@@ -11,18 +11,18 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
-						<label for="validationCustom02" class="form-label">Nom d'utilisateur</label>
-                        <select class="form-control" wire:model.lazy='statut_id'>
-                            <option value="">Choisir un statut</option>
-                            @foreach ($statuts as $statut)
-                            <option value="{{ $statut->id }}">{{ $statut->libelle }}</option>
-                            @endforeach
-                        </select>
+						<label for="validationCustom02" class="form-label">Statut : </label>
+								<span class="badge bg-success">Validé</span>
+
+                    </div>
+                    <div class="col-md-12">
+						<label for="validationCustom02" class="form-label">Reçu du virement</label>
+                        <input class="form-control" type="file" name="" id="" wire:model="piece">
                     </div>
                 </div>
             </div>
             <div class="modal-footer float-md-start">
-                <button type="submit" class="btn btn-outline-primary btn-sm">Modifier</button>
+                <button type="submit" class="btn btn-outline-primary btn-sm">Valider l'inscription</button>
                 <button type="button" wire:click.prevent='resetInputFields' class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal">Annuler</button>
             </div>
             </form>
