@@ -175,7 +175,7 @@ h6 {
 #header #logo img {
   padding: 0;
   margin: 0;
-  max-height: 40px;
+  max-height: 70px;
 }
 
 @media (max-width: 992px) {
@@ -521,7 +521,7 @@ h6 {
 
 #hero h1 {
   color: #fff;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 56px;
   font-weight: 600;
   text-transform: uppercase;

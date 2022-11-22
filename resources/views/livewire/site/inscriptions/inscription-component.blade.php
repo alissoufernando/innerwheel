@@ -30,6 +30,9 @@
     #header{
         background-color:rgb(41, 41, 42);
     }
+    .scrollto{
+        color:black;
+    }
 </style>
 @endsection
 
@@ -136,6 +139,15 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    @if ($this->poste_id == 25)
+                    <div class="col-md-12 mb-4">
+                        <label class="form-label">Poste au sein du club<sup class="text-danger">*</sup></label>
+                        <input type="text" class="form-control" name="poste" placeholder="Saisir votre poste" wire:model="poste">
+                        @error('poste')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    @else
                     <div class="col-md-12 mb-4">
                         <label class="form-label">Poste au sein du club<sup class="text-danger">*</sup></label>
                         <select class="form-control" name="" id="" wire:model="poste_id">
@@ -148,6 +160,7 @@
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    @endif
                     <div class="col-md-12 mb-4">
 
                         <label class="form-label">Adresse <sup class="text-danger">*</sup></label>
@@ -239,12 +252,26 @@
                             <select class="form-control" name="" id="tarif_id" wire:model="tarif_id">
                                 <option value="">Veuillez choisir l'hébergement</option>
                                 @foreach ($tarifs as $tarif)
-                                <option value="{{ $tarif->id }}">{{ $tarif->libelle }} => {{ $tarif->prix }} FCFA => Place disponible: {{ $tarif->place }}</option>
+                                @if ($tarif->place != 0)
+                                <option value="{{ $tarif->id }}">{{ $tarif->libelle }} => Place disponible: {{ $tarif->place }}</option>
+                                @endif
                                 @endforeach
                             </select>
                         @error('tarif_id')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <label class="form-label">Comment? <sup class="text-danger">*</sup></label>
+                        <select class="form-control" name="" id="optionHebergement_id" wire:model="optionHebergement_id">
+                            <option value="">Simple ou Double</option>
+                            @foreach ($optionHebergements as $optionHebergement)
+                            <option value="{{ $optionHebergement->id }}">{{ $optionHebergement->libelle }} => {{ $optionHebergement->prix }} FCFA </option>
+                            @endforeach
+                        </select>
+                    @error('optionHebergement_id')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     </div>
                     @if ($this->compagnon == 1)
                     <div class="col-md-12 mb-4">
@@ -293,7 +320,7 @@
                     </div>
                     @if ($this->Mode_paiement_id == 1)
                     <div class="col-md-12 mb-4">
-                        <label class="form-label">La Facture de votre Virement</label>
+                        <label class="form-label">Reçu de Virement</label>
 
                         <input type="file" id="date_depart" class="form-control" wire:model="piece">
                     @error('piece')
@@ -321,7 +348,11 @@
                         <h6 class="text-center"> <strong>Informations personnelles</strong> </h6>
                         <p> <strong>Nom</strong>: {{ $this->nom }} </p>
                         <p> <strong>Prenoms</strong>: {{ $this->prenoms }} </p>
+                        @if ($this->poste_id == 25)
+                        <p> <strong>Poste</strong>: {{ $this->poste}}</p>
+                        @else
                         <p> <strong>Poste</strong>: {{ $this->posteInner->libelle }} </p>
+                        @endif
                         @if ($this->pay_id == 12)
                         <p> <strong>Pays</strong>: {{ $this->pays}}</p>
                         <p> <strong>Club</strong>: {{ $this->club}}</p>
@@ -339,10 +370,10 @@
                         <p> <strong>Date d'arrivée</strong>: {{ $this->date_arrivee }} </p>
                         <p> <strong>Date départ</strong>: {{ $this->date_depart }} </p>
                         @if ($this->hebergement_id == 2)
-                        <p> <strong>Herbegement</strong>: {{ $this->lieux->libelle }}</p>
+                        <p> <strong>Herbegement</strong>: {{ $this->Dhebergements->libelle }}</p>
                         @else
                         <p> <strong>Hôtel</strong>: {{ $this->lieux->libelle }}</p>
-                        <p> <strong>Herbegement</strong>: {{ $this->Dtarifs->libelle }} => {{ $this->Dtarifs->prix }} FCFA</p>
+                        <p> <strong>Herbegement</strong>: {{ $this->Dtarifs->libelle }} => {{ $this->DoptionHebergements->prix }} FCFA</p>
                         @endif
 
                         @if ($this->Dactivites->prix == 0)
@@ -379,10 +410,10 @@
                             @endif
                             @endforeach
                               <tr>
-                                @if ($this->hebergement_id !== 2)
+                                @if ($this->hebergement_id != 2)
                                 <td>3</td>
-                                <td>{{ $this->lieux->libelle }} : {{ $this->Dtarifs->libelle }}</td>
-                                <td>{{ $this->Dtarifs->prix }} FCFA</td>
+                                <td>{{ $this->lieux->libelle }} : {{ $this->Dtarifs->libelle }} => {{ $this->DoptionHebergements->libelle }}</td>
+                                <td>{{ $this->DoptionHebergements->prix }} FCFA</td>
                                 @endif
                               </tr>
 

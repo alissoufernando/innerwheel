@@ -2,13 +2,16 @@
 <style>
 .divimage img{
     width: 100%;
-    height: 100%;
+    /*height: 100%; */
 }
 
 /* .divtext{
     width: 100%;
     height: 100%;
 } */
+.scrollto{
+    color:black;
+}
 </style>
 
 
@@ -64,7 +67,7 @@
     <section id="hero">
         <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
           <h1 class="mb-4 pb-0">International Inner wheel <br><span> District 909</span> </h1>
-          <p class="mb-4 pb-0">Assemblée Générale Annuelle <br> <h4 style="color: white">COTONOU Du 01 au 04 Mars 2023</h4> </p>
+          <p class="mb-4 pb-0">Assemblée Générale Annuelle <br> <h4 style="color: white">COTONOU, du 01 au 04 Mars 2023</h4> </p>
           <a href="https://www.youtube.com/watch?v=-9AHvO-MfIk" class="glightbox play-btn mb-4"></a>
           <a href="{{ route('inscription') }}" class="about-btn scrollto">S'inscrire</a>
         </div>
@@ -573,7 +576,7 @@
           <div class="container" data-aos="fade-up">
             <div class="section-header">
               <h2>Les pays Membres</h2>
-              <p>Les differents pays membres du INTERNATIONAL INNER WHEEL DISTRICT 909</p>
+              <p>Les différents pays membres du INTERNATIONAL INNER WHEEL DISTRICT 909</p>
             </div>
           </div>
 
@@ -885,7 +888,7 @@
                     <div class="contact-phone">
                       <i class="bi bi-phone"></i>
                       <h3>Contact N°1</h3>
-                      <p>Gisèle ENIALOKO MARTIN</p>
+                      <p>Gisèle ENNIALOKO MARTIN</p>
                       <p>Gouverneur du District</p>
                       <p><a href="tel:+22997974054">(+229) 97 97 40 54</a></p>
                       <p><a href="mailto:virgoefr@yahoo.fr">virgoefr@yahoo.fr</a></p>
@@ -899,7 +902,7 @@
                   <i class="bi bi-phone"></i>
                   <h3>Contact N°2</h3>
                   <p>Rufine AGOSSOU</p>
-                      <p>Sécretaire du District</p>
+                      <p>Secrétaire du District</p>
                       <p><a href="tel:+22995053691">(+229) 95 05 36 91</a></p>
                       <p><a href="mailto:rufineagossou@gmail.com">rufineagossou@gmail.com</a></p>
 

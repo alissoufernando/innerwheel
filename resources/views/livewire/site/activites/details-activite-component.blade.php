@@ -48,6 +48,9 @@
 
   }
 }
+.scrollto{
+    color:black;
+}
 
 </style>
 @endsection
@@ -78,7 +81,7 @@
 
         <div class="container" data-aos="fade-up">
           <div class="section-header">
-            <h2>Détails de l'activité</h2>
+            <h2>{{ $activiteAction->name }}</h2>
             <p></p>
           </div>
         </div>

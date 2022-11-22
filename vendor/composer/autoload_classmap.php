@@ -56,6 +56,7 @@ return array(
     'App\\Models\\Lieu' => $baseDir . '/app/Models/Lieu.php',
     'App\\Models\\ModeArrivee' => $baseDir . '/app/Models/ModeArrivee.php',
     'App\\Models\\ModePaiement' => $baseDir . '/app/Models/ModePaiement.php',
+    'App\\Models\\OptionHebergement' => $baseDir . '/app/Models/OptionHebergement.php',
     'App\\Models\\Paiement' => $baseDir . '/app/Models/Paiement.php',
     'App\\Models\\Pays' => $baseDir . '/app/Models/Pays.php',
     'App\\Models\\Poste' => $baseDir . '/app/Models/Poste.php',

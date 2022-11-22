@@ -3,6 +3,9 @@
     #header{
         background-color:rgb(41, 41, 42);
     }
+    .scrollto{
+        color:black;
+    }
 </style>
 @endsection
 <div>

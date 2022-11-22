@@ -15,8 +15,12 @@ use App\Models\Hebergement;
 use App\Models\Inscription;
 use App\Models\ModeArrivee;
 use App\Models\ModePaiement;
+use App\Mail\InscriptionMail;
 use Livewire\WithFileUploads;
+use App\Models\OptionHebergement;
+use App\Mail\InscriptionAdminMail;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use StephaneAss\Payplus\Pay\PayPlus;
 
 class InscriptionComponent extends Component
@@ -42,6 +46,7 @@ class InscriptionComponent extends Component
     public $place;
     public $lieu_id;
     public $hebergement_id;
+    public $optionHebergement_id;
     public $Mode_paiement_id;
     public $Mode_paiement;
     public $activite_id;
@@ -49,8 +54,10 @@ class InscriptionComponent extends Component
     public $inscription_id_1;
     public $Dactivites;
     public $Dclub;
-    public $Dtarifs;
+    public $Dtarifs, $DoptionHebergements, $Dhebergements;
     public $piece;
+    public $poste;
+    public $lieux;
 
     public $compagnon, $compagnons;
 
@@ -78,11 +85,15 @@ class InscriptionComponent extends Component
                 $this->Mode_paiement = ModePaiement::where('id',$this->Mode_paiement_id)->first();
                 $this->mode_arrivee = ModeArrivee::where('id',$this->mode_arrivee_id)->first();
                 $this->posteInner = Poste::where('id',$this->poste_id)->first();
-                if($this->tarif_id)
+                $this->Dhebergements = Hebergement::where('id',$this->hebergement_id)->first();
+
+                if($this->optionHebergement_id)
                 {
                     $this->lieux = Lieu::where('id',$this->lieu_id)->first();
                     $this->Dtarifs = Tarif::where('id',$this->tarif_id)->first();
-                    $this->montant_total += $this->Dtarifs->prix;
+                    $this->DoptionHebergements = OptionHebergement::where('id',$this->optionHebergement_id)->first();
+
+                    $this->montant_total += $this->DoptionHebergements->prix;
                 }
         }
 
@@ -155,6 +166,8 @@ class InscriptionComponent extends Component
                     'Mode_paiement_id'=>'required',
                     'activite_id'=>'required',
                     'hebergement_id'=>'required',
+                    'optionHebergement_id'=>'required',
+
                 ]);
             }
 
@@ -183,14 +196,15 @@ class InscriptionComponent extends Component
                 $co->addItem($activite->libelle, 1, 25000, 25000, "Les frais obligatoires");
             }
         }
-        if($this->tarif_id)
+        if($this->optionHebergement_id)
         {
 
-            $Dtarifs = Tarif::where('id',$this->tarif_id)->first();
-            $this->montant_total += $Dtarifs->prix;
+            $DoptionHebergements = OptionHebergement::where('id',$this->optionHebergement_id)->first();
+
+            $this->montant_total += $DoptionHebergements->prix;
         }
 
-        $co->addItem($Dtarifs->libelle, 1, $Dtarifs->prix, $Dtarifs->prix, "Les frais d'hébergements");
+        $co->addItem($DoptionHebergements->libelle, 1, $DoptionHebergements->prix, $DoptionHebergements->prix, "Les frais d'hébergements");
         $total_amount=100;
         $co->setTotalAmount($total_amount);
         $co->setDescription("Inscription de la inner Wheel 2023");
@@ -220,6 +234,7 @@ class InscriptionComponent extends Component
             'activite_id',
             'Mode_paiement_id',
             'hebergement_id',
+            'optionHebergement_id',
             'nom',
             'prenoms',
             'club_id',
@@ -255,7 +270,14 @@ class InscriptionComponent extends Component
             $myIndividu->club_id = $this->club_id;
         }
 
-        $myIndividu->poste_id = $this->poste_id;
+        if($this->poste_id == 25)
+        {
+            $myIndividu->poste = $this->poste;
+        }else{
+
+            $myIndividu->poste_id = $this->poste_id;
+        }
+
         $myIndividu->adresse = $this->adresse;
         $myIndividu->tel = $this->tel;
         $myIndividu->email = $this->email;
@@ -267,9 +289,6 @@ class InscriptionComponent extends Component
 
 
         $myInscription->individu_id = $myIndividu->id;
-        $tarifs = Tarif::where('isDelete', 0)->where('id', $this->tarif_id)->first();
-        $tarifs->place -=1;
-        $tarifs->save();
         if($this->piece)
         {
             $filename = time() . '.' . $this->piece->extension();
@@ -282,7 +301,10 @@ class InscriptionComponent extends Component
 
         if($this->hebergement_id == 1)
         {
-            $myInscription->tarif_id = $this->tarif_id;
+            $tarifs = Tarif::where('isDelete', 0)->where('id', $this->tarif_id)->first();
+            $tarifs->place =$tarifs->place - 1;
+            $tarifs->save();
+            $myInscription->option_hebergement_id = $this->optionHebergement_id;
         }
         if($this->compagnons)
         {
@@ -308,14 +330,28 @@ class InscriptionComponent extends Component
         }
         $myPaiement->statut_id = 2;
         $myPaiement->save();
+
+
         if($this->Mode_paiement_id == 1)
         {
             $this->currentStep = 1;
             session()->flash('message', 'Inscription effectuée avec succès.');
             // return redirect()->to($URL_pay);
+            foreach (['adresseemail@innerwheel.com','adresseemaila@innerwheel.com','adresseemailaa@innerwheel.com'] as $recipient) {
+                Mail::to($recipient)->send( new InscriptionAdminMail($this->nom, $this->email,));
+            }
+
+            Mail::to($this->email)->send( new InscriptionMail($this->nom, $this->email,));
             $this->resetInputFields();
         }else{
+            foreach (['adresseemail@innerwheel.com','adresseemaila@innerwheel.com','adresseemailaa@innerwheel.com'] as $recipient) {
+                Mail::to($recipient)->send( new InscriptionAdminMail($this->nom, $this->email,));
+            }
+
+            Mail::to($this->email)->send( new InscriptionMail($this->nom, $this->email,));
             $this->sendRequest();
+            $this->resetInputFields();
+
         }
     }
 
@@ -328,25 +364,27 @@ class InscriptionComponent extends Component
 
     public function render()
     {
-        if($this->tarif_id)
+        if($this->optionHebergement_id)
         {
-            $tarif = Tarif::where('id',$this->tarif_id)->first();
-            $libelleHebergement = explode(' ',$tarif->libelle);
+            $optionHebergement = OptionHebergement::where('id',$this->optionHebergement_id)->first();
+            $libelleHebergement = explode(' ',$optionHebergement->libelle);
             $recherche = array_search("Double",$libelleHebergement);
-            if($recherche == false)
+            if($recherche === false)
             {
                 $this->compagnon = 0;
             }else{
                 $this->compagnon = 1;
 
             }
-            // dd($recherche);
+            //dd($this->compagnon);
         }
         $payss = Pays::where('isDelete', 0)->get();
         $postes = Poste::where('isDelete', 0)->get();
 
         $activites = Activite::where('isDelete', 0)->get();
         $lieus = Lieu::where('isDelete', 0)->where('hebergement_id', $this->hebergement_id)->get();
+        $optionHebergements = OptionHebergement::where('isDelete', 0)->where('tarif_id', $this->tarif_id)->get();
+
         $tarifs = Tarif::where('isDelete', 0)->where('lieu_id', $this->lieu_id)->get();
 
         $mode_arriveess = ModeArrivee::where('isDelete', 0)->get();
@@ -364,6 +402,7 @@ class InscriptionComponent extends Component
             'activites' => $activites,
             'modepaiments' => $modepaiments,
             'payss' => $payss,
+            'optionHebergements' => $optionHebergements,
         ])->layout('layouts.site');
     }
 }

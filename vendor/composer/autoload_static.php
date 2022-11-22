@@ -622,6 +622,7 @@ class ComposerStaticInitc91808e2df6ef6ab5cbabb7ed1502dbe
         'App\\Models\\Lieu' => __DIR__ . '/../..' . '/app/Models/Lieu.php',
         'App\\Models\\ModeArrivee' => __DIR__ . '/../..' . '/app/Models/ModeArrivee.php',
         'App\\Models\\ModePaiement' => __DIR__ . '/../..' . '/app/Models/ModePaiement.php',
+        'App\\Models\\OptionHebergement' => __DIR__ . '/../..' . '/app/Models/OptionHebergement.php',
         'App\\Models\\Paiement' => __DIR__ . '/../..' . '/app/Models/Paiement.php',
         'App\\Models\\Pays' => __DIR__ . '/../..' . '/app/Models/Pays.php',
         'App\\Models\\Poste' => __DIR__ . '/../..' . '/app/Models/Poste.php',

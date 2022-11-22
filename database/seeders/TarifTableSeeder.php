@@ -18,224 +18,184 @@ class TarifTableSeeder extends Seeder
         DB::table('tarifs')->insert([
 
             [
-                'libelle' => 'Chambre double climatisée standard - Simple',
+                'libelle' => 'Chambre double climatisée standard',
                 'lieu_id' => 2,
-                'prix' => "41500",
+                //'prix' => "41500",
                 'place' => "8",
+                'placeI' => "8",
+
 
             ],
-            [
-                'libelle' => 'Chambre double climatisée standard - Double',
-                'lieu_id' => 2,
-                'prix' => "53000",
-                'place' => "8",
 
-            ],
+
             [
-                'libelle' => 'Chambre double climatisée privilège - Simple',
+                'libelle' => 'Chambre double climatisée privilège',
                 'lieu_id' => 2,
-                'prix' => "46500",
+                //'prix' => "46500",
                 'place' => "13",
-
-            ],
-            [
-                'libelle' => 'Chambre double climatisée privilège - Double',
-                'lieu_id' => 2,
-                'prix' => "58000",
-                'place' => "13",
+                'placeI' => "13",
 
             ],
 
+
             [
-                'libelle' => 'Chambre double climatisée prestige - Simple',
+                'libelle' => 'Chambre double climatisée prestige',
                 'lieu_id' => 2,
-                'prix' => "61500",
+                //'prix' => "61500",
                 'place' => "10",
+                'placeI' => "10",
 
             ],
-            [
-                'libelle' => 'Chambre double climatisée prestige - Double',
-                'lieu_id' => 2,
-                'prix' => "73000",
-                'place' => "10",
 
-            ],
+
             [
-                'libelle' => 'Suite royale - Simple',
+                'libelle' => 'Suite royale',
                 'lieu_id' => 2,
-                'prix' => "106500",
+                //'prix' => "118000",
                 'place' => "2",
+                'placeI' => "2",
 
             ],
             [
-                'libelle' => 'Suite royale - Double',
-                'lieu_id' => 2,
-                'prix' => "118000",
-                'place' => "2",
-
-            ],
-            [
-                'libelle' => 'Chambre double climatisée standard - Simple',
+                'libelle' => 'Chambre double climatisée standard',
                 'lieu_id' => 3,
-                'prix' => "25000",
+                //'prix' => "25000",
                 'place' => "26",
+                'placeI' => "26",
 
             ],
-            [
-                'libelle' => 'Chambre double climatisée standard - Double',
-                'lieu_id' => 3,
-                'prix' => "25000",
-                'place' => "26",
 
-            ],
             [
-                'libelle' => 'Chambre double climatisée prestige - Simple',
+                'libelle' => 'Chambre double climatisée prestige',
                 'lieu_id' => 3,
-                'prix' => "40000",
+                //'prix' => "40000",
                 'place' => "4",
+                'placeI' => "4",
 
             ],
-            [
-                'libelle' => 'Chambre double climatisée prestige - Double',
-                'lieu_id' => 3,
-                'prix' => "40000",
-                'place' => "4",
 
-            ],
             [
-                'libelle' => 'Appartement 1  - Nuitée',
+                'libelle' => 'Appartement 1',
                 'lieu_id' => 3,
-                'prix' => "66500",
+                //'prix' => "66500",
                 'place' => "3",
+                'placeI' => "3",
 
             ],
+
+
             [
-                'libelle' => 'Appartement 1  - Mois',
+                'libelle' => 'Appartement 2',
                 'lieu_id' => 3,
-                'prix' => "500000",
+                //'prix' => "700000",
                 'place' => "3",
+                'placeI' => "3",
 
             ],
             [
-                'libelle' => 'Appartement 2  - Nuitée',
-                'lieu_id' => 3,
-                'prix' => "86500",
-                'place' => "3",
-
-            ],
-            [
-                'libelle' => 'Appartement 2  - Mois',
-                'lieu_id' => 3,
-                'prix' => "700000",
-                'place' => "3",
-
-            ],
-            [
-                'libelle' => 'Chambre double climatisée standard 1 - Simple ou Double',
+                'libelle' => 'Chambre double climatisée standard 1',
                 'lieu_id' => 4,
-                'prix' => "24000",
+                //'prix' => "24000",
                 'place' => "2",
+                'placeI' => "2",
 
             ],
 
             [
-                'libelle' => 'Chambre double climatisée standard 2 - Simple ou Double',
+                'libelle' => 'Chambre double climatisée standard 2',
                 'lieu_id' => 4,
-                'prix' => "28000",
+                //'prix' => "28000",
                 'place' => "2",
+                'placeI' => "2",
 
             ],
 
             [
-                'libelle' => 'Chambre double climatisée atchovi - Simple ou Double',
+                'libelle' => 'Chambre double climatisée atchovi',
                 'lieu_id' => 4,
-                'prix' => "33500",
+                //'prix' => "33500",
                 'place' => "1",
+                'placeI' => "1",
 
             ],
 
             [
-                'libelle' => 'Chambre double climatisée atcho - Simple ou Double',
+                'libelle' => 'Chambre double climatisée atcho',
                 'lieu_id' => 4,
-                'prix' => "40500",
+                //'prix' => "40500",
                 'place' => "1",
+                'placeI' => "1",
 
             ],
 
             [
                 'libelle' => 'Chambre SINGLE ',
                 'lieu_id' => 5,
-                'prix' => "15000",
+                //'prix' => "15000",
                 'place' => "6",
+                'placeI' => "6",
 
             ],
             [
-                'libelle' => 'Chambre double climatisée 1 - Simple ou Double',
+                'libelle' => 'Chambre double climatisée 1',
                 'lieu_id' => 5,
-                'prix' => "20500",
+                //'prix' => "20500",
                 'place' => "8",
+                'placeI' => "8",
 
             ],
             [
-                'libelle' => 'Chambre double climatisée 2 - Simple ou Double',
+                'libelle' => 'Chambre double climatisée 2',
                 'lieu_id' => 5,
-                'prix' => "25000",
+                //'prix' => "25000",
                 'place' => "6",
+                'placeI' => "6",
 
             ],
             [
-                'libelle' => 'Chambre double climatisée 3 - Simple ou Double',
+                'libelle' => 'Chambre double climatisée 3',
                 'lieu_id' => 5,
-                'prix' => "33000",
+                //'prix' => "33000",
                 'place' => "10",
+                'placeI' => "10",
 
             ],
             [
-                'libelle' => 'Résidence R+2 - 6 chambres',
+                'libelle' => 'Résidence R+2',
                 'lieu_id' => 6,
-                'prix' => "150000",
+                //'prix' => "150000",
                 'place' => "6",
+                'placeI' => "6",
 
             ],
 
             [
-                'libelle' => 'Chambre standard NOVOTEL - Simple',
+                'libelle' => 'Chambre standard NOVOTEL',
                 'lieu_id' => 7,
-                'prix' => "133500",
+                //'prix' => "133500",
                 'place' => "110",
+                'placeI' => "110",
 
             ],
 
             [
-                'libelle' => 'Chambre standard NOVOTEL - Double',
+                'libelle' => 'Suite NOVOTEL Un salon + une chambre',
                 'lieu_id' => 7,
-                'prix' => "135000",
-                'place' => "110",
-
-            ],
-
-            [
-                'libelle' => 'Suite NOVOTEL Un salon + une chambre - Double',
-                'lieu_id' => 7,
-                'prix' => "230000",
+                //'prix' => "230000",
                 'place' => "0",
+                'placeI' => "0",
 
             ],
 
             [
-                'libelle' => 'Chambre double climatisée standard IBIS - Simple',
+                'libelle' => 'Chambre double climatisée standard IBIS',
                 'lieu_id' => 7,
-                'prix' => "63250",
+                //'prix' => "63250",
                 'place' => "101",
+                'placeI' => "101",
 
             ],
-            [
-                'libelle' => 'Chambre double climatisée standard IBIS - Double',
-                'lieu_id' => 7,
-                'prix' => "64750",
-                'place' => "101",
 
-            ],
         ]);
     }
 }

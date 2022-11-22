@@ -8,6 +8,7 @@ use App\Models\Statut;
 use App\Models\Activite;
 use App\Models\Individu;
 use App\Models\ModeArrivee;
+use App\Models\OptionHebergement;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -25,9 +26,9 @@ class Inscription extends Model
         return $this->belongsTo(Statut::class, 'statut_id');
     }
 
-    public function tarif ()
+    public function option_hebergement ()
     {
-        return $this->belongsTo(Tarif::class, 'tarif_id');
+        return $this->belongsTo(OptionHebergement::class, 'option_hebergement_id');
     }
 
     public function individus ()

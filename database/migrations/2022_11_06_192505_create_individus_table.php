@@ -17,6 +17,7 @@ class CreateIndividusTable extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenoms');
+            $table->string('poste')->nullable();
             $table->foreignId('poste_id')->nullable()->constrained('postes')->onUpdate('cascade')->onDelete('cascade');
             $table->string('adresse');
             $table->string('email');
