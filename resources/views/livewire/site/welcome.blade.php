@@ -890,7 +890,7 @@
                     <div class="contact-phone">
                       <i class="bi bi-phone"></i>
                       <h3>Contact N°1</h3>
-                      <p>Gisèle ENNIALOKO MARTIN</p>
+                      <p>Gisèle ENIANLOKO MARTIN</p>
                       <p>Gouverneur du District</p>
                       <p><a href="tel:+22997974054">(+229) 97 97 40 54</a></p>
                       <p><a href="mailto:virgoefr@yahoo.fr">virgoefr@yahoo.fr</a></p>

@@ -47,8 +47,8 @@
           <div class="speaker" data-aos="fade-up" data-aos-delay="100">
             <img src="{{ asset('storage/Activites')}}/{{$images[0]}}" alt="{{$activiteAction->name}}" alt="Speaker 1" class="img-fluid">
             <div class="details">
-              <h3><a href="{{ route('activite-details', ['id' => $activiteAction->id])}}">Brenden Legros</a></h3>
-              <p>{{ $activiteAction->name }}</p>
+             <a href="{{ route('activite-details', ['id' => $activiteAction->id])}}"> <h3>{{ $activiteAction->name }}</h3></a>
+              <p>{{ $activiteAction->description }}</p>
               <div class="social">
                 <a href=""><i class="bi bi-twitter"></i></a>
                 <a href=""><i class="bi bi-facebook"></i></a>
