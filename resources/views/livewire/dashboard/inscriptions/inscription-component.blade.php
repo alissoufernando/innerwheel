@@ -46,8 +46,8 @@
                                     @foreach ($inscriptions as $inscription)
                                     <tr>
 										<td>{{ $i++ }}</td>
-										<td>{{ $inscription->individus->nom }}</td>
-                                        <td>{{ $inscription->individus->prenoms }}</td>
+										<td>{{ $inscription->individu->nom }}</td>
+                                        <td>{{ $inscription->individu->prenoms }}</td>
                                         <td>
                                             @if ($inscription->statut_id == 1)
                                             <span class="badge bg-danger">{{ $inscription->statut->libelle }}</span>

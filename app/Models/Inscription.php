@@ -32,7 +32,7 @@ class Inscription extends Model
         return $this->belongsTo(OptionHebergement::class, 'option_hebergement_id');
     }
 
-    public function individus ()
+    public function individu ()
     {
         return $this->belongsTo(Individu::class, 'individu_id');
     }

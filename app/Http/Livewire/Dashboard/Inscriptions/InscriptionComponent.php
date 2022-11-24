@@ -2,11 +2,15 @@
 
 namespace App\Http\Livewire\Dashboard\Inscriptions;
 
+use App\Models\Action;
 use App\Models\Statut;
 use Livewire\Component;
 use App\Models\Paiement;
 use App\Models\Inscription;
 use Livewire\WithFileUploads;
+use App\Mail\InscriptionComfirmMail;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class InscriptionComponent extends Component
 {
@@ -48,20 +52,32 @@ class InscriptionComponent extends Component
         $myInscription->statut_id = 3;
         $myInscription->save();
 
-        if($this->piece)
+        if($myInscription->paiement->piece)
         {
 
-            $mypaiement = Paiement::findOrFail($this->inscription_id);
 
-            $filename = time() . '.' . $this->piece->extension();
-            $path = $this->piece->storeAs(
-                'Pieces',
-                $filename,
-                'public'
-            );
-            $mypaiement->piece = $path;
-            $mypaiement->save();
+        }else
+        {
+            if($this->piece)
+            {
+
+                $mypaiement = Paiement::findOrFail($this->inscription_id);
+
+                $filename = time() . '.' . $this->piece->extension();
+                $path = $this->piece->storeAs(
+                    'Pieces',
+                    $filename,
+                    'public'
+                );
+                $mypaiement->piece = $path;
+                $mypaiement->save();
+            }
         }
+
+        $myAction = new Action();
+        $myAction->user_id = Auth::user()->id;
+        $myAction->inscription_id = $myInscription->id;
+        $myAction->save();
 
         // verification du variable user_id pour envoir message d'enregistrement ou  de modification
 
@@ -71,12 +87,14 @@ class InscriptionComponent extends Component
 
             session()->flash('message', 'Enregistrement effectué avec succès.');
         }
+        // mettre ajout
+
+        $this->emit('storeInscription');
+        Mail::to($myInscription->individu->email)->send( new InscriptionComfirmMail($myInscription->individu->nom, $myInscription->individu->email,));
         // vider les champs apres l'enregistrement ou la modification
         $this->resetInputFields();
-        // mettre ajout
-        $this->emit('storeInscription');
-
         return redirect()->route('admininscription');
+        
     }
 
     // recuperation de l'element a modifier
