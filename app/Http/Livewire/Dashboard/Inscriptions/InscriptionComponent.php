@@ -20,6 +20,7 @@ class InscriptionComponent extends Component
     public $piece;
     public $statut_id;
     public $inscription_id;
+    public $filtre = "";
 
 
     public $deleteIdBeingRemoved = null;
@@ -94,7 +95,7 @@ class InscriptionComponent extends Component
         // vider les champs apres l'enregistrement ou la modification
         $this->resetInputFields();
         return redirect()->route('admininscription');
-        
+
     }
 
     // recuperation de l'element a modifier
@@ -126,7 +127,23 @@ class InscriptionComponent extends Component
     }
     public function render()
     {
-        $inscriptions = Inscription::where('isDelete', 0)->get();
+        if($this->filtre == 1)
+        {
+            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->get();
+        }
+        if($this->filtre == 2)
+        {
+            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->get();
+        }
+        if($this->filtre == 3)
+        {
+            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->get();
+            // dd($inscriptions);
+        }
+        if($this->filtre == "")
+        {
+            $inscriptions = Inscription::where('isDelete', 0)->get();
+        }
 
         $statuts = Statut::where('isDelete', 0)->get();
         return view('livewire.dashboard.inscriptions.inscription-component',[

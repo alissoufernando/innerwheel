@@ -58,6 +58,8 @@ class InscriptionComponent extends Component
     public $piece;
     public $poste;
     public $lieux;
+    public $indicatif;
+
 
     public $compagnon, $compagnons;
 
@@ -128,6 +130,7 @@ class InscriptionComponent extends Component
                     'prenoms'=>'required',
                     'adresse'=>'required',
                     'poste_id'=>'required',
+                    'indicatif'=>'required',
                     'tel'=>'required',
                     'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
                 ]);
@@ -140,6 +143,7 @@ class InscriptionComponent extends Component
                     'poste_id'=>'required',
                     'adresse'=>'required',
                     'tel'=>'required',
+                    'indicatif'=>'required',
                     'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
                 ]);
             }
@@ -279,7 +283,7 @@ class InscriptionComponent extends Component
         }
 
         $myIndividu->adresse = $this->adresse;
-        $myIndividu->tel = $this->tel;
+        $myIndividu->tel = $this->indicatif.$this->tel;
         $myIndividu->email = $this->email;
         $myIndividu->save();
 
@@ -380,10 +384,11 @@ class InscriptionComponent extends Component
         }
         $payss = Pays::where('isDelete', 0)->get();
         $postes = Poste::where('isDelete', 0)->get();
-
+        $paysIndicatifs = Pays::where('isDelete', 0)->where('indicatif', '!=' , "0000")->get();
         $activites = Activite::where('isDelete', 0)->get();
         $lieus = Lieu::where('isDelete', 0)->where('hebergement_id', $this->hebergement_id)->get();
         $optionHebergements = OptionHebergement::where('isDelete', 0)->where('tarif_id', $this->tarif_id)->get();
+        // dd($optionHebergements);
 
         $tarifs = Tarif::where('isDelete', 0)->where('lieu_id', $this->lieu_id)->get();
 
@@ -402,6 +407,7 @@ class InscriptionComponent extends Component
             'activites' => $activites,
             'modepaiments' => $modepaiments,
             'payss' => $payss,
+            'paysIndicatifs' => $paysIndicatifs,
             'optionHebergements' => $optionHebergements,
         ])->layout('layouts.site');
     }

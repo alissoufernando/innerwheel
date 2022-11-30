@@ -13,6 +13,7 @@ use App\Http\Livewire\Dashboard\Activites\AddComponent;
 use App\Http\Livewire\Dashboard\Activites\EditComponent;
 use App\Http\Livewire\Dashboard\Administration\User\UserComponent;
 use App\Http\Livewire\Dashboard\Administration\Roles\RoleComponent;
+use App\Http\Livewire\Dashboard\Hebergement\HebergementComponent;
 use App\Http\Livewire\Dashboard\Inscriptions\InscriptionComponent as InscriptionsInscriptionComponent;
 use App\Http\Livewire\Site\Activites\ActiviteComponent;
 use App\Http\Livewire\Site\Activites\DetailsActiviteComponent;
@@ -58,6 +59,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),  'verified']
     Route::prefix('admin')->group(function () {
             Route::get('/liste-inscriptions', InscriptionsInscriptionComponent::class)->name('admininscription');
 
+            Route::get('/listes-hebergement', HebergementComponent::class)->name('admin.heberg-index');
 
             Route::get('/liste-activites', ActivitesActiviteComponent::class)->name('admin.activite-index');
             Route::get('/ajouter-activite', AddComponent::class)->name('admin.activite-add');

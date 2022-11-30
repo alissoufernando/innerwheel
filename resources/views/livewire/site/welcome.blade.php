@@ -578,7 +578,7 @@
           <div class="container" data-aos="fade-up">
             <div class="section-header">
               <h2>Les pays Membres</h2>
-              <p>Les différents pays membres du INTERNATIONAL INNER WHEEL DISTRICT 909</p>
+              <p>Les différents pays du D909 de l'international INNER WHEEL</p>
             </div>
           </div>
 

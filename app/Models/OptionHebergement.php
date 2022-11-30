@@ -13,6 +13,6 @@ class OptionHebergement extends Model
     protected $guarded = [];
     public function tarifs ()
     {
-        return $this->belongsTo(Tarif::class);
+        return $this->belongsTo(Tarif::class,'tarif_id');
     }
 }

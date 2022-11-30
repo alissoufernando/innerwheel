@@ -19,40 +19,64 @@ class PaysDepartementsVilleSeeder extends Seeder
 
         [
         'Libelle' => 'Bénin',
+        'indicatif' => '00229',
+
         ],
 
         [
         'Libelle' => 'Burkina-Faso',
+        'indicatif' => '00226',
+
         ],
         [
         'Libelle' => 'Côte d’Ivoire',
+        'indicatif' => '00225',
+
         ],
         [
         'Libelle' => 'Guinée Conakry',
+        'indicatif' => '00224',
+
         ],
         [
         'Libelle' => 'Mali ',
+        'indicatif' => '00223',
+
         ],
         [
         'Libelle' => 'Sénégal',
+        'indicatif' => '00221',
+
         ],
         [
         'Libelle' => 'Togo ',
+        'indicatif' => '00228',
+
         ],
         [
         'Libelle' => 'Cameroun',
+        'indicatif' => '00237',
+
         ],
         [
         'Libelle' => 'RDC',
+        'indicatif' => '00243',
+
         ],
         [
         'Libelle' => 'Nigéria',
+        'indicatif' => '00234',
+
         ],
         [
         'Libelle' => 'France ',
+        'indicatif' => '0033',
+
         ],
         [
         'Libelle' => 'A préciser',
+        'indicatif' => '0000',
+
         ],
 
         ]);

@@ -4,6 +4,7 @@ namespace App\Actions\Fortify;
 
 use App\Models\Role;
 use App\Models\User;
+use App\Models\RoleUser;
 use Laravel\Jetstream\Jetstream;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -35,7 +36,10 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
         $userRole = Role::where('name' ,'Utilisateur')->first();
-        $user->roles()->attach($userRole);
+        $utilisateurR = new RoleUser();
+        $utilisateurR->user_id = $user->id;
+        $utilisateurR->role_id = $userRole->id;
+        $utilisateurR->save();
         return $user;
 
     }

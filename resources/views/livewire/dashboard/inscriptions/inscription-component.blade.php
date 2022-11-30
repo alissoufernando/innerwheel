@@ -12,14 +12,26 @@
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a></li>
-								<li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Inscriptions</a></li>
 								<li class="breadcrumb-item active" aria-current="page">Listes des Inscriptions</li>
 							</ol>
 						</nav>
 					</div>
 				</div>
 				<!--end breadcrumb-->
-				<h6 class="mb-0 text-uppercase">Liste des Inscriptions</h6>
+                <div class="row d-flex">
+                    <div class="col-md-6 d-flex">
+                        <h6 class="mb-0 text-uppercase">Liste des Inscriptions</h6>
+                    </div>
+                    <div class="col-md-6 d-flex">
+                        <h4>Filtre: </h4>
+                        <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" wire:model="filtre">
+                            <option selected>Tout</option>
+                            <option value="1">Inscriptions Rejetée</option>
+                            <option value="2">Inscriptions En cours de traitement</option>
+                            <option value="3">Inscriptions validée</option>
+                        </select>
+                    </div>
+                </div>
 				<hr/>
 				<div class="card">
 					<div class="card-body">

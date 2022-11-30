@@ -18,28 +18,28 @@ class OptionHebergementTableSeeder extends Seeder
         DB::table('option_hebergements')->insert([
 
             [
-                'libelle' => 'Simple - Nuitée',
+                'libelle' => 'Simple - Une Nuitée',
                 'tarif_id' => 1,
                 'prix' => "41500",
                 //'place' => "8",
 
             ],
             [
-                'libelle' => 'Double - Nuitée',
+                'libelle' => 'Double - Une Nuitée',
                 'tarif_id' => 1,
                 'prix' => "53000",
                 //'place' => "8",
 
             ],
             [
-                'libelle' => 'Simple - Nuitée',
+                'libelle' => 'Simple - Une Nuitée',
                 'tarif_id' => 2,
                 'prix' => "46500",
                 //'place' => "13",
 
             ],
             [
-                'libelle' => 'Double - Nuitée',
+                'libelle' => 'Double - Une Nuitée',
                 'tarif_id' => 2,
                 'prix' => "58000",
                 //'place' => "13",
@@ -47,63 +47,63 @@ class OptionHebergementTableSeeder extends Seeder
             ],
 
             [
-                'libelle' => 'Simple - Nuitée',
+                'libelle' => 'Simple - Une Nuitée',
                 'tarif_id' => 3,
                 'prix' => "61500",
                 //'place' => "10",
 
             ],
             [
-                'libelle' => 'Double - Nuitée',
+                'libelle' => 'Double - Une Nuitée',
                 'tarif_id' => 3,
                 'prix' => "73000",
                 //'place' => "10",
 
             ],
             [
-                'libelle' => 'Simple - Nuitée',
+                'libelle' => 'Simple - Une Nuitée',
                 'tarif_id' => 4,
                 'prix' => "106500",
                 //'place' => "2",
 
             ],
             [
-                'libelle' => 'Double - Nuitée',
+                'libelle' => 'Double - Une Nuitée',
                 'tarif_id' => 4,
                 'prix' => "118000",
                 //'place' => "2",
 
             ],
             [
-                'libelle' => 'Simple - Nuitée',
+                'libelle' => 'Simple - Une Nuitée',
                 'tarif_id' => 5,
                 'prix' => "25000",
                 //'place' => "26",
 
             ],
             [
-                'libelle' => 'Double - Nuitée',
+                'libelle' => 'Double - Une Nuitée',
                 'tarif_id' => 5,
                 'prix' => "25000",
                 //'place' => "26",
 
             ],
             [
-                'libelle' => 'Simple - Nuitée',
+                'libelle' => 'Simple - Une Nuitée',
                 'tarif_id' => 6,
                 'prix' => "40000",
                 //'place' => "4",
 
             ],
             [
-                'libelle' => 'Double - Nuitée',
+                'libelle' => 'Double - Une Nuitée',
                 'tarif_id' => 6,
                 'prix' => "40000",
                 //'place' => "4",
 
             ],
             [
-                'libelle' => 'appartement - Nuitée',
+                'libelle' => 'appartement - Une Nuitée',
                 'tarif_id' => 7,
                 'prix' => "66500",
                 //'place' => "3",
@@ -117,7 +117,7 @@ class OptionHebergementTableSeeder extends Seeder
 
             ],
             [
-                'libelle' => 'appartement - Nuitée',
+                'libelle' => 'appartement - Une Nuitée',
                 'tarif_id' => 8,
                 'prix' => "86500",
                 //'place' => "3",
@@ -131,14 +131,14 @@ class OptionHebergementTableSeeder extends Seeder
 
             ],
             [
-                'libelle' => 'Simple - Nuitée',
+                'libelle' => 'Simple - Une Nuitée',
                 'tarif_id' => 9,
                 'prix' => "24000",
                 //'place' => "2",
 
             ],
             [
-                'libelle' => 'Double - Nuitée',
+                'libelle' => 'Double - Une Nuitée',
                 'tarif_id' => 9,
                 'prix' => "24000",
                 //'place' => "2",
@@ -146,14 +146,14 @@ class OptionHebergementTableSeeder extends Seeder
             ],
 
             [
-                'libelle' => 'Simple - Nuitée',
+                'libelle' => 'Simple - Une Nuitée',
                 'tarif_id' => 10,
                 'prix' => "28000",
                 //'place' => "2",
 
             ],
             [
-                'libelle' => 'Double - Nuitée',
+                'libelle' => 'Double - Une Nuitée',
                 'tarif_id' => 10,
                 'prix' => "28000",
                 //'place' => "2",
@@ -161,14 +161,14 @@ class OptionHebergementTableSeeder extends Seeder
             ],
 
             [
-                'libelle' => 'Double - Nuitée',
+                'libelle' => 'Double - Une Nuitée',
                 'tarif_id' => 11,
                 'prix' => "33500",
                 //'place' => "1",
 
             ],
             [
-                'libelle' => 'Simple - Nuitée',
+                'libelle' => 'Simple - Une Nuitée',
                 'tarif_id' => 11,
                 'prix' => "33500",
                 //'place' => "1",
@@ -176,14 +176,14 @@ class OptionHebergementTableSeeder extends Seeder
             ],
 
             [
-                'libelle' => 'Simple - Nuitée',
+                'libelle' => 'Simple - Une Nuitée',
                 'tarif_id' => 12,
                 'prix' => "40500",
                 //'place' => "1",
 
             ],
             [
-                'libelle' => 'Double - Nuitée',
+                'libelle' => 'Double - Une Nuitée',
                 'tarif_id' => 12,
                 'prix' => "40500",
                 //'place' => "1",
@@ -191,49 +191,49 @@ class OptionHebergementTableSeeder extends Seeder
             ],
 
             [
-                'libelle' => 'Simple - Nuitée',
+                'libelle' => 'Simple - Une Nuitée',
                 'tarif_id' => 13,
                 'prix' => "15000",
                 //'place' => "6",
 
             ],
             [
-                'libelle' => 'Double - Nuitée',
+                'libelle' => 'Double - Une Nuitée',
                 'tarif_id' => 14,
                 'prix' => "20500",
                 //'place' => "8",
 
             ],
             [
-                'libelle' => 'Simple - Nuitée',
+                'libelle' => 'Simple - Une Nuitée',
                 'tarif_id' => 14,
                 'prix' => "20500",
                 //'place' => "8",
 
             ],
             [
-                'libelle' => 'Double - Nuitée',
+                'libelle' => 'Double - Une Nuitée',
                 'tarif_id' => 15,
                 'prix' => "25000",
                 //'place' => "6",
 
             ],
             [
-                'libelle' => 'Simple - Nuitée',
+                'libelle' => 'Simple - Une Nuitée',
                 'tarif_id' => 15,
                 'prix' => "25000",
                 //'place' => "6",
 
             ],
             [
-                'libelle' => 'Simple - Nuitée',
+                'libelle' => 'Simple - Une Nuitée',
                 'tarif_id' => 16,
                 'prix' => "33000",
                 //'place' => "10",
 
             ],
             [
-                'libelle' => 'Double - Nuitée',
+                'libelle' => 'Double - Une Nuitée',
                 'tarif_id' => 16,
                 'prix' => "33000",
                 //'place' => "10",

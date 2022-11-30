@@ -13,7 +13,7 @@ class Tarif extends Model
     protected $guarded = [];
     public function lieu()
     {
-        return $this->belongsTo(Lieu::class,);
+        return $this->belongsTo(Lieu::class);
     }
 
 }

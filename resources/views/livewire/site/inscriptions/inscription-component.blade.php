@@ -172,15 +172,29 @@
                     </div>
                     <div class="col-md-12 mb-4">
                         <label class="form-label">Téléphone <sup class="text-danger">*</sup></label>
+                        <div class="row">
+                            <div class="col-md-2 mr-0">
+                                @if ($this->pay_id == 12)
 
-                        <input type="tel" class="form-control" placeholder="Saisir votre numero" wire:model="tel">
+                                <input type="text" class="form-control col-md-2" placeholder="EX:00229" wire:model="indicatif">
+                                @else
+                                <select class="form-control" name="" id="indicatif" wire:model="indicatif">
+                                    @foreach ($paysIndicatifs as $paysIndicatif)
+                                    <option value="{{ $paysIndicatif->indicatif }}">{{ $paysIndicatif->indicatif }}</option>
+                                    @endforeach
+                                </select>
+                                @endif
+                            </div>
+                            <div class="col-md-10 ml-0">
+                                <input type="tel" class="form-control col-md-2" placeholder="Saisir votre numero" wire:model="tel">
+                            </div>
+                        </div>
                         @error('tel')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-12 mb-4">
                         <label class="form-label">E-mail <sup class="text-danger">*</sup></label>
-
                         <input type="text" class="form-control" placeholder="Saisir votre mail" wire:model="email">
                         @error('email')
                             <span class="text-danger">{{ $message }}</span>
@@ -334,7 +348,7 @@
                 @if ($this->currentStep == 3)
                 <div class="col-md-6 shadow">
                     <div class="col-md-12 etape">
-                        <h5 class="text-center" >Etape 3 : Recaptulation de mes informations</h5>
+                        <h5 class="text-center" >Etape 3 : Récapitulation de mes informations</h5>
                     </div>
                     <div class="col-md-12 mb-4">
                         <h6 class="text-center"> <strong>Frais obligatoire</strong> </h6>
@@ -362,7 +376,7 @@
                         @endif
                         <p> <strong>E-mail</strong>: {{ $this->email }} </p>
                         <p> <strong>Adresse</strong>: {{ $this->adresse }} </p>
-                        <p> <strong>Télephone</strong>: {{ $this->tel }} </p>
+                        <p> <strong>Télephone</strong>: {{ $this->indicatif.$this->tel }} </p>
                     </div>
                     <div class="col-md-12 mb-4">
                         <h6 class="text-center"> <strong>Informations relatives au séjour</strong> </h6>
@@ -370,10 +384,10 @@
                         <p> <strong>Date d'arrivée</strong>: {{ $this->date_arrivee }} </p>
                         <p> <strong>Date départ</strong>: {{ $this->date_depart }} </p>
                         @if ($this->hebergement_id == 2)
-                        <p> <strong>Herbegement</strong>: {{ $this->Dhebergements->libelle }}</p>
+                        <p> <strong>Hébergement</strong>: {{ $this->Dhebergements->libelle }}</p>
                         @else
                         <p> <strong>Hôtel</strong>: {{ $this->lieux->libelle }}</p>
-                        <p> <strong>Herbegement</strong>: {{ $this->Dtarifs->libelle }} => {{ $this->DoptionHebergements->prix }} FCFA</p>
+                        <p> <strong>Hébergement</strong>: {{ $this->Dtarifs->libelle }} => {{ $this->DoptionHebergements->prix }} FCFA</p>
                         @endif
 
                         @if ($this->Dactivites->prix == 0)

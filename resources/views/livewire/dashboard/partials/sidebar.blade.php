@@ -27,6 +27,13 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('admin.heberg-index') }}" class="{{ Route::currentRouteName()== 'admin.heberg-index' ? 'active' : '' }}">
+                <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                </div>
+                <div class="menu-title">Hébergements</div>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('admin.activite-index') }}" class="{{ Route::currentRouteName()== 'admin.activite-index' ? 'active' : '' }}">
                 <div class="parent-icon"><i class='bx bx-home-circle'></i>
                 </div>

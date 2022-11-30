@@ -16,6 +16,7 @@ class CreatePaysTable extends Migration
         Schema::create('pays', function (Blueprint $table) {
             $table->id();
             $table->string('libelle');
+            $table->string('indicatif');
             $table->string('isDelete')->default(0);
             $table->timestamps();
         });
