@@ -70,12 +70,14 @@ class InscriptionComponent extends Component
     {
         $this->currentStep = 1;
     }
+    // incrementer pour l'etape suivante
     public function increaseStep()
     {
         // dd('ok');
         $this->resetErrorBag();
         $this->validateData();
         $this->currentStep++;
+        // faire les calculs pour l'étape 3 du formulaire
         if($this->currentStep == 3)
         {
             // dd('ok');
@@ -104,6 +106,7 @@ class InscriptionComponent extends Component
             $this->currentStep = $this->totalSteps;
         }
     }
+    // decrementer pour l'etape precedente
 
     public function decreaseStep()
     {
@@ -115,7 +118,7 @@ class InscriptionComponent extends Component
             $this->currentStep = 1;
         }
     }
-
+    // control des input
     public function validateData()
     {
         if($this->currentStep == 1)
@@ -187,6 +190,7 @@ class InscriptionComponent extends Component
         }
 
     }
+    // fonction pour le paiement
 
     public function sendRequest()
     {
@@ -252,6 +256,13 @@ class InscriptionComponent extends Component
             'date_arrivee',
             'date_depart',
             'montant_total',
+            'indicatif',
+            'piece',
+            'poste',
+            'club',
+            'pays',
+            'compagnons',
+            'lieu_id'
         ]);
 
     }
@@ -260,9 +271,8 @@ class InscriptionComponent extends Component
 
     public function storeinscription()
     {
-
+        // enregistrer individu
         $myIndividu = new Individu();
-
         $myIndividu->nom = $this->nom;
         $myIndividu->prenoms = $this->prenoms;
         if($this->pay_id == 12)
@@ -286,12 +296,10 @@ class InscriptionComponent extends Component
         $myIndividu->tel = $this->indicatif.$this->tel;
         $myIndividu->email = $this->email;
         $myIndividu->save();
-
-        $myIndividu = Individu::where('email',$this->email)->first();
-
+        // recupere la dernier enregistrement
+        $myIndividu = Individu::latest()->first();
+        // enregistrer une inscription
         $myInscription = new Inscription();
-
-
         $myInscription->individu_id = $myIndividu->id;
         if($this->piece)
         {
@@ -321,7 +329,7 @@ class InscriptionComponent extends Component
         $myInscription->date_depart = $this->date_depart;
         $myInscription->montant_total = $this->montant_total;
         $myInscription->save();
-
+        // enregistrer un paiement
         $myPaiement = new Paiement();
         $myInscription = Inscription::latest()->first();
         $this->inscription_id_1 = $myInscription->id;
@@ -335,7 +343,7 @@ class InscriptionComponent extends Component
         $myPaiement->statut_id = 2;
         $myPaiement->save();
 
-
+        // envoie de mail
         if($this->Mode_paiement_id == 1)
         {
             $this->currentStep = 1;
@@ -368,6 +376,7 @@ class InscriptionComponent extends Component
 
     public function render()
     {
+        // verification si c'es double ou simple
         if($this->optionHebergement_id)
         {
             $optionHebergement = OptionHebergement::where('id',$this->optionHebergement_id)->first();

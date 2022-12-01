@@ -20,7 +20,7 @@ class InscriptionComponent extends Component
     public $piece;
     public $statut_id;
     public $inscription_id;
-    public $filtre = "";
+    public $filtre = 0;
 
 
     public $deleteIdBeingRemoved = null;
@@ -134,13 +134,13 @@ class InscriptionComponent extends Component
         if($this->filtre == 2)
         {
             $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->get();
+            // dd($inscriptions);
         }
         if($this->filtre == 3)
         {
             $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->get();
-            // dd($inscriptions);
         }
-        if($this->filtre == "")
+        if($this->filtre == 0)
         {
             $inscriptions = Inscription::where('isDelete', 0)->get();
         }

@@ -84,28 +84,27 @@
                         <h5 class="text-center" >Etape 1 : Informations personnelles</h5>
                     </div>
                     <div class="col-md-12 mb-4">
-                        @if ($this->pay_id == 12)
-                            <label class="form-label">Pays <sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control"  placeholder="Saisir le nom de votre pays" wire:model="pays" autocomplete="off">
-                            @error('pays')
+                        <label class="form-label">Pays <sup class="text-danger">*</sup></label>
+                        <select class="form-control " name="" id="pay_id" wire:model="pay_id">
+                            <option value="">Veuillez choisir le pays</option>
+                            @foreach ($payss as $paysss)
+                            <option value="{{ $paysss->id }}">{{ $paysss->libelle }}</option>
+                            @endforeach
+                        </select>
+                            @error('pay_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-                        @else
-                            <label class="form-label">Pays <sup class="text-danger">*</sup></label>
-                            <select class="form-control " name="" id="pay_id" wire:model="pay_id">
-                                <option value="">Veuillez choisir le pays</option>
-                                @foreach ($payss as $paysss)
-                                <option value="{{ $paysss->id }}">{{ $paysss->libelle }}</option>
-                                @endforeach
-                            </select>
-                            @error('pay_id')
+                        @if ($this->pay_id == 12)
+                            <label class="form-label mt-4">Précisez le Pays <sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control"  placeholder="Saisir le nom de votre pays" wire:model="pays" autocomplete="off">
+                            @error('pays')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         @endif
                     </div>
                     <div class="col-md-12 mb-4">
                         @if ($this->pay_id == 12)
-                            <label class="form-label">Club <sup class="text-danger">*</sup></label>
+                            <label class="form-label">Précisez le Club <sup class="text-danger">*</sup></label>
                             <input type="text" class="form-control"  placeholder="Saisir le nom de votre club" wire:model="club" autocomplete="off">
                             @error('club')
                                 <span class="text-danger">{{ $message }}</span>
@@ -139,15 +138,6 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    @if ($this->poste_id == 25)
-                    <div class="col-md-12 mb-4">
-                        <label class="form-label">Poste au sein du club<sup class="text-danger">*</sup></label>
-                        <input type="text" class="form-control" name="poste" placeholder="Saisir votre poste" wire:model="poste">
-                        @error('poste')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    @else
                     <div class="col-md-12 mb-4">
                         <label class="form-label">Poste au sein du club<sup class="text-danger">*</sup></label>
                         <select class="form-control" name="" id="" wire:model="poste_id">
@@ -157,6 +147,14 @@
                             @endforeach
                         </select>
                         @error('poste_id')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    @if ($this->poste_id == 25)
+                    <div class="col-md-12 mb-4">
+                        <label class="form-label">Précisez le poste au sein du club<sup class="text-danger">*</sup></label>
+                        <input type="text" class="form-control" name="poste" placeholder="Saisir votre poste" wire:model="poste">
+                        @error('poste')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
@@ -179,6 +177,7 @@
                                 <input type="text" class="form-control col-md-2" placeholder="EX:00229" wire:model="indicatif">
                                 @else
                                 <select class="form-control" name="" id="indicatif" wire:model="indicatif">
+                                    <option value="" selected>00254</option>
                                     @foreach ($paysIndicatifs as $paysIndicatif)
                                     <option value="{{ $paysIndicatif->indicatif }}">{{ $paysIndicatif->indicatif }}</option>
                                     @endforeach
@@ -308,7 +307,7 @@
                                             @if ($activite->libelle =="Aucune")
                                             <option value="{{ $activite->id }}">{{ $activite->libelle}}</option>
                                             @else
-                                            <option value="{{ $activite->id }}">{{ $activite->libelle}} => Gratuitement </option>
+                                            <option value="{{ $activite->id }}">{{ $activite->libelle}} => Gratuitement</option>
                                             @endif
                                         @else
                                         <option value="{{ $activite->id }}">{{ $activite->libelle}} => Payante</option>
@@ -336,7 +335,7 @@
                     <div class="col-md-12 mb-4">
                         <label class="form-label">Reçu de Virement</label>
 
-                        <input type="file" id="date_depart" class="form-control" wire:model="piece">
+                        <input type="file" class="form-control" wire:model="piece">
                     @error('piece')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror

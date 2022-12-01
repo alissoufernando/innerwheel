@@ -3,7 +3,7 @@
 @endsection
 <div>
     <!--start page wrapper -->
-		<div wire:ignore class="page-wrapper">
+		<div class="page-wrapper">
 			<div class="page-content">
 				<!--breadcrumb-->
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
@@ -24,8 +24,8 @@
                     </div>
                     <div class="col-md-6 d-flex">
                         <h4>Filtre: </h4>
-                        <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" wire:model="filtre">
-                            <option selected>Tout</option>
+                        <select class="form-select form-select-sm mb-3" wire:model="filtre">
+                            <option value="0">Tout</option>
                             <option value="1">Inscriptions Rejetée</option>
                             <option value="2">Inscriptions En cours de traitement</option>
                             <option value="3">Inscriptions validée</option>
@@ -38,7 +38,7 @@
                         @if (Session::has('message'))
                             <div class="alert alert-success">{{Session::get('message')}}</div>
                         @endif
-						<div wire:ignore class="table-responsive">
+						<div class="table-responsive">
 							<table id="example2" class="table table-striped table-bordered">
 								<thead>
 									<tr>
@@ -47,7 +47,6 @@
 										<th>Prénoms</th>
 										<th>Statut</th>
 										<th>Reçu</th>
-
 										<th>Actions</th>
 									</tr>
 								</thead>

@@ -27,6 +27,13 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('admin.paiement-index') }}" class="{{ Route::currentRouteName()== 'admin.paiement-index' ? 'active' : '' }}">
+                <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                </div>
+                <div class="menu-title">Liste des paiements</div>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('admin.heberg-index') }}" class="{{ Route::currentRouteName()== 'admin.heberg-index' ? 'active' : '' }}">
                 <div class="parent-icon"><i class='bx bx-home-circle'></i>
                 </div>
