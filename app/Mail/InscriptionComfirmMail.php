@@ -31,7 +31,7 @@ class InscriptionComfirmMail extends Mailable
      */
     public function build()
     {
-        return $this->from($this->email)->subject($this->subject)->view('livewire.site.inscriptions.emails.inscription-confirmation-mail')->with([
+        return $this->subject($this->subject)->view('livewire.site.inscriptions.emails.inscription-confirmation-mail')->with([
             'email' => $this->email,
             'name' => $this->name,
         ]);

@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\Site\Inscriptions;
 
-use App\Models\Inscription;
+use App\Mail\InscriptionComfirmMail;
 use Livewire\Component;
 use App\Models\Paiement;
+use App\Models\Inscription;
+use Illuminate\Support\Facades\Mail;
 use StephaneAss\Payplus\Pay\PayPlus;
 
 class ThankYouComponent extends Component
@@ -27,6 +29,8 @@ class ThankYouComponent extends Component
         $myInscription = Inscription::where('id',$inscription_id)->first();
         $myInscription->statut_id = 3;
         $myInscription->save();
+        Mail::to($this->email)->send( new InscriptionComfirmMail($this->nom, $this->email,));
+
     }else {
         $inscription_id = $co->getCustomData('first_key');
         $myPaiement = Paiement::where('inscription_id',$inscription_id)->first();
