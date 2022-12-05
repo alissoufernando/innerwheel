@@ -91,7 +91,7 @@ class InscriptionComponent extends Component
         // mettre ajout
 
         $this->emit('storeInscription');
-        Mail::to($myInscription->individu->email)->send( new InscriptionComfirmMail($myInscription->individu->nom, $myInscription->individu->email,));
+        Mail::to($myInscription->individu->email)->send( new InscriptionComfirmMail($myInscription->individu->nom, $myInscription->individu->email));
         // vider les champs apres l'enregistrement ou la modification
         $this->resetInputFields();
         return redirect()->route('admininscription');

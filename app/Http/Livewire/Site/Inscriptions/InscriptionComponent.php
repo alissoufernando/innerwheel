@@ -210,9 +210,9 @@ class InscriptionComponent extends Component
             $DoptionHebergements = OptionHebergement::where('id',$this->optionHebergement_id)->first();
 
             $this->montant_total += $DoptionHebergements->prix;
+            $co->addItem($DoptionHebergements->libelle, 1, $DoptionHebergements->prix, $DoptionHebergements->prix, "Les frais d'hébergements");
         }
 
-        $co->addItem($DoptionHebergements->libelle, 1, $DoptionHebergements->prix, $DoptionHebergements->prix, "Les frais d'hébergements");
         $total_amount=100;
         $co->setTotalAmount($total_amount);
         $co->setDescription("Inscription de la inner Wheel 2023");
