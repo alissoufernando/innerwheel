@@ -129,20 +129,20 @@ class InscriptionComponent extends Component
     {
         if($this->filtre == 1)
         {
-            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->get();
+            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->latest()->get();
         }
         if($this->filtre == 2)
         {
-            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->get();
+            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->latest()->get();
             // dd($inscriptions);
         }
         if($this->filtre == 3)
         {
-            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->get();
+            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->latest()->get();
         }
         if($this->filtre == 0)
         {
-            $inscriptions = Inscription::where('isDelete', 0)->get();
+            $inscriptions = Inscription::where('isDelete', 0)->latest()->get();
         }
 
         $statuts = Statut::where('isDelete', 0)->get();

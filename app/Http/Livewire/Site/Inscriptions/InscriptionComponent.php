@@ -194,6 +194,7 @@ class InscriptionComponent extends Component
 
     public function sendRequest()
     {
+        $this->montant_total = 0;
         $co = (new PayPlus())->init();
         $activites = Activite::where('isDelete', 0)->get();
         foreach($activites as $activite)
@@ -204,6 +205,7 @@ class InscriptionComponent extends Component
                 $co->addItem($activite->libelle, 1, 25000, 25000, "Les frais obligatoires");
             }
         }
+        // dd($this->montant_total);
         if($this->optionHebergement_id)
         {
 
@@ -213,7 +215,7 @@ class InscriptionComponent extends Component
             $co->addItem($DoptionHebergements->libelle, 1, $DoptionHebergements->prix, $DoptionHebergements->prix, "Les frais d'hébergements");
         }
 
-        $total_amount=100;
+        $total_amount= $this->montant_total;
         $co->setTotalAmount($total_amount);
         $co->setDescription("Inscription de la inner Wheel 2023");
         $co->addCustomData('first_key',$this->inscription_id_1);
