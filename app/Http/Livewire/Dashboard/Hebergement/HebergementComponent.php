@@ -11,7 +11,11 @@ class HebergementComponent extends Component
     public function render()
     {
         $inscriptions = Inscription::where('isDelete', 0)->get();
+        // foreach($inscriptions as $inscription)
+        // {
+        //     dd($inscription->option_hebergement);
 
+        // }
         return view('livewire.dashboard.hebergement.hebergement-component',[
             'inscriptions' => $inscriptions,
         ]);

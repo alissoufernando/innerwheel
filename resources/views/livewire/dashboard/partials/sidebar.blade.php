@@ -47,6 +47,7 @@
                 <div class="menu-title">Activités</div>
             </a>
         </li>
+        @can('admin-admin')
         <li class="{{request()->route()->getPrefix() == '/administration' ? 'active' : '' }}">
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-folder'></i>
@@ -60,6 +61,8 @@
 
             </ul>
         </li>
+
+        @endcan
     </ul>
     <!--end navigation-->
 </div>

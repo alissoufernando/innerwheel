@@ -47,7 +47,10 @@
 										<th>Prénoms</th>
 										<th>Statut</th>
 										<th>Reçu</th>
+										@can('secretaire')
 										<th>Actions</th>
+
+										@endcan
 									</tr>
 								</thead>
 								<tbody>
@@ -80,12 +83,14 @@
                                             <p> Pas de reçu</p>
                                             @endif
                                         </td>
+										@can('secretaire')
 
 										<td>
-                                            <a style="margin-right: 12px; margin-left:15px" data-bs-toggle="tooltip" data-bs-placement="top" title="Détails"> <i class="lni lni-pencil-alt text-primary"></i></a>
+                                            {{-- <a style="margin-right: 12px; margin-left:15px" data-bs-toggle="tooltip" data-bs-placement="top" title="Détails"> <i class="lni lni-pencil-alt text-primary"></i></a> --}}
                                             <a style="margin-right: 12px; margin-left:15px" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal" wire:click.prevent='getElementById({{ $inscription->id }})' data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier Statut"> <i class="lni lni-checkbox text-success"></i></a>
                                             <a data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer" wire:click.prevent="deleteInscription({{ $inscription->id }})"> <i class="lni lni-trash text-danger"></i> </a>
                                         </td>
+										@endcan
 									</tr>
                                     @endforeach
                                 </tbody>

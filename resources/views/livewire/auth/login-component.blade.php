@@ -12,8 +12,8 @@
                             <div class="border p-4 rounded">
                                 <div class="text-center">
                                     <h3 class="">Connexion</h3>
-                                    <p>Vous n'avez pas de compte ? <a href="{{route('register')}}">Inscription</a>
-                                    </p>
+                                    {{-- <p>Vous n'avez pas de compte ? <a href="{{route('register')}}">Inscription</a>
+                                    </p> --}}
                                 </div>
                                 <div class="form-body">
                                     <form class="row g-3" method="post" action="{{route('login')}}">
@@ -35,9 +35,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 text-end">
-                                            @if (Route::has('password.request'))
-                                            <a href="{{ route('password.request') }}">Mot de passe oublié ?</a>
-                                            @endif
+                                            <a href="{{ route('change.password') }}">Changer mot de passe</a>
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">

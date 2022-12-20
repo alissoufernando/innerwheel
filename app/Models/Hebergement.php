@@ -16,7 +16,7 @@ class Hebergement extends Model
         return $this->belongsTo(Edition::class,);
     }
 
-    public function tarifs ()
+    public function tarifs()
     {
         return $this->belongsTo(Tarif::class,);
     }

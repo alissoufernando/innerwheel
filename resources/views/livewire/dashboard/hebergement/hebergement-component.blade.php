@@ -51,7 +51,11 @@
                                         $i = 1;
                                     @endphp
                                     @foreach ($inscriptions as $inscription)
+
                                     <tr>
+                                        @if ($inscription->option_hebergement == null)
+
+                                        @else
 										<td>{{ $i++ }}</td>
 										<td>{{ $inscription->individu->nom }}</td>
                                         <td>{{ $inscription->individu->prenoms }}</td>
@@ -61,6 +65,7 @@
                                         <td>{{ $inscription->option_hebergement->tarifs->placeI }}</td>
                                         <td>{{ $inscription->option_hebergement->tarifs->place }}</td>
                                         <td>{{ $inscription->option_hebergement->tarifs->placeI -  $inscription->option_hebergement->tarifs->place}}</td>
+                                        @endif
 									</tr>
                                     @endforeach
                                 </tbody>

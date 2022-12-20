@@ -60,4 +60,17 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Inscription::class);
     }
+    public function isAdmin()
+    {
+        return $this->roles()->where('name', 'Administrateur')->first();
+    }
+
+    public function isSuperAdmin()
+    {
+        return $this->roles()->where('name', "Super Administrateur")->first();
+    }
+    public function isSecretaire()
+    {
+        return $this->roles()->where('name', "Secrétaire de District")->first();
+    }
 }

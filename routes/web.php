@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Livewire\Auth\ChangePassWordComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Auth\LoginComponent;
 use App\Http\Livewire\Auth\RegisterComponent;
@@ -49,6 +49,8 @@ Route::get('/login', LoginComponent::class)->name('login');
 Route::get('/register', RegisterComponent::class)->name('register');
 Route::get('/user/confirmed-password-status', ConfirmPasswordComponent::class)->name('password.confirmation');
 Route::get('/forgot-password', ForgotPasswordComponent::class)->name('password.request');
+Route::get('/changr-password', ChangePassWordComponent::class)->name('change.password');
+
 Route::get('/reset-password/{token}', ResetPasswordComponent::class)->name('password.reset');
 
 

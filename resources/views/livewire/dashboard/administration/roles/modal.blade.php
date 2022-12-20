@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-md-12">
 						<label for="validationCustom02" class="form-label">Rôle</label>
-					    <input class="form-control mb-3" type="text" placeholder="Nom de la role" wire:model.lazy='name'>
+					    <input class="form-control mb-3" type="text" placeholder="Nom du role" wire:model.lazy='name'>
                     </div>
                 </div>
             </div>

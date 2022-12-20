@@ -4,9 +4,11 @@ namespace App\Http\Livewire\Dashboard\Administration\User;
 
 use App\Models\Role;
 use App\Models\User;
+use App\Mail\NewUser;
 use Livewire\Component;
 use App\Models\RoleUser;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Actions\Fortify\PasswordValidationRules;
 
 class UserComponent extends Component
@@ -14,11 +16,21 @@ class UserComponent extends Component
     use PasswordValidationRules;
     public $name;
     public $email;
-    public $password = "coloc@student@12345";
+    public $password;
     public $user_id;
     public $myUserE, $roless =[], $tableau =[];
-
     protected $listeners = ['deleteConfirmation' => 'deleteUsers'];
+    public $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    public function generate_string($input, $strength = 16) {
+        $input_length = strlen($input);
+        $random_string = '';
+        for($i = 0; $i < $strength; $i++) {
+            $random_character = $input[mt_rand(0, $input_length - 1)];
+            $random_string .= $random_character;
+        }
+        return $random_string;
+    }
 
 
     public function resetInputFields()
@@ -27,9 +39,9 @@ class UserComponent extends Component
         $this->resetErrorBag();
         $this->resetValidation();
         if($this->user_id){
-            $this->reset(['name', 'email','user_id']);
+            $this->reset(['name','email','user_id']);
         }
-        $this->reset(['name',  'email', 'password']);
+        $this->reset(['name','email','password']);
     }
 
 
@@ -93,9 +105,10 @@ class UserComponent extends Component
         } else {
             $myUser->name = $this->name;
             $myUser->email = $this->email;
+            $this->password = $this->generate_string($this->permitted_chars, 20);
             $myUser->password = Hash::make($this->password);
-            // Mail::to($this->email)->send( new NewUser($this->name, $this->email,$this->phone,$this->password));
             $myUser->save();
+            Mail::to($this->email)->send( new NewUser($this->name, $this->email,$this->password));
             $myUserN = User::where('email' ,$this->email)->first();
             $userRole = Role::whereIn('id', $this->roless)->get();
             foreach($userRole as $userRoles)

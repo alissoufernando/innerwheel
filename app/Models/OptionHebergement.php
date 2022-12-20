@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class OptionHebergement extends Model
 {
     use HasFactory;
-    protected $table = 'option_hebergements';
+    // protected $table = 'option_hebergements';
     protected $guarded = [];
-    public function tarifs ()
+    public function tarifs()
     {
         return $this->belongsTo(Tarif::class,'tarif_id');
     }

@@ -265,7 +265,7 @@
                             <select class="form-control" name="" id="tarif_id" wire:model="tarif_id">
                                 <option value="">Veuillez choisir l'hébergement</option>
                                 @foreach ($tarifs as $tarif)
-                                @if ($tarif->place != 0)
+                                @if ($tarif->place > 0)
                                 <option value="{{ $tarif->id }}">{{ $tarif->libelle }} => Place disponible: {{ $tarif->place }}</option>
                                 @endif
                                 @endforeach
