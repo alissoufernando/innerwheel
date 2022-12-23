@@ -18,7 +18,7 @@ class UserComponent extends Component
     public $email;
     public $password;
     public $user_id;
-    public $myUserE, $roless =[], $tableau =[];
+    public $myUserE, $roless, $tableau =[];
     protected $listeners = ['deleteConfirmation' => 'deleteUsers'];
     public $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -91,13 +91,15 @@ class UserComponent extends Component
             $myUser->name = $this->name;
             $myUser->email = $this->email;
             $myUser->save();
-            $userRole = Role::whereIn('id', $this->roless)->get();
-            foreach($userRole as $userRoles)
-            {
-                array_push($this->tableau,$userRoles->id);
-            }
+            $userRole = Role::where('id', $this->roless)->first();
+            // foreach($userRole as $userRoles)
+            // {
+            //     array_push($this->tableau,$userRoles->id);
+            // }
             $utilisateurR = RoleUser::where('user_id',$this->user_id)->first();
-            $utilisateurR->role_id = implode(',',$this->tableau);
+            // $utilisateurR->role_id = implode(',',$this->tableau);
+            $utilisateurR->role_id = $userRole->id;
+
             $utilisateurR->save();
 
             return redirect()->route('admin.user-index');
@@ -110,14 +112,15 @@ class UserComponent extends Component
             $myUser->save();
             Mail::to($this->email)->send( new NewUser($this->name, $this->email,$this->password));
             $myUserN = User::where('email' ,$this->email)->first();
-            $userRole = Role::whereIn('id', $this->roless)->get();
-            foreach($userRole as $userRoles)
-            {
-                array_push($this->tableau,$userRoles->id);
-            }
+            $userRole = Role::where('id', $this->roless)->first();
+            // foreach($userRole as $userRoles)
+            // {
+            //     array_push($this->tableau,$userRoles->id);
+            // }
             $utilisateurR = new RoleUser();
             $utilisateurR->user_id = $myUserN->id;
-            $utilisateurR->role_id = implode(',',$this->tableau);
+            // $utilisateurR->role_id = implode(',',$this->tableau);
+            $utilisateurR->role_id = $userRole->id;
             $utilisateurR->save();
 
 
@@ -141,7 +144,7 @@ class UserComponent extends Component
         $this->myUserE = User::findOrFail($this->user_id);
         $myRoleE = RoleUser::where('user_id',$this->user_id)->first();
 
-        $this->roless = explode(",", $myRoleE->role_id);
+        $this->roless = $myRoleE->role_id;
         // dd($this->roless);
 
         $this->name = $this->myUserE->name;

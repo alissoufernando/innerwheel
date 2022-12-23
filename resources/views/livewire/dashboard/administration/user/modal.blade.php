@@ -27,7 +27,9 @@
                         <span class="input-group-text mb-3" id="">Les rôles</span>
                         @foreach ($roles as $role)
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="{{$role->id}}" id="flexCheckChecked" wire:model="roless"
+                          {{-- <input class="form-check-input" type="checkbox" value="{{$role->id}}" id="flexCheckChecked" wire:model="roless" --}}
+                          <input class="form-check-input" type="radio" value="{{$role->id}}" id="" wire:model="roless"
+
                                 @foreach ($this->myUserE->roles as $userRole)
                                   @if ($userRole->id == $role->id)
                                       checked
@@ -52,7 +54,8 @@
                         <span class="input-group-text mb-3" id="">Les rôles</span>
                         @foreach ($roles as $role)
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="{{ $role->id }}" id="flexCheckChecked" wire:model="roless"/>
+                            {{-- <input class="form-check-input" type="checkbox" value="{{ $role->id }}" id="flexCheckChecked" wire:model="roless"/> --}}
+                            <input class="form-check-input" type="radio" value="{{ $role->id }}" id="" wire:model="roless"/>
                             <label class="form-check-label" for="flexCheckChecked">{{ $role->name}}</label>
                         </div>
                         @endforeach
