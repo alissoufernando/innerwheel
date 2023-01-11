@@ -11,7 +11,7 @@ class InscriptionComfirmMail extends Mailable
 {
     use Queueable, SerializesModels;
     protected $name, $email;
-    public $subject = "confirmation";
+    public $subject = "Confirmartion inscription INNER WHEEL | AGA 2023";
 
     /**
      * Create a new message instance.

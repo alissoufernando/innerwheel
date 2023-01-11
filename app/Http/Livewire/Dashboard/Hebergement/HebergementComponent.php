@@ -10,7 +10,7 @@ class HebergementComponent extends Component
 
     public function render()
     {
-        $inscriptions = Inscription::where('isDelete', 0)->get();
+        $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', 3)->get();
         // foreach($inscriptions as $inscription)
         // {
         //     dd($inscription->option_hebergement);

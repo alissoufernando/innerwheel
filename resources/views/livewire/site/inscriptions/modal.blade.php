@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Buy Tickets</h4>
+          <h4 class="modal-title">Achats de ticket</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -14,9 +14,9 @@
             <div class="form-group mt-3">
               <input type="text" class="form-control" name="your-email" placeholder="Your Email">
             </div>
-            
+
             <div class="text-center mt-3">
-              <button type="submit" class="btn">Buy Now</button>
+              <button type="submit" class="btn">Acheter maintenant</button>
             </div>
           </form>
         </div>

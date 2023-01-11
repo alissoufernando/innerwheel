@@ -24,7 +24,7 @@ class StatutTableSeeder extends Seeder
                 'libelle' => 'En cours de traitement',
             ],
             [
-                'libelle' => 'Valider',
+                'libelle' => 'Validé',
             ],
         ]);
     }

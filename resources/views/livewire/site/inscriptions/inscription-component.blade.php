@@ -177,7 +177,7 @@
                                 <input type="text" class="form-control col-md-2" placeholder="EX:00229" wire:model="indicatif">
                                 @else
                                 <select class="form-control" name="" id="indicatif" wire:model="indicatif">
-                                    <option value="" selected>00254</option>
+                                    <option value="" selected>Indicatif</option>
                                     @foreach ($paysIndicatifs as $paysIndicatif)
                                     <option value="{{ $paysIndicatif->indicatif }}">{{ $paysIndicatif->indicatif }}</option>
                                     @endforeach
@@ -266,7 +266,7 @@
                                 <option value="">Veuillez choisir l'hébergement</option>
                                 @foreach ($tarifs as $tarif)
                                 @if ($tarif->place > 0)
-                                <option value="{{ $tarif->id }}">{{ $tarif->libelle }} => Place disponible: {{ $tarif->place }}</option>
+                                <option value="{{ $tarif->id }}">{{ $tarif->libelle }} ( Place(s) disponible(s) : {{ $tarif->place }} )</option>
                                 @endif
                                 @endforeach
                             </select>
@@ -275,11 +275,11 @@
                         @enderror
                     </div>
                     <div class="col-md-12 mb-4">
-                        <label class="form-label">Comment? <sup class="text-danger">*</sup></label>
+                        <label class="form-label">Comment ? <sup class="text-danger">*</sup></label>
                         <select class="form-control" name="" id="optionHebergement_id" wire:model="optionHebergement_id">
                             <option value="">Simple ou Double</option>
                             @foreach ($optionHebergements as $optionHebergement)
-                            <option value="{{ $optionHebergement->id }}">{{ $optionHebergement->libelle }} => {{ $optionHebergement->prix }} FCFA </option>
+                            <option value="{{ $optionHebergement->id }}">{{ $optionHebergement->libelle }} / {{ $optionHebergement->prix }} FCFA </option>
                             @endforeach
                         </select>
                     @error('optionHebergement_id')
@@ -307,10 +307,10 @@
                                             @if ($activite->libelle =="Aucune")
                                             <option value="{{ $activite->id }}">{{ $activite->libelle}}</option>
                                             @else
-                                            <option value="{{ $activite->id }}">{{ $activite->libelle}} => Gratuitement</option>
+                                            <option value="{{ $activite->id }}">{{ $activite->libelle}}</option>
                                             @endif
                                         @else
-                                        <option value="{{ $activite->id }}">{{ $activite->libelle}} => Payante</option>
+                                        <option value="{{ $activite->id }}">{{ $activite->libelle}} ( Activité Payante )</option>
                                         @endif
                                     @endif
                                 @endforeach
@@ -393,10 +393,10 @@
                         @if ($this->Dactivites->libelle == "Aucune")
                         <p> <strong>Activité</strong>: {{ $this->Dactivites->libelle}}</p>
                         @else
-                        <p> <strong>Activité</strong>: {{ $this->Dactivites->libelle}} => Gratuitement</p>
+                        <p> <strong>Activité</strong>: {{ $this->Dactivites->libelle}}</p>
                         @endif
                         @else
-                        <p> <strong>Activité</strong>: {{ $this->Dactivites->libelle}} => Payante</p>
+                        <p> <strong>Activité</strong>: {{ $this->Dactivites->libelle}} ( <span style="font-style: italic; color: red;">Activité Payante</span> )</p>
                         @endif
                         <p> <strong>Mode de paiement</strong>: {{ $this->Mode_paiement->libelle }} </p>
                     </div>

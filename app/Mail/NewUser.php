@@ -11,7 +11,7 @@ class NewUser extends Mailable
 {
     use Queueable, SerializesModels;
     protected $name, $email, $password;
-    public $subject = "Nouveau utilisateur";
+    public $subject = "Creation d'un nouvel utilisateur sur le site INNER WHEEL | AGA 2023";
 
     /**
      * Create a new message instance.

@@ -91,7 +91,7 @@ class PosteTableSeeder extends Seeder
                 'libelle' => 'Responsable Internet du District',
             ],
             [
-                'libelle' => 'et autres',
+                'libelle' => 'Autre',
             ]
 
         ]);

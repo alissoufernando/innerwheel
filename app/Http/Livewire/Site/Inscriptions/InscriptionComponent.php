@@ -135,7 +135,7 @@ class InscriptionComponent extends Component
                     'poste_id'=>'required',
                     'indicatif'=>'required',
                     'tel'=>'required',
-                    'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
+                    'email'=> ['required', 'string', 'email', 'max:255'], //, 'unique:users'
                 ]);
             }else{
                 $this->validate([
@@ -147,7 +147,7 @@ class InscriptionComponent extends Component
                     'adresse'=>'required',
                     'tel'=>'required',
                     'indicatif'=>'required',
-                    'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
+                    'email'=> ['required', 'string', 'email', 'max:255'], //, 'unique:users'
                 ]);
             }
         }elseif($this->currentStep == 2)
@@ -345,7 +345,38 @@ class InscriptionComponent extends Component
         $myPaiement->statut_id = 2;
         $myPaiement->save();
 
+        $admins = ['virgoefr@yahoo.fr', 'rufineagossou8@gmail.com', 'aurorepathinvo@yahoo.fr','vadjalla@gmail.com','chsaizonou@yahoo.fr','donald.ablo@payplus.africa'];
+        //$admins = ['donald.ablo@payplus.africa'];
+
         // envoie de mail
+        if($this->Mode_paiement_id == 1)
+        {
+            $this->currentStep = 1;
+            session()->flash('message', 'Inscription effectuée avec succès.');
+            // return redirect()->to($URL_pay);
+            /*
+            foreach (['adresseemail@innerwheel.com','adresseemaila@innerwheel.com','adresseemailaa@innerwheel.com'] as $recipient) {
+                Mail::to($recipient)->send( new InscriptionAdminMail($this->prenoms.' '.$this->nom, $this->email));
+            }
+            */
+
+            Mail::to($this->email)->bcc($admins)->send( new InscriptionMail($this->prenoms.' '.$this->nom, $this->email));
+            $this->resetInputFields();
+        }else{
+            /*
+            foreach (['adresseemail@innerwheel.com','adresseemaila@innerwheel.com','adresseemailaa@innerwheel.com'] as $recipient) {
+                Mail::to($recipient)->bcc()->send( new InscriptionAdminMail($this->prenoms.' '.$this->nom, $this->email));
+            }
+            */
+
+            Mail::to($this->email)->bcc($admins)->send( new InscriptionMail($this->prenoms.' '.$this->nom, $this->email));
+            $this->sendRequest();
+            $this->resetInputFields();
+
+        }
+
+        // envoie de mail
+        /*
         if($this->Mode_paiement_id == 1)
         {
             $this->currentStep = 1;
@@ -367,6 +398,7 @@ class InscriptionComponent extends Component
             $this->resetInputFields();
 
         }
+        */
     }
 
 

@@ -41,9 +41,11 @@
 										<th>Nom de l'hôtel</th>
 										<th>type de chambre</th>
 										<th>Options</th>
+                                        {{--
 										<th>Nombre Place total</th>
 										<th>Nombre Place restante</th>
 										<th>Nombre Place prise</th>
+                                        --}}
 									</tr>
 								</thead>
 								<tbody>
@@ -62,9 +64,11 @@
                                         <td>{{ $inscription->option_hebergement->tarifs->lieu->libelle }}</td>
                                         <td>{{ $inscription->option_hebergement->tarifs->libelle }}</td>
                                         <td>{{ $inscription->option_hebergement->libelle }}</td>
+                                        {{--
                                         <td>{{ $inscription->option_hebergement->tarifs->placeI }}</td>
                                         <td>{{ $inscription->option_hebergement->tarifs->place }}</td>
                                         <td>{{ $inscription->option_hebergement->tarifs->placeI -  $inscription->option_hebergement->tarifs->place}}</td>
+                                        --}}
                                         @endif
 									</tr>
                                     @endforeach
