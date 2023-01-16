@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/default_thank_you.css">
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/jquery-1.9.1.min.js"></script>
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/html5shiv.js"></script>
+    @include('livewire.site.partials.styleP')
     @livewireStyles()
 
 </head>
@@ -25,6 +26,5 @@
 		<p class="site-footer__fineprint" id="fineprint">Copyright ©2014 | All Rights Reserved</p>
 	</footer>
     @livewireScripts()
-
 </body>
 </html>

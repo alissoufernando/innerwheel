@@ -1,12 +1,14 @@
 <?php
-
 namespace App\Http\Livewire\Site\Inscriptions;
+// require_once('vendor/autoload.php');
 
 use App\Models\Club;
 use App\Models\Lieu;
 use App\Models\Pays;
+use FedaPay\FedaPay;
 use App\Models\Poste;
 use App\Models\Tarif;
+use FedaPay\Transaction;
 use Livewire\Component;
 use App\Models\Activite;
 use App\Models\Individu;
@@ -22,6 +24,7 @@ use App\Mail\InscriptionAdminMail;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use StephaneAss\Payplus\Pay\PayPlus;
+
 
 class InscriptionComponent extends Component
 {
@@ -190,10 +193,66 @@ class InscriptionComponent extends Component
         }
 
     }
+
+    public function fedaSendRequest()
+    {
+        /* Remplacez VOTRE_CLE_API par votre véritable clé API */
+        FedaPay::setApiKey('sk_sandbox_Sv4d_6CevPxK-dX37RDQyWoi');
+
+        /* Précisez si vous souhaitez exécuter votre requête en mode test ou live */
+        FedaPay::setEnvironment('sandbox'); //ou setEnvironment('live');
+
+        $this->montant_total = 0;
+        $activites = Activite::where('isDelete', 0)->get();
+        foreach($activites as $activite)
+        {
+            if($activite->obligatoire === 1)
+            {
+                $this->montant_total += $activite->prix;
+                // $co->addItem($activite->libelle, 1, 25000, 25000, "Les frais obligatoires");
+            }
+        }
+        // dd($this->montant_total);
+        if($this->optionHebergement_id)
+        {
+
+            $DoptionHebergements = OptionHebergement::where('id',$this->optionHebergement_id)->first();
+
+            $this->montant_total += $DoptionHebergements->prix;
+            // $co->addItem($DoptionHebergements->libelle, 1, $DoptionHebergements->prix, $DoptionHebergements->prix, "Les frais d'hébergements");
+        }
+
+        $total_amount= $this->montant_total;
+
+        /* Créer la transaction */
+
+
+        $transactionFeda = Transaction::create(array(
+        "description" => "Inscription de la inner Wheel 2023",
+        "amount" => $total_amount,
+        "currency" => ["iso" => "XOF"],
+        "callback_url" => "http://127.0.0.1:8000/paiment",
+        "customer" => [
+            "firstname" => $this->prenoms,
+            "lastname" => $this->nom."_".$this->inscription_id_1,
+            "email" => $this->email,
+            // "phone_number" => [
+            //     "number" => $this->indicatif.$this->tel,
+            //     "country" => "sn"
+            // ]
+        ]
+        ));
+
+        $token = $transactionFeda->generateToken();
+        return redirect()->to($token->url);
+
+    }
+
     // fonction pour le paiement
 
     public function sendRequest()
     {
+        // n = new Transaction();
         $this->montant_total = 0;
         $co = (new PayPlus())->init();
         $activites = Activite::where('isDelete', 0)->get();
@@ -370,8 +429,16 @@ class InscriptionComponent extends Component
             */
 
             Mail::to($this->email)->bcc($admins)->send( new InscriptionMail($this->prenoms.' '.$this->nom, $this->email));
-            $this->sendRequest();
-            $this->resetInputFields();
+            if($this->pay_id == 6)
+            {
+                $this->fedaSendRequest();
+                $this->resetInputFields();
+
+            }else{
+
+                $this->sendRequest();
+                $this->resetInputFields();
+            }
 
         }
 

@@ -18,6 +18,7 @@ use App\Http\Livewire\Dashboard\Inscriptions\InscriptionComponent as Inscription
 use App\Http\Livewire\Dashboard\Paiements\ListePaiementComponent;
 use App\Http\Livewire\Site\Activites\ActiviteComponent;
 use App\Http\Livewire\Site\Activites\DetailsActiviteComponent;
+use App\Http\Livewire\Site\Inscriptions\PaimentFedaPayComponent;
 use App\Http\Livewire\Site\Inscriptions\InscriptionComponent;
 use App\Http\Livewire\Site\Inscriptions\ThankYouComponent;
 use App\Http\Livewire\Site\Welcome;
@@ -37,6 +38,8 @@ Route::get('/', Welcome::class)->name('welcome');
 Route::get('/inscription', InscriptionComponent::class)->name('inscription');
 Route::get('/thank-you', ThankYouComponent::class)->name('thank.you');
 Route::get('/activites', ActiviteComponent::class)->name('activite');
+Route::get('/paiment', PaimentFedaPayComponent::class)->name('paiment');
+
 Route::get('/details-activite/{id}', DetailsActiviteComponent::class)->name('activite-details');
 
 
