@@ -10,11 +10,11 @@ class Individu extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function club ()
+    public function groupe ()
     {
         return $this->belongsTo(Club::class, 'club_id');
     }
-    public function poste ()
+    public function fonction ()
     {
         return $this->belongsTo(Poste::class, 'poste_id');
     }

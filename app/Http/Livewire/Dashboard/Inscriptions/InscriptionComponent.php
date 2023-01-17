@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Dashboard\Inscriptions;
 
+use App\Models\Club;
+use App\Models\Poste;
 use App\Models\Action;
 use App\Models\Statut;
 use Livewire\Component;
@@ -143,6 +145,23 @@ class InscriptionComponent extends Component
         if($this->filtre == 0)
         {
             $inscriptions = Inscription::where('isDelete', 0)->latest()->get();
+        }
+
+        foreach($inscriptions as $inscription)
+        {
+            if($inscription->individu->club_id)
+            {
+
+                $club = Club::where('id',$inscription->individu->club_id)->first();
+                $inscription->individu->club = $club->libelle;
+
+            }
+            if($inscription->individu->poste_id)
+            {
+                // dd($inscription->individu->poste_id);
+                $poste = Poste::where('id',$inscription->individu->poste_id)->first();
+                $inscription->individu->poste = $poste->libelle;
+            }
         }
 
         $statuts = Statut::where('isDelete', 0)->get();

@@ -45,6 +45,8 @@
 										<th>ID</th>
 										<th>Nom</th>
 										<th>Prénoms</th>
+										<th>Club</th>
+										<th>Fonctions</th>
 										<th>Statut</th>
 										<th>Reçu</th>
 										@can('secretaire')
@@ -62,6 +64,8 @@
 										<td>{{ $i++ }}</td>
 										<td>{{ $inscription->individu->nom }}</td>
                                         <td>{{ $inscription->individu->prenoms }}</td>
+                                        <td>{{ $inscription->individu->club }}</td>
+                                        <td>{{ $inscription->individu->poste }}</td>
                                         <td>
                                             @if ($inscription->statut_id == 1)
                                             <span class="badge bg-danger">{{ $inscription->statut->libelle }}</span>

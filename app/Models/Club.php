@@ -10,7 +10,7 @@ class Club extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function pay ()
+    public function pay()
     {
         return $this->belongsTo(Pays::class, 'pay_id');
     }
