@@ -22,7 +22,7 @@
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('admin.avantagesoffert-index') }}" class="btn btn-outline-primary">Voir liste</a>
+                    <a href="{{ route('admin.activite-index') }}" class="btn btn-outline-primary">Voir liste</a>
                 </div>
             </div>
         </div>
@@ -50,9 +50,9 @@
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label" for="image">Image</label>:</label>
                                         <input class="form-control mb-3" id="image" type="file" accept=".jpg, .png, image/jpeg, image/png" wire:model="image">
-                                        @if ($image)
+                                        {{-- @if ($image)
                                         <img src="{{$image->temporaryUrl()}}" class="px-2" width="100">
-                                        @endif
+                                        @endif --}}
                                     </div>
                                 </div>
                             </div>

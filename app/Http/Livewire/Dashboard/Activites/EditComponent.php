@@ -55,7 +55,7 @@ class EditComponent extends Component
             'public'
         );
 
-        $myAvantageOffert->image = $pathImage;
+        $myAvantageOffert->image = $filenameImage;
         $myAvantageOffert->contenu = $this->contenu;
         $myAvantageOffert->name = $this->name;
         $myAvantageOffert->description = $this->description;

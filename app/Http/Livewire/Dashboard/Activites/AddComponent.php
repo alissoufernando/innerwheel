@@ -65,7 +65,7 @@ class AddComponent extends Component
                 $images = $full;
                 $filename_full =  'activites-' .uniqid() . '.' . $images->getClientOriginalExtension();
                 $pathImage = $images->storeAs(
-                    'activites',
+                    'Activites',
                     $filename_full,
                     'public'
                 );
