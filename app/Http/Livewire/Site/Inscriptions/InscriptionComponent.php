@@ -197,10 +197,10 @@ class InscriptionComponent extends Component
     public function fedaSendRequest()
     {
         /* Remplacez VOTRE_CLE_API par votre véritable clé API */
-        FedaPay::setApiKey('sk_sandbox_Sv4d_6CevPxK-dX37RDQyWoi');
+        FedaPay::setApiKey('sk_live_l_kcHD5MptuZQnpw4zDDeAKc');
 
         /* Précisez si vous souhaitez exécuter votre requête en mode test ou live */
-        FedaPay::setEnvironment('sandbox'); //ou setEnvironment('live');
+        FedaPay::setEnvironment('live'); //ou setEnvironment('live');
 
         $this->montant_total = 0;
         $activites = Activite::where('isDelete', 0)->get();

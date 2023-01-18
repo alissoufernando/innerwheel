@@ -26,10 +26,10 @@ class PaimentFedaPayComponent extends Component
     public function verify($id)
     {
         /* Remplacez VOTRE_CLE_API par votre véritable clé API */
-        FedaPay::setApiKey('sk_sandbox_Sv4d_6CevPxK-dX37RDQyWoi');
+        FedaPay::setApiKey('sk_live_l_kcHD5MptuZQnpw4zDDeAKc');
 
         /* Précisez si vous souhaitez exécuter votre requête en mode test ou live */
-        FedaPay::setEnvironment('sandbox'); //ou setEnvironment('live');
+        FedaPay::setEnvironment('live'); //ou setEnvironment('live');
 
         $transaction = Transaction::retrieve($id);
         // dd($transaction->metadata->paid_customer->lastname);

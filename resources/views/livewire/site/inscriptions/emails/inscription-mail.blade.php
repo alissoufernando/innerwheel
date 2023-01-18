@@ -24,7 +24,7 @@
                 </tr>
                 <tr>
                     <td style="text-align:center;">
-                        <a href="{{ route('welcome') }}" title="logo" target="_blank">
+                        <a href="https://innerwheeldistrict909.com/" title="logo" target="_blank">
                             <img width="60" height="60" src="{{ asset('assets/site/assets/img/logo1.jpg') }}" title="logo" alt="logo">
                         </a>
                     </td>
@@ -48,7 +48,7 @@
                                         L'Equipe d'Organisation<br><br>
                                     </p>
                                     <span style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span><br>
-                                    <a href="{{ route('welcome') }}" style="background:#20e277;text-decoration:none !important; display:inline-block; font-weight:500; margin-top:24px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">Aller sur le site</a>
+                                    <a href="https://innerwheeldistrict909.com/" style="background:#20e277;text-decoration:none !important; display:inline-block; font-weight:500; margin-top:24px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">Aller sur le site</a>
                                 </td>
                             </tr>
                             <tr>

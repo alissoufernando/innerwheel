@@ -23,7 +23,7 @@
           </tr>
           <tr>
             <td style="text-align:center;">
-              <a href="{{ route('welcome') }}" title="logo" target="_blank">
+              <a href="https://innerwheeldistrict909.com/" title="logo" target="_blank">
                 <img width="60" height="60" src="{{asset('assets/site/assets/img/logo1.jpg')}}" title="logo" alt="logo">
               </a>
             </td>
@@ -52,7 +52,7 @@
 
                     </p>
 
-                    <a href="{{ route('login') }}" style="background:#20e277;text-decoration:none !important; display:inline-block; font-weight:500; margin-top:24px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">Connexion</a>
+                    <a href="https://innerwheeldistrict909.com/login/" style="background:#20e277;text-decoration:none !important; display:inline-block; font-weight:500; margin-top:24px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">Connexion</a>
                   </td>
                 </tr>
                 <tr>
