@@ -25,6 +25,16 @@
 				<!--end breadcrumb-->
 				<h6 class="mb-0 text-uppercase">Liste des Hébergements</h6>
 				<hr/>
+                {{--
+                <th>Nombre Place total</th>
+                <th>Nombre Place restante</th>
+                <th>Nombre Place prise</th>
+                --}}
+                {{--
+                <td>{{ $inscription->option_hebergement->tarifs->placeI }}</td>
+                <td>{{ $inscription->option_hebergement->tarifs->place }}</td>
+                <td>{{ $inscription->option_hebergement->tarifs->placeI -  $inscription->option_hebergement->tarifs->place}}</td>
+                --}}
 				<div class="card">
 					<div class="card-body">
                         @if (Session::has('message'))
@@ -35,17 +45,14 @@
 								<thead>
 									<tr>
 										<th>ID</th>
-										<th>Nom du client</th>
-										<th>Prénoms du client</th>
-
-										<th>Nom de l'hôtel</th>
-										<th>type de chambre</th>
+										<th>Nom</th>
+										<th>Prénoms</th>
+										<th>Hôtel</th>
+										<th>Chambre</th>
 										<th>Options</th>
-                                        {{--
-										<th>Nombre Place total</th>
-										<th>Nombre Place restante</th>
-										<th>Nombre Place prise</th>
-                                        --}}
+										<th>Compagnon</th>
+										<th>Arrivée</th>
+                                        <th>Club</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -53,24 +60,27 @@
                                         $i = 1;
                                     @endphp
                                     @foreach ($inscriptions as $inscription)
-
-                                    <tr>
                                         @if ($inscription->option_hebergement == null)
 
                                         @else
-										<td>{{ $i++ }}</td>
-										<td>{{ $inscription->individu->nom }}</td>
-                                        <td>{{ $inscription->individu->prenoms }}</td>
-                                        <td>{{ $inscription->option_hebergement->tarifs->lieu->libelle }}</td>
-                                        <td>{{ $inscription->option_hebergement->tarifs->libelle }}</td>
-                                        <td>{{ $inscription->option_hebergement->libelle }}</td>
-                                        {{--
-                                        <td>{{ $inscription->option_hebergement->tarifs->placeI }}</td>
-                                        <td>{{ $inscription->option_hebergement->tarifs->place }}</td>
-                                        <td>{{ $inscription->option_hebergement->tarifs->placeI -  $inscription->option_hebergement->tarifs->place}}</td>
-                                        --}}
+                                            <tr>
+                                                <td>{{ $i++ }}</td>
+                                                <td>{{ $inscription->individu->nom }}</td>
+                                                <td>{{ $inscription->individu->prenoms }}</td>
+                                                <td>{{ $inscription->option_hebergement->tarifs->lieu->libelle }}</td>
+                                                <td>{{ $inscription->option_hebergement->tarifs->libelle }}</td>
+                                                <td>{{ $inscription->option_hebergement->libelle }}</td>
+                                                <td>{{ $inscription->compagnons }}</td>
+                                                <td>
+                                                    @if ( $inscription->mode_arrivee_id == 1)
+                                                        Avion
+                                                    @else
+                                                        Terre
+                                                    @endif
+                                                </td>
+                                                <td>{{ $inscription->individu->club }}</td>
+                                            </tr>
                                         @endif
-									</tr>
                                     @endforeach
                                 </tbody>
 							</table>

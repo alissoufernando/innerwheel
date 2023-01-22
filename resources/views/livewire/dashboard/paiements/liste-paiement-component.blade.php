@@ -20,7 +20,7 @@
 				<!--end breadcrumb-->
                 <div class="row d-flex">
                     <div class="col-md-6 d-flex">
-                        <h6 class="mb-0 text-uppercase">Liste des Paiements</h6>
+                        <h6 class="mb-0 text-uppercase">Liste des Paiements. Total <span style="color: red;">{{ $inscriptions->sum('montant_total') }}</span></h6>
                     </div>
 
                 </div>
@@ -37,7 +37,8 @@
 										<th>ID</th>
 										<th>Nom</th>
 										<th>Prénoms</th>
-										<th>Total</th>
+										<th>Montant</th>
+                                        <th>Club</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -52,18 +53,9 @@
                                         <td>
                                             {{ $inscription->montant_total }}
                                         </td>
-
+                                        <td>{{ $inscription->individu->club }}</td>
 									</tr>
                                     @endforeach
-                                    <tr>
-
-                                        <td colspan="3" class="text-center" style="font-weight: bolder;padding-top: 20px;">
-                                            Total:
-                                        </td>
-                                        <td>{{ $inscriptions->sum('montant_total') }}</td>
-
-
-									</tr>
                                 </tbody>
 							</table>
 						</div>

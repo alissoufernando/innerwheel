@@ -46,9 +46,9 @@
 										<th>Nom</th>
 										<th>Prénoms</th>
 										<th>Club</th>
-										<th>Fonctions</th>
+										<th>Poste</th>
 										<th>Statut</th>
-										<th>Reçu</th>
+										<th>Pj</th>
 										@can('secretaire')
 										<th>Actions</th>
 
@@ -79,12 +79,12 @@
                                         </td>
                                         <td>
                                             @if ($inscription->paiement->piece)
-                                            <p> Voir le reçu
+                                            <p> Voir
                                             <a href="{{ asset('storage')}}/{{$inscription->paiement->piece}}" target="_blank" rel="noopener noreferrer"> ici</a>
                                             </p>
 
                                             @else
-                                            <p> Pas de reçu</p>
+                                            <p> ---</p>
                                             @endif
                                         </td>
 										@can('secretaire')
