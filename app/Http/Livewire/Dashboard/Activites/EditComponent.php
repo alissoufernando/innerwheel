@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Dashboard\Activites;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\ActiviteAction;
+use Illuminate\Support\Facades\Storage;
 
 class EditComponent extends Component
 {
@@ -12,8 +13,11 @@ class EditComponent extends Component
     public $image;
     public $name;
     public $contenu;
+    public $file;
     public $description;
     public $activites_action_id;
+    public $array_full=[];
+
 
 
     public function resetInputFields()
@@ -21,7 +25,7 @@ class EditComponent extends Component
         // Clean errors if were visible before
         $this->resetErrorBag();
         $this->resetValidation();
-        $this->reset(['image', 'name','contenu', 'description','activites_action_id']);
+        $this->reset(['image', 'name','contenu', 'description','activites_action_id','file']);
 
     }
     // recuperation de l'element a modifier
@@ -42,28 +46,63 @@ class EditComponent extends Component
                 'image' =>  'required',
                 'name' =>  'required',
                 'contenu' =>  'required',
+                'file' =>  'required',
                 'description' =>  'required',
 
             ]);
 
-        $myAvantageOffert = ActiviteAction::findOrFail($this->activites_action_id);
+        $myActiviteAction = ActiviteAction::findOrFail($this->activites_action_id);
         // Modification et Stockage de l'image dans le dossier storage de public
-        $filenameImage = time() . '.' . $this->image->extension();
-        $pathImage = $this->image->storeAs(
-            'Activites',
-            $filenameImage,
-            'public'
-        );
 
-        $myAvantageOffert->image = $filenameImage;
-        $myAvantageOffert->contenu = $this->contenu;
-        $myAvantageOffert->name = $this->name;
-        $myAvantageOffert->description = $this->description;
-        $myAvantageOffert->save();
+        if($myActiviteAction->image != $this->image)
+        {
+            if($this->file) {
+                $filenamePDF = time() . '.' . $this->file->extension();
+                $pathImage = $this->file->storeAs(
+                    'ActivitesFile',
+                    $filenamePDF,
+                    'public'
+                );
+            }
+            $this->uploadOne();
+            array_push($this->array_full,$filenamePDF);
+            $myActiviteAction->image = collect($this->array_full)->implode(',');
+        }else{
+            $myActiviteAction->image = $this->image;
+        }
+        $myActiviteAction->contenu = $this->contenu;
+        $myActiviteAction->name = $this->name;
+        $myActiviteAction->description = $this->description;
+        $myActiviteAction->save();
 
-        session()->flash('message', 'Modification effectué avec succès.');
+        Storage::deleteDirectory('livewire-tmp');
         $this->resetInputFields();
+        session()->flash('message', 'Modification effectué avec succès.');
 
+    }
+    public function uploadOne()
+    {
+        if (!empty($this->image)) {
+            $array_full = array();
+            foreach ($this->image as $full){
+                $images = $full;
+                $filename_full =  'activites-' .uniqid() . '.' . $images->getClientOriginalExtension();
+                $pathImage = $images->storeAs(
+                    'Activites',
+                    $filename_full,
+                    'public'
+                );
+
+                array_push($array_full, $filename_full);
+
+            }
+            $this->array_full=$array_full;
+
+        }
+    }
+    public function deleteOne()
+    {
+        Storage::disk('public')->delete("/Activites/$this->image");
     }
     public function render()
     {

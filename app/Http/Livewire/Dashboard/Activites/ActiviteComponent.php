@@ -31,6 +31,7 @@ class ActiviteComponent extends Component
     public function render()
     {
         $activite_actions = ActiviteAction::where('isDelete', 0)->get();
+        
         return view('livewire.dashboard.activites.activite-component',[
             'activite_actions' => $activite_actions,
         ]);

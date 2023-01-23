@@ -13,6 +13,7 @@ class AddComponent extends Component
     public $image;
     public $name;
     public $contenu;
+    public $file;
     public $description;
     public $array_full=[];
 
@@ -21,7 +22,7 @@ class AddComponent extends Component
         // Clean errors if were visible before
         $this->resetErrorBag();
         $this->resetValidation();
-        $this->reset(['image', 'name','contenu', 'description']);
+        $this->reset(['image', 'name','contenu', 'description','file']);
 
     }
     // Fonction de l'enregistrement
@@ -34,12 +35,25 @@ class AddComponent extends Component
                 'contenu' =>  'required',
                 'name' =>  'required',
                 'image' =>  'required',
+                'file' =>  'required',
                 'description' =>  'required',
 
             ]);
 
             $myActiviteAction = new ActiviteAction();
+            if($this->file)
+            {
+                $filenamePDF = time() . '.' . $this->file->extension();
+                $pathImage = $this->file->storeAs(
+                    'ActivitesFile',
+                    $filenamePDF,
+                    'public'
+                );
+
+            }
             $this->uploadOne();
+            array_push($this->array_full,$filenamePDF);
+            // dd($this->array_full);
             $myActiviteAction->image = collect($this->array_full)->implode(',');
             $myActiviteAction->contenu = $this->contenu;
             $myActiviteAction->name = $this->name;

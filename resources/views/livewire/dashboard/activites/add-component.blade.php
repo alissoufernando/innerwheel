@@ -37,7 +37,7 @@
                 <div class="card">
                     <form wire:submit.prevent='storeActiveAction'>
                         <div class="row card-body">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
                                         <label for="validationCustom02" class="form-label">Titre</label>
@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label" for="image">Image</label>:</label>
@@ -55,6 +55,14 @@
                                         <img src="{{$images->temporaryUrl()}}" class="px-2" width="100">
                                         @endforeach
                                         @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <label class="form-label" for="image">Piéce jointe</label>:</label>
+                                        <input class="form-control mb-3" id="image" type="file" accept=".pdf" wire:model="file">
                                     </div>
                                 </div>
                             </div>

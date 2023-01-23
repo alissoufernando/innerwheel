@@ -90,15 +90,26 @@
           <div class="swiper-wrapper align-items-center">
             @php
                 $images = explode(",",$activiteAction->image);
+                // dd($images);
             @endphp
             @foreach ($images as $image)
-            <div class="swiper-slide"><a href="{{ asset('storage/Activites')}}/{{$images[0]}}" class="gallery-lightbox"><img src="{{ asset('storage/Activites')}}/{{$images[0]}}" class="img-fluid" alt="{{ $activiteAction->name }}"></a></div>
+            @if (pathinfo($image, PATHINFO_EXTENSION) != "pdf")
+            <div class="swiper-slide"><a href="{{ asset('storage/Activites')}}/{{$image}}" class="gallery-lightbox"><img src="{{ asset('storage/Activites')}}/{{$image}}" class="img-fluid" alt="{{ $activiteAction->name }}"></a></div>
+            @endif
             @endforeach
           </div>
           <div class="swiper-pagination"></div>
         </div>
-        <div>
+        <div class="justify-content-center">
             {!! $activiteAction->contenu !!}
+
+        </div>
+        <div style="text-align: center">
+            @foreach ($images as $image)
+            @if (pathinfo($image, PATHINFO_EXTENSION) == "pdf")
+            <a href="{{ asset('storage/ActivitesFile')}}/{{$image}}" target="_blank" rel="noopener noreferrer" class="btn btn-warning text-dark">Télécharger la pièce jointe</a>
+            @endif
+            @endforeach
         </div>
 
       </section><!-- End Gallery Section -->

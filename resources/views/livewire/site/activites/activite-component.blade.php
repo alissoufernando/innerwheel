@@ -6,6 +6,14 @@
     .scrollto{
         color:black;
     }
+    #divimage img{
+        width: 100%;
+        height: 300px;
+    }
+    #divimage{
+        width: 100%;
+        height: auto;
+    }
 </style>
 @endsection
 <div>
@@ -42,10 +50,15 @@
       @foreach ($activiteActions as $activiteAction)
       @php
         $images = explode(",",$activiteAction->image);
+        // dd($images);
       @endphp
         <div class="col-lg-4 col-md-6">
-          <div class="speaker" data-aos="fade-up" data-aos-delay="100">
+          <div class="speaker" data-aos="fade-up" data-aos-delay="100" id="divimage">
+            @if ($activiteAction->image)
             <img src="{{ asset('storage/Activites')}}/{{$images[0]}}" alt="{{$activiteAction->name}}" alt="Speaker 1" class="img-fluid">
+            @else
+            <img src="{{ asset('storage/Activites/1.jpg')}}" alt="{{$activiteAction->name}}" alt="Speaker 1" class="img-fluid">
+            @endif
             <div class="details">
              <a href="{{ route('activite-details', ['id' => $activiteAction->id])}}"> <h3>{{ $activiteAction->name }}</h3></a>
               <p>{{ $activiteAction->description }}</p>
