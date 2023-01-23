@@ -1,27 +1,28 @@
 <?php
 
-use App\Http\Livewire\Auth\ChangePassWordComponent;
+use App\Http\Livewire\Site\Welcome;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Livewire\Auth\LoginComponent;
 use App\Http\Livewire\Auth\RegisterComponent;
 use App\Http\Livewire\Auth\ResetPasswordComponent;
+use App\Http\Livewire\Auth\ChangePassWordComponent;
 use App\Http\Livewire\Auth\ForgotPasswordComponent;
 use App\Http\Livewire\Dashboard\DashboardComponent;
 use App\Http\Livewire\Auth\ConfirmPasswordComponent;
-use App\Http\Livewire\Dashboard\Activites\ActiviteComponent as ActivitesActiviteComponent;
 use App\Http\Livewire\Dashboard\Activites\AddComponent;
-use App\Http\Livewire\Dashboard\Activites\EditComponent;
-use App\Http\Livewire\Dashboard\Administration\User\UserComponent;
-use App\Http\Livewire\Dashboard\Administration\Roles\RoleComponent;
-use App\Http\Livewire\Dashboard\Hebergement\HebergementComponent;
-use App\Http\Livewire\Dashboard\Inscriptions\InscriptionComponent as InscriptionsInscriptionComponent;
-use App\Http\Livewire\Dashboard\Paiements\ListePaiementComponent;
 use App\Http\Livewire\Site\Activites\ActiviteComponent;
+use App\Http\Livewire\Dashboard\Activites\EditComponent;
+use App\Http\Livewire\Site\Inscriptions\ThankYouComponent;
+use App\Http\Livewire\Site\Inscriptions\InscriptionComponent;
 use App\Http\Livewire\Site\Activites\DetailsActiviteComponent;
 use App\Http\Livewire\Site\Inscriptions\PaimentFedaPayComponent;
-use App\Http\Livewire\Site\Inscriptions\InscriptionComponent;
-use App\Http\Livewire\Site\Inscriptions\ThankYouComponent;
-use App\Http\Livewire\Site\Welcome;
+use App\Http\Livewire\Dashboard\Hebergement\HebergementComponent;
+use App\Http\Livewire\Dashboard\Paiements\ListePaiementComponent;
+use App\Http\Livewire\Dashboard\Administration\User\UserComponent;
+use App\Http\Livewire\Dashboard\Administration\Roles\RoleComponent;
+use App\Http\Livewire\Dashboard\Activites\ActiviteComponent as ActivitesActiviteComponent;
+use App\Http\Livewire\Dashboard\Inscriptions\InscriptionComponent as InscriptionsInscriptionComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,9 @@ Route::get('/forgot-password', ForgotPasswordComponent::class)->name('password.r
 Route::get('/changr-password', ChangePassWordComponent::class)->name('change.password');
 
 Route::get('/reset-password/{token}', ResetPasswordComponent::class)->name('password.reset');
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
 
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),  'verified'])->group(function () {
