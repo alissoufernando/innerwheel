@@ -131,38 +131,38 @@ class InscriptionComponent extends Component
     {
         if($this->filtre == 1)
         {
-            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->latest()->get();
+            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->latest()->with('individu')->get();
         }
         if($this->filtre == 2)
         {
-            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->latest()->get();
+            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->latest()->with('individu')->get();
             // dd($inscriptions);
         }
         if($this->filtre == 3)
         {
-            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->latest()->get();
+            $inscriptions = Inscription::where('isDelete', 0)->where('statut_id', $this->filtre)->latest()->with('individu')->get();
         }
         if($this->filtre == 0)
         {
-            $inscriptions = Inscription::where('isDelete', 0)->latest()->get();
+            $inscriptions = Inscription::where('isDelete', 0)->latest()->with('individu')->get();
         }
 
-        foreach($inscriptions as $inscription)
-        {
-            if($inscription->individu->club_id)
-            {
+        // foreach($inscriptions as $inscription)
+        // {
+        //     dd($inscription->individu->groupe->pay->libelle);
+        //     if($inscription->individu->club_id)
+        //     {
 
-                $club = Club::where('id',$inscription->individu->club_id)->first();
-                $inscription->individu->club = $club->libelle;
+        //         $club = Club::where('id',$inscription->individu->club_id)->first();
+        //         $inscription->individu->club = $club->libelle;
 
-            }
-            if($inscription->individu->poste_id)
-            {
-                // dd($inscription->individu->poste_id);
-                $poste = Poste::where('id',$inscription->individu->poste_id)->first();
-                $inscription->individu->poste = $poste->libelle;
-            }
-        }
+        //     }
+        //     if($inscription->individu->poste_id)
+        //     {
+        //         $poste = Poste::where('id',$inscription->individu->poste_id)->first();
+        //         $inscription->individu->poste = $poste->libelle;
+        //     }
+        // }
 
         $statuts = Statut::where('isDelete', 0)->get();
         return view('livewire.dashboard.inscriptions.inscription-component',[

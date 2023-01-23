@@ -45,6 +45,7 @@
 										<th>ID</th>
 										<th>Nom</th>
 										<th>Prénoms</th>
+										<th>Pays</th>
 										<th>Club</th>
 										<th>Poste</th>
 										<th>Statut</th>
@@ -64,8 +65,27 @@
 										<td>{{ $i++ }}</td>
 										<td>{{ $inscription->individu->nom }}</td>
                                         <td>{{ $inscription->individu->prenoms }}</td>
+                                        @if ($inscription->individu->pays)
+                                        <td>{{ $inscription->individu->pays }}</td>
+
+                                        @else
+                                        <td>{{ $inscription->individu->groupe->pay->libelle }}</td>
+
+                                        @endif
+                                        @if ($inscription->individu->club_id)
+                                        <td>{{ $inscription->individu->groupe->libelle }}</td>
+
+                                        @else
                                         <td>{{ $inscription->individu->club }}</td>
+
+                                        @endif
+                                        @if ($inscription->individu->poste_id)
+                                        <td>{{ $inscription->individu->fonction->libelle }}</td>
+
+                                        @else
                                         <td>{{ $inscription->individu->poste }}</td>
+
+                                        @endif
                                         <td>
                                             @if ($inscription->statut_id == 1)
                                             <span class="badge bg-danger">{{ $inscription->statut->libelle }}</span>
