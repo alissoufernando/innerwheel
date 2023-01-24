@@ -231,7 +231,8 @@ class InscriptionComponent extends Component
         "description" => "Inscription de la inner Wheel 2023",
         "amount" => $total_amount,
         "currency" => ["iso" => "XOF"],
-        "callback_url" => "http://127.0.0.1:8000/paiment",
+        //"callback_url" => "http://127.0.0.1:8000/paiment",
+        "callback_url" => "https://innerwheeldistrict909.com/paiment",
         "customer" => [
             "firstname" => $this->prenoms,
             "lastname" => $this->nom."_".$this->inscription_id_1,
