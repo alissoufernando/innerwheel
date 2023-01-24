@@ -21,28 +21,28 @@
         </li>
         <li>
             <a href="{{ route('admininscription') }}" class="{{ Route::currentRouteName()== 'admininscription' ? 'active' : '' }}">
-                <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                <div class="parent-icon"><i class='bx bx-receipt'></i>
                 </div>
                 <div class="menu-title">Inscriptions</div>
             </a>
         </li>
         <li>
             <a href="{{ route('admin.paiement-index') }}" class="{{ Route::currentRouteName()== 'admin.paiement-index' ? 'active' : '' }}">
-                <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                <div class="parent-icon"><i class='bx bx-money'></i>
                 </div>
                 <div class="menu-title">Liste des paiements</div>
             </a>
         </li>
         <li>
             <a href="{{ route('admin.heberg-index') }}" class="{{ Route::currentRouteName()== 'admin.heberg-index' ? 'active' : '' }}">
-                <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                <div class="parent-icon"><i class='bx bx-hotel'></i>
                 </div>
                 <div class="menu-title">Hébergements</div>
             </a>
         </li>
         <li>
             <a href="{{ route('admin.activite-index') }}" class="{{ Route::currentRouteName()== 'admin.activite-index' ? 'active' : '' }}">
-                <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                <div class="parent-icon"><i class='bx bx-landscape'></i>
                 </div>
                 <div class="menu-title">Activités</div>
             </a>

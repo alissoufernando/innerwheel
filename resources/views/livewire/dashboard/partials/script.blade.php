@@ -20,7 +20,7 @@
 		  $(".knob").knob();
 	  });
   </script>
-  <script src="{{ ('assets/dash/js/index.js') }}"></script>
+  <script src="{{ asset('assets/dash/js/index.js') }}"></script>
 <!--app JS-->
 <script src="{{ asset('assets/dash/js/app.js') }}"></script>
 @yield('scripts')

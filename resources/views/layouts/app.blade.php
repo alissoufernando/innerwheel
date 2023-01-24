@@ -32,9 +32,9 @@
 		@include('livewire.dashboard.partials.footer')
 	</div>
 	<!--end wrapper-->
-    @livewireScripts()
     @include('livewire.dashboard.partials.script')
     @include('livewire.dashboard.partials.confirmation-de-suppression')
+    @livewireScripts()
 </body>
 
 </html>
