@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\ActiviteAction;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class AddComponent extends Component
 {
@@ -41,15 +42,35 @@ class AddComponent extends Component
             ]);
 
             $myActiviteAction = new ActiviteAction();
+            $filenamePDF = "";
             if($this->file)
             {
+                $fileTmpNamePDF = $this->file->getPathname();
+                // dd($this->file);
+                //         $file = $request->file('file');
+                // $path = $file->store('uploads');
+                // Storage::move($path, 'public/'.$path);
                 $filenamePDF = time() . '.' . $this->file->extension();
-                $pathImage = $this->file->storeAs(
-                    'ActivitesFile',
-                    $filenamePDF,
-                    'public'
-                );
-
+                // $pathImage = $this->file->storeAs(
+                //     'ActivitesFile',
+                //     $filenamePDF,
+                //     'public'
+                // );
+                // Définir l'emplacement où le fichier doit être enregistré
+                // $directory = __DIR__.'/public/innerwheel/Activites';
+                $directory = public_path('innerwheel\ActivitesFile');
+                chmod(public_path('innerwheel'), 0777);
+                chmod($directory, 0777);
+                $fileDestination = $directory.$filenamePDF;
+                // Enregistrer le fichier dans le dossier spécifié
+                // dd($fileTmpNamePDF, $fileDestination);
+                // Storage::put($fileDestination, file_get_contents($this->file));
+                Storage::move($fileTmpNamePDF, $fileDestination);
+                // move_uploaded_file($fileTmpNamePDF, $fileDestination);
+                // if (!move_uploaded_file($fileTmpNamePDF, $fileDestination)) {
+                //     throw new FileException('Error moving file to destination.');
+                // }
+                    dd('ok');
             }
             $this->uploadOne();
             array_push($this->array_full,$filenamePDF);
@@ -60,7 +81,7 @@ class AddComponent extends Component
             $myActiviteAction->description = $this->description;
             $myActiviteAction->save();
 
-            Storage::deleteDirectory('livewire-tmp');
+            // Storage::deleteDirectory('livewire-tmp');
             $this->resetInputFields();
 
             session()->flash('message', 'Enregistrement effectué avec succès.');
@@ -77,12 +98,24 @@ class AddComponent extends Component
             $array_full = array();
             foreach ($this->image as $full){
                 $images = $full;
+                $fileTmpName = $images->getPathname();
+                // dd($fileTmpName);
                 $filename_full =  'activites-' .uniqid() . '.' . $images->getClientOriginalExtension();
-                $pathImage = $images->storeAs(
-                    'Activites',
-                    $filename_full,
-                    'public'
-                );
+                // $pathImage = $images->storeAs(
+                //     'Activites',
+                //     $filename_full,
+                //     'public'
+                // );
+                // Définir l'emplacement où le fichier doit être enregistré
+                // $directory = __DIR__.'/public/innerwheel/ActivitesFile/';
+                $directory = public_path('innerwheel/ActivitesFile/');
+                chmod($directory, 0777);
+                $fileDestination = $directory . $filename_full;
+                // Enregistrer le fichier dans le dossier spécifié
+                move_uploaded_file($fileTmpName, $fileDestination);
+                if (!move_uploaded_file($fileTmpName, $fileDestination)) {
+                    throw new FileException('Error moving file to destination.');
+                }
 
                 array_push($array_full, $filename_full);
 
@@ -91,10 +124,10 @@ class AddComponent extends Component
 
         }
     }
-    public function deleteOne()
-    {
-        Storage::disk('public')->delete("/Activites/$this->image");
-    }
+    // public function deleteOne()
+    // {
+    //     Storage::disk('public')->delete("/Activites/$this->image");
+    // }
     public function render()
     {
         return view('livewire.dashboard.activites.add-component');
