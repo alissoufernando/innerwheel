@@ -62,7 +62,7 @@
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label" for="image">Piéce jointe</label>:</label>
-                                        <input class="form-control mb-3" id="image" type="file" accept=".pdf" wire:model="file">
+                                        <input class="form-control mb-3" id="file" type="file" accept=".pdf" wire:model="file">
                                     </div>
                                 </div>
                             </div>

@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\ActiviteAction;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 class AddComponent extends Component
 {
@@ -27,7 +28,7 @@ class AddComponent extends Component
     }
     // Fonction de l'enregistrement
 
-    public function storeActiveAction()
+    public function storeActiveAction(Request $request)
     {
         // verification des variables lors de la l'enregistrement
 
@@ -43,16 +44,21 @@ class AddComponent extends Component
             $myActiviteAction = new ActiviteAction();
             if($this->file)
             {
-                $filenamePDF = time() . '.' . $this->file->extension();
-                $pathImage = $this->file->storeAs(
-                    'ActivitesFile',
-                    $filenamePDF,
-                    'public'
-                );
 
+                $file = $this->file;
+                $fileName = gmdate("YmdHis").'.'.$file->getClientOriginalExtension();
+                $file->storeAs('activity_files', $fileName, 'real_public');
+                array_push($this->array_full,$fileName);
             }
-            $this->uploadOne();
-            array_push($this->array_full,$filenamePDF);
+            if($this->image){
+
+                $image = $this->image[0];
+                $imageName = gmdate("YmdHis").'.'.$image->getClientOriginalExtension();
+                $image->storeAs('activity_files', $imageName, 'real_public');
+                array_push($this->array_full,$imageName);
+            }
+            //$this->uploadOne();
+
             // dd($this->array_full);
             $myActiviteAction->image = collect($this->array_full)->implode(',');
             $myActiviteAction->contenu = $this->contenu;
@@ -71,6 +77,7 @@ class AddComponent extends Component
         // Modification et Stockage de l'image dans le dossier storage de public
 
     }
+
     public function uploadOne()
     {
         if (!empty($this->image)) {
@@ -91,6 +98,7 @@ class AddComponent extends Component
 
         }
     }
+
     public function deleteOne()
     {
         Storage::disk('public')->delete("/Activites/$this->image");
