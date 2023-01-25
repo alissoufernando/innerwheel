@@ -44,7 +44,7 @@ class AddComponent extends Component
             $myActiviteAction = new ActiviteAction();
             if($this->file)
             {
-
+                //https://laracasts.com/discuss/channels/livewire/how-to-store-images-in-public-folder-not-storage-folder-using-livewire
                 $file = $this->file;
                 $fileName = gmdate("YmdHis").'.'.$file->getClientOriginalExtension();
                 $file->storeAs('activity_files', $fileName, 'real_public');
