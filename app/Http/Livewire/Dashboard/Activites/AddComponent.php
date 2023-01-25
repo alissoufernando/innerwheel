@@ -42,6 +42,7 @@ class AddComponent extends Component
             ]);
 
             $myActiviteAction = new ActiviteAction();
+            $filenamePDF = "";
             if($this->file)
             {
                 //https://laracasts.com/discuss/channels/livewire/how-to-store-images-in-public-folder-not-storage-folder-using-livewire
@@ -66,7 +67,7 @@ class AddComponent extends Component
             $myActiviteAction->description = $this->description;
             $myActiviteAction->save();
 
-            Storage::deleteDirectory('livewire-tmp');
+            // Storage::deleteDirectory('livewire-tmp');
             $this->resetInputFields();
 
             session()->flash('message', 'Enregistrement effectué avec succès.');
@@ -84,12 +85,24 @@ class AddComponent extends Component
             $array_full = array();
             foreach ($this->image as $full){
                 $images = $full;
+                $fileTmpName = $images->getPathname();
+                // dd($fileTmpName);
                 $filename_full =  'activites-' .uniqid() . '.' . $images->getClientOriginalExtension();
-                $pathImage = $images->storeAs(
-                    'Activites',
-                    $filename_full,
-                    'public'
-                );
+                // $pathImage = $images->storeAs(
+                //     'Activites',
+                //     $filename_full,
+                //     'public'
+                // );
+                // Définir l'emplacement où le fichier doit être enregistré
+                // $directory = __DIR__.'/public/innerwheel/ActivitesFile/';
+                $directory = public_path('innerwheel/ActivitesFile/');
+                chmod($directory, 0777);
+                $fileDestination = $directory . $filename_full;
+                // Enregistrer le fichier dans le dossier spécifié
+                move_uploaded_file($fileTmpName, $fileDestination);
+                if (!move_uploaded_file($fileTmpName, $fileDestination)) {
+                    throw new FileException('Error moving file to destination.');
+                }
 
                 array_push($array_full, $filename_full);
 
@@ -99,10 +112,12 @@ class AddComponent extends Component
         }
     }
 
+
     public function deleteOne()
     {
         Storage::disk('public')->delete("/Activites/$this->image");
     }
+
     public function render()
     {
         return view('livewire.dashboard.activites.add-component');
