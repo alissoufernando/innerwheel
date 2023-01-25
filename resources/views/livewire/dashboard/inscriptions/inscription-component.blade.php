@@ -100,7 +100,7 @@
                                         <td>
                                             @if ($inscription->paiement->piece)
                                             <p> Voir
-                                            <a href="{{ asset('storage')}}/{{$inscription->paiement->piece}}" target="_blank" rel="noopener noreferrer"> ici</a>
+                                            <a href="{{ asset('piece')}}/{{$inscription->paiement->piece}}" target="_blank" rel="noopener noreferrer"> ici</a>
                                             </p>
 
                                             @else

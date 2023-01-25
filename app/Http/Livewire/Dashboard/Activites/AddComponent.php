@@ -28,7 +28,7 @@ class AddComponent extends Component
     }
     // Fonction de l'enregistrement
 
-    public function storeActiveAction(Request $request)
+    public function storeActiveAction()
     {
         // verification des variables lors de la l'enregistrement
 
@@ -36,7 +36,6 @@ class AddComponent extends Component
                 'contenu' =>  'required',
                 'name' =>  'required',
                 'image' =>  'required',
-                'file' =>  'required',
                 'description' =>  'required',
 
             ]);
@@ -47,19 +46,18 @@ class AddComponent extends Component
             {
                 //https://laracasts.com/discuss/channels/livewire/how-to-store-images-in-public-folder-not-storage-folder-using-livewire
                 $file = $this->file;
-                $fileName = gmdate("YmdHis").'.'.$file->getClientOriginalExtension();
-                $file->storeAs('activity_files', $fileName, 'real_public');
-                array_push($this->array_full,$fileName);
+                $filenamePDF = uniqid().'.'.$file->getClientOriginalExtension();
+                $file->storeAs('activity_files', $filenamePDF, 'real_public');
             }
-            if($this->image){
+            // if($this->image){
 
-                $image = $this->image[0];
-                $imageName = gmdate("YmdHis").'.'.$image->getClientOriginalExtension();
-                $image->storeAs('activity_files', $imageName, 'real_public');
-                array_push($this->array_full,$imageName);
-            }
-            //$this->uploadOne();
-
+            //     $image = $this->image[0];
+            //     $imageName = gmdate("YmdHis").'.'.$image->getClientOriginalExtension();
+            //     $image->storeAs('activity_files', $imageName, 'real_public');
+            //     array_push($this->array_full,$imageName);
+            // }
+            $this->uploadOne();
+            array_push($this->array_full,$filenamePDF);
             // dd($this->array_full);
             $myActiviteAction->image = collect($this->array_full)->implode(',');
             $myActiviteAction->contenu = $this->contenu;
@@ -85,26 +83,10 @@ class AddComponent extends Component
             $array_full = array();
             foreach ($this->image as $full){
                 $images = $full;
-                $fileTmpName = $images->getPathname();
-                // dd($fileTmpName);
-                $filename_full =  'activites-' .uniqid() . '.' . $images->getClientOriginalExtension();
-                // $pathImage = $images->storeAs(
-                //     'Activites',
-                //     $filename_full,
-                //     'public'
-                // );
-                // Définir l'emplacement où le fichier doit être enregistré
-                // $directory = __DIR__.'/public/innerwheel/ActivitesFile/';
-                $directory = public_path('innerwheel/ActivitesFile/');
-                chmod($directory, 0777);
-                $fileDestination = $directory . $filename_full;
-                // Enregistrer le fichier dans le dossier spécifié
-                move_uploaded_file($fileTmpName, $fileDestination);
-                if (!move_uploaded_file($fileTmpName, $fileDestination)) {
-                    throw new FileException('Error moving file to destination.');
-                }
+                $imageName = uniqid().'.'.$images->getClientOriginalExtension();
+                $images->storeAs('activity_files', $imageName, 'real_public');
 
-                array_push($array_full, $filename_full);
+                array_push($array_full, $imageName);
 
             }
             $this->array_full=$array_full;
@@ -113,10 +95,10 @@ class AddComponent extends Component
     }
 
 
-    public function deleteOne()
-    {
-        Storage::disk('public')->delete("/Activites/$this->image");
-    }
+    // public function deleteOne()
+    // {
+    //     Storage::disk('public')->delete("/Activites/$this->image");
+    // }
 
     public function render()
     {

@@ -37,7 +37,7 @@
                 <div class="card">
                     <form wire:submit.prevent='updateActiveAction'>
                         <div class="row card-body">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
                                         <label for="validationCustom02" class="form-label">Titre</label>
@@ -45,14 +45,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label" for="image">Image</label>:</label>
-                                        <input class="form-control mb-3" id="image" type="file" accept=".jpg, .png, image/jpeg, image/png" wire:model="image">
+                                        <input class="form-control mb-3" id="image" type="file" accept=".jpg, .png, image/jpeg, image/png" wire:model="image" multiple>
                                         {{-- @if ($image)
                                         <img src="{{$image->temporaryUrl()}}" class="px-2" width="100">
                                         @endif --}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <label class="form-label" for="image">Piéce jointe</label>:</label>
+                                        <input class="form-control mb-3" id="file" type="file" accept=".pdf" wire:model="file">
                                     </div>
                                 </div>
                             </div>

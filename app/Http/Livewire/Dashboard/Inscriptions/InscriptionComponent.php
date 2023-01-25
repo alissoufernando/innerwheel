@@ -66,13 +66,10 @@ class InscriptionComponent extends Component
 
                 $mypaiement = Paiement::findOrFail($this->inscription_id);
 
-                $filename = time() . '.' . $this->piece->extension();
-                $path = $this->piece->storeAs(
-                    'Pieces',
-                    $filename,
-                    'public'
-                );
-                $mypaiement->piece = $path;
+                $file = $this->piece;
+                $filenamePDF = uniqid().'.'.$file->getClientOriginalExtension();
+                $file->storeAs('activity_files', $filenamePDF, 'real_public');
+                $mypaiement->piece = $filenamePDF;
                 $mypaiement->save();
             }
         }

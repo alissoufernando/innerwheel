@@ -55,9 +55,9 @@
         <div class="col-lg-4 col-md-6">
           <div class="speaker" data-aos="fade-up" data-aos-delay="100" id="divimage">
             @if ($activiteAction->image)
-            <img src="{{ asset('storage/Activites')}}/{{$images[0]}}" alt="{{$activiteAction->name}}" alt="Speaker 1" class="img-fluid">
+            <img src="{{ asset('activity_files')}}/{{$images[0]}}" alt="{{$activiteAction->name}}" alt="Speaker 1" class="img-fluid">
             @else
-            <img src="{{ asset('storage/Activites/1.jpg')}}" alt="{{$activiteAction->name}}" alt="Speaker 1" class="img-fluid">
+            <img src="{{ asset('activity_files/1.jpg')}}" alt="{{$activiteAction->name}}" alt="Speaker 1" class="img-fluid">
             @endif
             <div class="details">
              <a href="{{ route('activite-details', ['id' => $activiteAction->id])}}"> <h3>{{ $activiteAction->name }}</h3></a>

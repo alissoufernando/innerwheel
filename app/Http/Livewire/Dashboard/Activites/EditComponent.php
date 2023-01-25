@@ -46,7 +46,7 @@ class EditComponent extends Component
                 'image' =>  'required',
                 'name' =>  'required',
                 'contenu' =>  'required',
-                'file' =>  'required',
+                
                 'description' =>  'required',
 
             ]);
@@ -57,12 +57,9 @@ class EditComponent extends Component
         if($myActiviteAction->image != $this->image)
         {
             if($this->file) {
-                $filenamePDF = time() . '.' . $this->file->extension();
-                $pathImage = $this->file->storeAs(
-                    'ActivitesFile',
-                    $filenamePDF,
-                    'public'
-                );
+                $file = $this->file;
+                $filenamePDF = uniqid().'.'.$file->getClientOriginalExtension();
+                $file->storeAs('activity_files', $filenamePDF, 'real_public');
             }
             $this->uploadOne();
             array_push($this->array_full,$filenamePDF);
@@ -75,7 +72,7 @@ class EditComponent extends Component
         $myActiviteAction->description = $this->description;
         $myActiviteAction->save();
 
-        Storage::deleteDirectory('livewire-tmp');
+        // Storage::deleteDirectory('livewire-tmp');
         $this->resetInputFields();
         session()->flash('message', 'Modification effectué avec succès.');
 
@@ -86,14 +83,12 @@ class EditComponent extends Component
             $array_full = array();
             foreach ($this->image as $full){
                 $images = $full;
-                $filename_full =  'activites-' .uniqid() . '.' . $images->getClientOriginalExtension();
-                $pathImage = $images->storeAs(
-                    'Activites',
-                    $filename_full,
-                    'public'
-                );
+                $imageName = uniqid().'.'.$images->getClientOriginalExtension();
+                $images->storeAs('activity_files', $imageName, 'real_public');
 
-                array_push($array_full, $filename_full);
+                array_push($array_full, $imageName);
+
+                array_push($array_full, $imageName);
 
             }
             $this->array_full=$array_full;

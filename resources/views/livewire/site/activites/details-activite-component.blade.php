@@ -94,7 +94,7 @@
             @endphp
             @foreach ($images as $image)
             @if (pathinfo($image, PATHINFO_EXTENSION) != "pdf")
-            <div class="swiper-slide"><a href="{{ asset('storage/Activites')}}/{{$image}}" class="gallery-lightbox"><img src="{{ asset('storage/Activites')}}/{{$image}}" class="img-fluid" alt="{{ $activiteAction->name }}"></a></div>
+            <div class="swiper-slide"><a href="{{ asset('activity_files')}}/{{$image}}" class="gallery-lightbox"><img src="{{ asset('activity_files')}}/{{$image}}" class="img-fluid" alt="{{ $activiteAction->name }}"></a></div>
             @endif
             @endforeach
           </div>
@@ -107,7 +107,7 @@
         <div style="text-align: center">
             @foreach ($images as $image)
             @if (pathinfo($image, PATHINFO_EXTENSION) == "pdf")
-            <a href="{{ asset('storage/ActivitesFile')}}/{{$image}}" target="_blank" rel="noopener noreferrer" class="btn btn-warning text-dark">Télécharger la pièce jointe</a>
+            <a href="{{ asset('activity_files')}}/{{$image}}" target="_blank" rel="noopener noreferrer" class="btn btn-warning text-dark">Télécharger la pièce jointe</a>
             @endif
             @endforeach
         </div>
