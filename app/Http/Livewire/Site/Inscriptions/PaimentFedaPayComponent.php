@@ -15,36 +15,39 @@ use Illuminate\Support\Facades\Mail;
 
 class PaimentFedaPayComponent extends Component
 {
+    public $inscription_id;
 
-    public function mount(Request $request)
+    public function mount(Request $request,$id)
     {
-
-        $id = $request->id;
-        $this->verify($id);
+        $this->inscription_id = $id;
+        // dd($this->inscription_id);
+        $id_transacion = $request->id;
+        $id_transacion = $request->id;
+        $this->verify($id_transacion);
     }
 
     public function verify($id)
     {
         /* Remplacez VOTRE_CLE_API par votre véritable clé API */
         FedaPay::setApiKey('sk_live_l_kcHD5MptuZQnpw4zDDeAKc');
+        // FedaPay::setApiKey('sk_sandbox_2DHL5GNx62oij9f0cmgFnf-9');
 
         /* Précisez si vous souhaitez exécuter votre requête en mode test ou live */
         FedaPay::setEnvironment('live'); //ou setEnvironment('live');
+        // FedaPay::setEnvironment('sandbox'); //ou setEnvironment('live');
 
         $transaction = Transaction::retrieve($id);
-        // dd($transaction->metadata->paid_customer->lastname);
+
+        // dd($transaction->metadata);
         if ($transaction->status == "approved") {
-            $id_i = explode('_', $transaction->metadata->paid_customer->lastname);
-            // dd($id_i['1']);
-            $inscription_id = $id_i['1'];
-            $myPaiement = Paiement::where('inscription_id',$inscription_id)->first();
+            $myPaiement = Paiement::where('inscription_id',$this->inscription_id)->first();
             if($myPaiement)
             {
                 $myPaiement->statut_id = 3;
                 $myPaiement->save();
             }
 
-            $myInscription = Inscription::where('id',$inscription_id)->first();
+            $myInscription = Inscription::where('id',$this->inscription_id)->first();
             if($myInscription)
             {
                 $myInscription->statut_id = 3;
@@ -54,13 +57,12 @@ class PaimentFedaPayComponent extends Component
 
             // echo "Paiement effectué";
         }else{
-            $id_i = explode('_', $transaction->metadata->paid_customer->lastname);
-            $inscription_id = $id_i['1'];
-            $myPaiement = Paiement::where('inscription_id',$inscription_id)->first();
+
+            $myPaiement = Paiement::where('inscription_id',$this->inscription_id)->first();
             $myPaiement->statut_id = 1;
             $myPaiement->save();
 
-            $myInscription = Inscription::where('id',$inscription_id)->first();
+            $myInscription = Inscription::where('id',$this->inscription_id)->first();
             $myInscription->statut_id = 1;
             $myInscription->save();
         }

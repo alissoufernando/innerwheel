@@ -39,7 +39,7 @@ Route::get('/', Welcome::class)->name('welcome');
 Route::get('/inscription', InscriptionComponent::class)->name('inscription');
 Route::get('/thank-you', ThankYouComponent::class)->name('thank.you');
 Route::get('/activites', ActiviteComponent::class)->name('activite');
-Route::get('/paiment', PaimentFedaPayComponent::class)->name('paiment');
+Route::get('/paiment/{id}', PaimentFedaPayComponent::class)->name('paiment');
 
 Route::get('/details-activite/{id}', DetailsActiviteComponent::class)->name('activite-details');
 

@@ -198,9 +198,11 @@ class InscriptionComponent extends Component
     {
         /* Remplacez VOTRE_CLE_API par votre véritable clé API */
         FedaPay::setApiKey('sk_live_l_kcHD5MptuZQnpw4zDDeAKc');
+        // FedaPay::setApiKey('sk_sandbox_2DHL5GNx62oij9f0cmgFnf-9');
 
         /* Précisez si vous souhaitez exécuter votre requête en mode test ou live */
         FedaPay::setEnvironment('live'); //ou setEnvironment('live');
+        // FedaPay::setEnvironment('sandbox'); //ou setEnvironment('live');
 
         $this->montant_total = 0;
         $activites = Activite::where('isDelete', 0)->get();
@@ -231,10 +233,11 @@ class InscriptionComponent extends Component
         "description" => "Inscription de la inner Wheel 2023",
         "amount" => $total_amount,
         "currency" => ["iso" => "XOF"],
-        "callback_url" => "https://innerwheeldistrict909.com/paiment",
+        // "callback_url" => "https://innerwheeldistrict909.com/paiment",
+        "callback_url" => route('paiment', ['id' => $this->inscription_id_1]),
         "customer" => [
             "firstname" => $this->prenoms,
-            "lastname" => $this->nom."_".$this->inscription_id_1,
+            "lastname" => $this->nom,
             "email" => $this->email,
             // "phone_number" => [
             //     "number" => $this->indicatif.$this->tel,
