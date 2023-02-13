@@ -421,9 +421,11 @@ class InscriptionComponent extends Component
         {
             $myInscription->compagnons = $this->compagnons;
         }
+        $activite = Activite::where('id',$this->activite_id)->first();
 
         $myInscription->statut_id = 2;
         $myInscription->mode_arrivee_id = $this->mode_arrivee_id;
+        $myInscription->activite = $activite->libelle;
         $myInscription->date_arrivee = $this->date_arrivee;
         $myInscription->date_depart = $this->date_depart;
         $myInscription->montant_total = $this->montant_total;
@@ -444,7 +446,6 @@ class InscriptionComponent extends Component
         $myPaiement = Paiement::latest()->first();
         $this->myPaiement_id = $myPaiement->id;
 
-
         $admins = ['virgoefr@yahoo.fr', 'rufineagossou8@gmail.com', 'aurorepathinvo@yahoo.fr','vadjalla@gmail.com','chsaizonou@yahoo.fr','donald.ablo@payplus.africa'];
         //$admins = ['donald.ablo@payplus.africa'];
 
@@ -460,7 +461,7 @@ class InscriptionComponent extends Component
             }
             */
 
-            // Mail::to($this->email)->bcc($admins)->send( new InscriptionMail($this->prenoms.' '.$this->nom, $this->email));
+            Mail::to($this->email)->bcc($admins)->send( new InscriptionMail($this->prenoms.' '.$this->nom, $this->email));
             $this->resetInputFields();
         }else{
             /*
@@ -469,7 +470,7 @@ class InscriptionComponent extends Component
             }
             */
 
-            // Mail::to($this->email)->bcc($admins)->send( new InscriptionMail($this->prenoms.' '.$this->nom, $this->email));
+            Mail::to($this->email)->bcc($admins)->send( new InscriptionMail($this->prenoms.' '.$this->nom, $this->email));
             if($this->pay_id == 6)
             {
                 $this->fedaSendRequest();
