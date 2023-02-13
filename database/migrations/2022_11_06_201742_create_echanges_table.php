@@ -15,8 +15,8 @@ class CreateEchangesTable extends Migration
     {
         Schema::create('echanges', function (Blueprint $table) {
             $table->id();
-            $table->string('data_send');
-            $table->string('data_recive');
+            $table->json('data_send');
+            $table->json('data_recive');
             $table->foreignId('paiment_id')->constrained('paiements')->onUpdate('cascade')->onDelete('cascade');
             $table->boolean('isDelete')->default(0);
             $table->timestamps();

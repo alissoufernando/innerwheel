@@ -21,6 +21,7 @@ use App\Mail\InscriptionMail;
 use Livewire\WithFileUploads;
 use App\Models\OptionHebergement;
 use App\Mail\InscriptionAdminMail;
+use App\Models\Echange;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use StephaneAss\Payplus\Pay\PayPlus;
@@ -62,6 +63,7 @@ class InscriptionComponent extends Component
     public $poste;
     public $lieux;
     public $indicatif;
+    public $myPaiement_id;
 
 
     public $compagnon, $compagnons;
@@ -245,6 +247,30 @@ class InscriptionComponent extends Component
             // ]
         ]
         ));
+        $dataSend = (array(
+            "description" => "Inscription de la inner Wheel 2023",
+            "amount" => $total_amount,
+            "currency" => ["iso" => "XOF"],
+            // "callback_url" => "https://innerwheeldistrict909.com/paiment",
+            "callback_url" => route('paiment', ['id' => $this->inscription_id_1]),
+            "customer" => [
+                "firstname" => $this->prenoms,
+                "lastname" => $this->nom,
+                "email" => $this->email,
+                // "phone_number" => [
+                //     "number" => $this->indicatif.$this->tel,
+                //     "country" => "sn"
+                // ]
+            ]
+            ));
+        $myEchange = new Echange();
+        $myEchange->paiment_id = $this->myPaiement_id;
+        $myEchange->data_send = json_encode($dataSend);
+        $myEchange->data_recive = json_encode("");
+        // dd($myEchange->data_send);
+        $myEchange->save();
+
+        // dd('ok');
 
         $token = $transactionFeda->generateToken();
         return redirect()->to($token->url);
@@ -281,6 +307,15 @@ class InscriptionComponent extends Component
         $co->setTotalAmount($total_amount);
         $co->setDescription("Inscription de la inner Wheel 2023");
         $co->addCustomData('first_key',$this->inscription_id_1);
+        // dd($co);
+        $myEchange = new Echange();
+        $myEchange->paiment_id = $this->myPaiement_id;
+        $myEchange->data_send = json_encode($co);
+        $myEchange->data_recive = json_encode("");
+        // dd($myEchange->data_send);
+        $myEchange->save();
+
+        // dd('ok');
 
         // démarrage du processus de paiement
         // envoi de la requete
@@ -406,6 +441,9 @@ class InscriptionComponent extends Component
         }
         $myPaiement->statut_id = 2;
         $myPaiement->save();
+        $myPaiement = Paiement::latest()->first();
+        $this->myPaiement_id = $myPaiement->id;
+
 
         $admins = ['virgoefr@yahoo.fr', 'rufineagossou8@gmail.com', 'aurorepathinvo@yahoo.fr','vadjalla@gmail.com','chsaizonou@yahoo.fr','donald.ablo@payplus.africa'];
         //$admins = ['donald.ablo@payplus.africa'];
@@ -422,7 +460,7 @@ class InscriptionComponent extends Component
             }
             */
 
-            Mail::to($this->email)->bcc($admins)->send( new InscriptionMail($this->prenoms.' '.$this->nom, $this->email));
+            // Mail::to($this->email)->bcc($admins)->send( new InscriptionMail($this->prenoms.' '.$this->nom, $this->email));
             $this->resetInputFields();
         }else{
             /*
@@ -431,7 +469,7 @@ class InscriptionComponent extends Component
             }
             */
 
-            Mail::to($this->email)->bcc($admins)->send( new InscriptionMail($this->prenoms.' '.$this->nom, $this->email));
+            // Mail::to($this->email)->bcc($admins)->send( new InscriptionMail($this->prenoms.' '.$this->nom, $this->email));
             if($this->pay_id == 6)
             {
                 $this->fedaSendRequest();

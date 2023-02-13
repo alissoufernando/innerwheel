@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire\Site\Inscriptions;
 
-use App\Mail\InscriptionComfirmMail;
+use App\Models\Echange;
 use Livewire\Component;
 use App\Models\Paiement;
 use App\Models\Inscription;
 use Illuminate\Http\Request;
+use App\Mail\InscriptionComfirmMail;
 use Illuminate\Support\Facades\Mail;
 use StephaneAss\Payplus\Pay\PayPlus;
 
@@ -26,12 +27,12 @@ class ThankYouComponent extends Component
         $token = blank($token) ? $_GET['token'] : trim($token);
 
         $co = (new PayPlus())->init();
+        $inscription_id = $co->getCustomData('first_key');
+        $myPaiement = Paiement::where('inscription_id',$inscription_id)->first();
         if ($co->confirm($token)) {
             // Transaction has successed
             // Perform your success logique here
 
-            $inscription_id = $co->getCustomData('first_key');
-            $myPaiement = Paiement::where('inscription_id',$inscription_id)->first();
             if($myPaiement)
             {
                 $myPaiement->statut_id = 3;
@@ -48,8 +49,8 @@ class ThankYouComponent extends Component
 
             // dd('ok');
         }else {
-            $inscription_id = $co->getCustomData('first_key');
-            $myPaiement = Paiement::where('inscription_id',$inscription_id)->first();
+            // $inscription_id = $co->getCustomData('first_key');
+            // $myPaiement = Paiement::where('inscription_id',$inscription_id)->first();
             $myPaiement->statut_id = 1;
             $myPaiement->save();
 
@@ -57,6 +58,9 @@ class ThankYouComponent extends Component
             $myInscription->statut_id = 1;
             $myInscription->save();
         }
+        $myEchange = Echange::where('paiment_id',$myPaiement->id)->first();
+        $myEchange->data_recive = json_encode($co);
+        $myEchange->save();
     }
 
     public function render()

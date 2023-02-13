@@ -11,6 +11,7 @@ use App\Models\Inscription;
 use Illuminate\Http\Request;
 use App\Models\OptionHebergement;
 use App\Mail\InscriptionComfirmMail;
+use App\Models\Echange;
 use Illuminate\Support\Facades\Mail;
 
 class PaimentFedaPayComponent extends Component
@@ -38,9 +39,10 @@ class PaimentFedaPayComponent extends Component
 
         $transaction = Transaction::retrieve($id);
 
+
         // dd($transaction->metadata);
+        $myPaiement = Paiement::where('inscription_id',$this->inscription_id)->first();
         if ($transaction->status == "approved") {
-            $myPaiement = Paiement::where('inscription_id',$this->inscription_id)->first();
             if($myPaiement)
             {
                 $myPaiement->statut_id = 3;
@@ -53,12 +55,13 @@ class PaimentFedaPayComponent extends Component
                 $myInscription->statut_id = 3;
                 $myInscription->save();
             }
+
             Mail::to($myInscription->individu->email)->send( new InscriptionComfirmMail($myInscription->individu->nom, $myInscription->individu->email));
 
             // echo "Paiement effectué";
         }else{
 
-            $myPaiement = Paiement::where('inscription_id',$this->inscription_id)->first();
+            // $myPaiement = Paiement::where('inscription_id',$this->inscription_id)->first();
             $myPaiement->statut_id = 1;
             $myPaiement->save();
 
@@ -66,6 +69,11 @@ class PaimentFedaPayComponent extends Component
             $myInscription->statut_id = 1;
             $myInscription->save();
         }
+        // dd(json_encode($transaction));
+        $myEchange = Echange::where('paiment_id',$myPaiement->id)->first();
+        // dd($myEchange);
+        $myEchange->data_recive = json_encode($transaction);
+        $myEchange->save();
     }
 
 
