@@ -51,7 +51,8 @@
 										<th>Chambre</th>
 										<th>Options</th>
 										<th>Compagnon</th>
-										<th>Arrivée</th>
+										<th>Moyens Arrivée</th>
+										<th>Arrivée-Départ</th>
                                         <th>Club</th>
 									</tr>
 								</thead>
@@ -78,6 +79,8 @@
                                                         Terre
                                                     @endif
                                                 </td>
+                                                <td>{{ $inscription->date_arrivee }} au {{ $inscription->date_depart }}</td>
+
                                                 <td>{{ $inscription->individu->club }}</td>
                                             </tr>
                                         @endif
